@@ -430,7 +430,7 @@ export default function PhotographyContactPage() {
                 <h2 className="font-serif text-6xl leading-[0.87] tracking-[-0.055em] md:text-8xl lg:text-[110px]">
                   Different
                   <br />
-                  medium.
+                  medium. 
                   <br />
                   <em className="font-normal text-black/35">Same attention.</em>
                 </h2>
