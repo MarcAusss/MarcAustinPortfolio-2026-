@@ -410,3 +410,60 @@ select {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* ==========================================================
+   Portfolio loading screen
+========================================================== */
+
+@keyframes portfolio-loading-progress {
+  0% {
+    width: 0%;
+    opacity: 0.45;
+  }
+
+  35% {
+    width: 45%;
+    opacity: 1;
+  }
+
+  70% {
+    width: 78%;
+    opacity: 1;
+  }
+
+  100% {
+    width: 96%;
+    opacity: 0.65;
+  }
+}
+
+.loading-progress-line {
+  width: 0;
+  animation:
+    portfolio-loading-progress
+    2.4s
+    cubic-bezier(0.76, 0, 0.24, 1)
+    infinite alternate;
+}
+
+@keyframes portfolio-loading-dot {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+.loading-dot {
+  animation:
+    portfolio-loading-dot
+    0.9s
+    ease-in-out
+    infinite;
+}

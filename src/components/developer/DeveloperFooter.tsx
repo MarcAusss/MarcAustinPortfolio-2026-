@@ -24,7 +24,7 @@ export default function DeveloperFooter() {
           <div className="md:text-right">
             <div className="flex flex-wrap gap-x-6 gap-y-3 md:justify-end">
               <a
-                href="#"
+                href="https://github.com/MarcAusss"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[10px] uppercase tracking-[0.18em] text-dev-muted transition-colors hover:text-dev-foreground"
@@ -42,7 +42,7 @@ export default function DeveloperFooter() {
               </a>
 
               <a
-                href="#"
+                href="mailto:marcaustinbonagua@gmail.com"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[10px] uppercase tracking-[0.18em] text-dev-muted transition-colors hover:text-dev-foreground"

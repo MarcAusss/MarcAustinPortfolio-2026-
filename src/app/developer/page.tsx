@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import Reveal from "@/components/shared/Reveal";
 
@@ -66,16 +67,9 @@ export default function DeveloperPage() {
               <h1 className="font-serif text-[clamp(3.8rem,15vw,8.8rem)] leading-[0.84] tracking-[-0.055em]">
                 I build digital
                 <br />
-
-                <span className="lg:ml-[5vw]">
-                  experiences
-                </span>
-
+                <span className="lg:ml-[5vw]">experiences</span>
                 <br />
-
-                <em className="font-normal">
-                  with clean code.
-                </em>
+                <em className="font-normal">with clean code.</em>
               </h1>
             </Reveal>
 
@@ -102,9 +96,9 @@ export default function DeveloperPage() {
                   href="/developer/projects"
                   className="group flex items-center gap-8 bg-dev-dark px-6 py-4 text-xs text-white transition-transform duration-500 hover:-translate-y-1"
                 >
-                  <span>View selected work</span>
+                  <span className="text-white">View selected work</span>
 
-                  <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                  <span className="text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                     ↗
                   </span>
                 </Link>
@@ -114,7 +108,6 @@ export default function DeveloperPage() {
                   className="group flex items-center gap-3 border-b border-black/30 pb-1 text-xs"
                 >
                   Download CV
-
                   <span className="transition-transform duration-300 group-hover:translate-y-1">
                     ↓
                   </span>
@@ -125,37 +118,59 @@ export default function DeveloperPage() {
 
           {/* Right visual */}
 
-          <Reveal
-            delay={0.18}
-            className="relative lg:col-span-5"
-          >
-            <div className="relative ml-auto max-w-[500px]">
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#dedbd4]">
-                <span className="absolute left-1/2 top-0 h-full w-px bg-black/[0.07]" />
+          <Reveal delay={0.18} className="relative lg:col-span-5">
+            <div className="relative ml-auto w-full max-w-[500px]">
+              {/* Developer hero image */}
 
-                <span className="absolute left-0 top-1/2 h-px w-full bg-black/[0.07]" />
+              <div className="group relative aspect-[4/5] overflow-hidden bg-transparent">
+                <Image
+                  src="/images/developer/hero.png"
+                  alt="Developer working on a laptop"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-center transition-transform duration-[1200ms] ease-out group-hover:scale-[1.015]"
+                />
 
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="font-serif text-6xl italic text-black/[0.12]">
-                      Portrait
-                    </p>
+                {/* Subtle editorial grading */}
 
-                    <p className="mt-3 text-[8px] uppercase tracking-[0.28em] text-black/30">
-                      Developer portrait
-                    </p>
-                  </div>
+                <div className="pointer-events-none absolute inset-0 bg-transparent" />
+
+                {/* Fine border */}
+
+                <div className="pointer-events-none absolute inset-0" />
+
+                {/* Top metadata */}
+
+                <div className="absolute left-5 top-5 flex items-center gap-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
+
+                  <span className="text-[8px] uppercase tracking-[0.22em] text-black/70 drop-shadow">
+                    Developer / 2026
+                  </span>
                 </div>
+
+                {/* Bottom subtle gradient */}
+
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/25 to-transparent" />
               </div>
 
-              <div className="absolute -bottom-5 -left-5 bg-dev-dark px-5 py-4 text-white md:-left-8">
-                <p className="text-[8px] uppercase tracking-[0.22em] text-white/50">
-                  Currently
-                </p>
+              {/* Floating status card */}
 
-                <p className="mt-1 text-xs">
-                  Designing & developing
-                </p>
+              <div className="absolute -bottom-5 left-4 bg-dev-dark px-5 py-4 text-white shadow-xl sm:left-6 md:-left-8">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-30" />
+
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
+                  </span>
+
+                  <p className="text-[8px] uppercase tracking-[0.22em] text-white/50">
+                    Currently
+                  </p>
+                </div>
+
+                <p className="mt-2 text-xs">Designing & developing System for <br/> DOLE Integrated Livelihood Program</p>
               </div>
             </div>
           </Reveal>
@@ -175,10 +190,7 @@ export default function DeveloperPage() {
 
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:justify-end">
               {technologies.map((technology) => (
-                <span
-                  key={technology}
-                  className="text-xs text-dev-muted"
-                >
+                <span key={technology} className="text-xs text-dev-muted">
                   {technology}
                 </span>
               ))}
@@ -210,7 +222,6 @@ export default function DeveloperPage() {
                 className="group flex w-fit items-center gap-4 border-b border-dev-foreground pb-2 text-[10px] uppercase tracking-[0.18em]"
               >
                 View all projects
-
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
@@ -220,10 +231,7 @@ export default function DeveloperPage() {
 
           <div className="border-t border-dev-border">
             {projects.map((project, index) => (
-              <Reveal
-                key={project.title}
-                delay={index * 0.05}
-              >
+              <Reveal key={project.title} delay={index * 0.05}>
                 <Link
                   href={project.href}
                   className="group grid gap-7 border-b border-dev-border py-10 md:grid-cols-12 md:items-center lg:py-14"
@@ -342,14 +350,13 @@ export default function DeveloperPage() {
               <div className="lg:col-span-3 lg:flex lg:justify-end">
                 <Link
                   href="/developer/contact"
-                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-dev-dark text-center text-[9px] uppercase leading-5 tracking-[0.17em] text-white transition-transform duration-500 hover:-translate-y-2 md:h-36 md:w-36"
+                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-dev-dark text-center text-[9px] uppercase leading-5 tracking-[0.17em] text-white! transition-transform duration-500 hover:-translate-y-2 md:h-36 md:w-36"
                 >
                   <span>
                     Start a
                     <br />
                     conversation
-                    <br />
-                    ↗
+                    <br />↗
                   </span>
                 </Link>
               </div>

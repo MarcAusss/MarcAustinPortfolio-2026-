@@ -2,17 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import {
-  AnimatePresence,
-  motion,
-} from "motion/react";
-
-import {
-  useEffect,
-  useState,
-} from "react";
-
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
 
 const navigation = [
@@ -40,38 +31,26 @@ const navigation = [
     label: "Contact",
     href: "/developer/contact",
   },
-] as const;
+];
 
 export default function DeveloperHeader() {
   const pathname = usePathname();
 
-  const [menuOpen, setMenuOpen] =
-    useState(false);
-
-  /*
-  |--------------------------------------------------------------------------
-  | Lock body scroll while mobile menu is open
-  |--------------------------------------------------------------------------
-  */
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow =
-      menuOpen ? "hidden" : "";
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
     return () => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
-  /*
-  |--------------------------------------------------------------------------
-  | Active route
-  |--------------------------------------------------------------------------
-  */
-
-  const isActive = (
-    href: (typeof navigation)[number]["href"],
-  ) => {
+  const isActive = (href: string) => {
     if (href === "/developer") {
       return pathname === "/developer";
     }
@@ -85,31 +64,22 @@ export default function DeveloperHeader() {
 
   return (
     <>
-      {/* =====================================================
-          HEADER
-      ===================================================== */}
-
-      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-dev-background/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-black/6 bg-dev-background/90 backdrop-blur-xl">
         <div className="site-container">
-          <div className="flex h-[82px] items-center justify-between lg:h-[92px]">
-            {/* Brand */}
-
+          <div className="flex h-20.5 items-center justify-between lg:h-23">
+            {/* Logo */}
             <Link
               href="/developer"
-              onClick={closeMenu}
               className="relative z-50 text-[11px] font-medium uppercase tracking-[0.2em]"
+              onClick={closeMenu}
             >
               Marc Austin
             </Link>
 
-            {/* =================================================
-                DESKTOP NAVIGATION
-            ================================================= */}
-
+            {/* Desktop Navigation */}
             <nav className="hidden items-center gap-8 lg:flex xl:gap-10">
               {navigation.map((item) => {
-                const active =
-                  isActive(item.href);
+                const active = isActive(item.href);
 
                 return (
                   <Link
@@ -129,9 +99,7 @@ export default function DeveloperHeader() {
 
                     <span
                       className={`absolute bottom-0 left-0 h-px bg-dev-foreground transition-all duration-500 ${
-                        active
-                          ? "w-full"
-                          : "w-0 group-hover:w-full"
+                        active ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                     />
                   </Link>
@@ -139,62 +107,40 @@ export default function DeveloperHeader() {
               })}
             </nav>
 
-            {/* =================================================
-                PHOTOGRAPHY SWITCH
-            ================================================= */}
-
+            {/* Photography Switch */}
             <PortfolioSwitchLink
               href="/"
               className="group hidden items-center gap-3 text-[11px] uppercase tracking-[0.15em] lg:flex"
             >
-              <span>
-                Photography
-              </span>
+              <span>Photography</span>
 
               <span className="flex h-8 w-8 items-center justify-center rounded-full border border-black/10 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:bg-black group-hover:text-white">
                 ↗
               </span>
             </PortfolioSwitchLink>
 
-            {/* =================================================
-                MOBILE MENU BUTTON
-            ================================================= */}
-
+            {/* Mobile Menu Button */}
             <button
               type="button"
-              aria-label={
-                menuOpen
-                  ? "Close menu"
-                  : "Open menu"
-              }
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              onClick={() =>
-                setMenuOpen(
-                  (current) => !current,
-                )
-              }
+              onClick={() => setMenuOpen((current) => !current)}
               className="relative z-50 flex items-center gap-3 lg:hidden"
             >
               <span className="text-[10px] uppercase tracking-[0.18em]">
-                {menuOpen
-                  ? "Close"
-                  : "Menu"}
+                {menuOpen ? "Close" : "Menu"}
               </span>
 
               <span className="relative h-4 w-5">
                 <span
-                  className={`absolute left-0 h-px bg-current transition-all duration-300 ${
-                    menuOpen
-                      ? "top-[8px] w-5 rotate-45"
-                      : "top-[4px] w-5"
+                  className={`absolute left-0 top-1 h-px bg-current transition-all duration-300 ${
+                    menuOpen ? "top-2 rotate-45 w-5" : "w-5"
                   }`}
                 />
 
                 <span
-                  className={`absolute right-0 h-px bg-current transition-all duration-300 ${
-                    menuOpen
-                      ? "bottom-[7px] w-5 -rotate-45"
-                      : "bottom-[4px] w-3"
+                  className={`absolute bottom-1 right-0 h-px bg-current transition-all duration-300 ${
+                    menuOpen ? "bottom-1.7 w-5 -rotate-45" : "w-3"
                   }`}
                 />
               </span>
@@ -203,115 +149,69 @@ export default function DeveloperHeader() {
         </div>
       </header>
 
-      {/* =====================================================
-          MOBILE MENU
-      ===================================================== */}
-
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{
-              y: "-100%",
-            }}
-            animate={{
-              y: 0,
-            }}
-            exit={{
-              y: "-100%",
-            }}
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
             transition={{
               duration: 0.7,
-              ease: [
-                0.76,
-                0,
-                0.24,
-                1,
-              ],
+              ease: [0.76, 0, 0.24, 1],
             }}
-            className="fixed inset-0 z-40 h-[100dvh] overflow-y-auto bg-dev-background lg:hidden"
+            className="fixed inset-0 z-40 bg-dev-background lg:hidden"
           >
-            <div className="site-container flex min-h-[100dvh] flex-col">
-              {/* Header spacing */}
-
-              <div className="h-[105px]" />
-
-              {/* Navigation */}
+            <div className="site-container flex min-h-screen flex-col">
+              <div className="h-27.5" />
 
               <nav className="flex flex-1 flex-col justify-center">
                 <div className="border-t border-dev-border">
-                  {navigation.map(
-                    (item, index) => {
-                      const active =
-                        isActive(item.href);
+                  {navigation.map((item, index) => {
+                    const active = isActive(item.href);
 
-                      return (
-                        <motion.div
-                          key={item.href}
-                          initial={{
-                            opacity: 0,
-                            y: 30,
-                          }}
-                          animate={{
-                            opacity: 1,
-                            y: 0,
-                          }}
-                          transition={{
-                            duration: 0.5,
-                            delay:
-                              0.15 +
-                              index *
-                                0.055,
-                          }}
-                          className="border-b border-dev-border"
+                    return (
+                      <motion.div
+                        key={item.href}
+                        initial={{
+                          opacity: 0,
+                          y: 30,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        transition={{
+                          duration: 0.5,
+                          delay: 0.18 + index * 0.055,
+                        }}
+                        className="border-b border-dev-border"
+                      >
+                        <PortfolioSwitchLink
+                          href="/"
+                          onClick={closeMenu}
+                          className="flex items-center justify-between border-t border-dev-border pt-6"
                         >
-                          <Link
-                            href={
-                              item.href
-                            }
-                            onClick={
-                              closeMenu
-                            }
-                            className="group flex items-center justify-between py-5 sm:py-6"
-                          >
-                            <div className="flex items-start gap-4">
-                              <span className="mt-2 text-[9px] text-dev-subtle">
-                                {String(
-                                  index +
-                                    1,
-                                ).padStart(
-                                  2,
-                                  "0",
-                                )}
-                              </span>
+                          <div>
+                            <p className="mb-1 text-[9px] uppercase tracking-[0.2em] text-dev-muted">
+                              Switch portfolio
+                            </p>
 
-                              <span
-                                className={`font-serif text-[clamp(2.25rem,11vw,3rem)] leading-none tracking-[-0.03em] ${
-                                  active
-                                    ? "text-dev-foreground"
-                                    : "text-dev-muted"
-                                }`}
-                              >
-                                {
-                                  item.label
-                                }
-                              </span>
-                            </div>
+                            <p className="font-serif text-2xl">Photography</p>
+                          </div>
 
-                            <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
-                              →
-                            </span>
-                          </Link>
-                        </motion.div>
-                      );
-                    },
-                  )}
+                          <span className="flex h-11 w-11 items-center justify-center rounded-full border border-dev-border">
+                            ↗
+                          </span>
+                        </PortfolioSwitchLink>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </nav>
 
-              {/* Photography switch */}
-
               <div className="pb-8 pt-6">
-                <PortfolioSwitchLink
+                <Link
                   href="/"
                   onClick={closeMenu}
                   className="flex items-center justify-between border-t border-dev-border pt-6"
@@ -321,15 +221,13 @@ export default function DeveloperHeader() {
                       Switch portfolio
                     </p>
 
-                    <p className="font-serif text-2xl">
-                      Photography
-                    </p>
+                    <p className="font-serif text-2xl">Photography</p>
                   </div>
 
                   <span className="flex h-11 w-11 items-center justify-center rounded-full border border-dev-border">
                     ↗
                   </span>
-                </PortfolioSwitchLink>
+                </Link>
               </div>
             </div>
           </motion.div>

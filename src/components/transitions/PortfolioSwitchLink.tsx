@@ -1,18 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import type { Route } from "next";
+
 import type { MouseEvent, ReactNode } from "react";
 
 import {
   type PortfolioRoute,
   usePortfolioTransition,
-} from "@/components/transitions/PortfolioTransitionProvider";
+} from "./PortfolioTransitionProvider";
 
 type PortfolioSwitchLinkProps = {
   href: PortfolioRoute;
+
   children: ReactNode;
+
   className?: string;
+
   onClick?: () => void;
+
   ariaLabel?: string;
 };
 
@@ -27,6 +33,11 @@ export default function PortfolioSwitchLink({
     usePortfolioTransition();
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    /*
+    |--------------------------------------------------------------------------
+    | Preserve special browser link behavior
+    |--------------------------------------------------------------------------
+    */
 
     if (
       event.metaKey ||
@@ -46,12 +57,18 @@ export default function PortfolioSwitchLink({
 
     onClick?.();
 
+    /*
+     * href already has type PortfolioRoute.
+     *
+     * Do NOT use href.toString().
+     */
+
     startPortfolioTransition(href);
   };
 
   return (
     <Link
-      href={href}
+      href={href as Route}
       prefetch
       aria-label={ariaLabel}
       className={className}

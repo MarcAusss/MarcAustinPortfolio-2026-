@@ -12,8 +12,8 @@ const services = [
 const contactLinks = [
   {
     label: "Email",
-    value: "hello@example.com",
-    href: "mailto:hello@example.com",
+    value: "marcaustinbonagua@gmail.com",
+    href: "mailto:marcaustinbonagua@gmail.com",
   },
   {
     label: "GitHub",
@@ -157,7 +157,7 @@ export default function ContactPage() {
           FORM
       ===================================================== */}
 
-      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-16 lg:grid-cols-12">
             <div className="lg:col-span-4">
@@ -215,7 +215,7 @@ export default function ContactPage() {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder="you@gmail.com"
                       className="w-full border-0 border-b border-dev-border bg-transparent px-0 py-4 text-lg outline-none transition-colors placeholder:text-dev-subtle focus:border-dev-foreground focus:ring-0"
                     />
                   </div>

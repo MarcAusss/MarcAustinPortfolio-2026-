@@ -240,7 +240,7 @@ export default function JournalPage() {
           TOPICS
       ===================================================== */}
 
-      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -330,7 +330,7 @@ export default function JournalPage() {
           CONTACT CTA
       ===================================================== */}
 
-      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
@@ -357,7 +357,7 @@ export default function JournalPage() {
               <div className="lg:col-span-2 lg:flex lg:justify-end">
                 <Link
                   href="/developer/contact"
-                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-dev-dark text-center text-[9px] uppercase leading-5 tracking-[0.17em] text-white transition-transform duration-500 hover:-translate-y-2"
+                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-dev-dark text-center text-[9px] uppercase leading-5 tracking-[0.17em] text-white! transition-transform duration-500 hover:-translate-y-2"
                 >
                   <span>
                     Let&apos;s

@@ -181,7 +181,7 @@ export default function PhotographyGallery() {
           GALLERY
       ===================================================== */}
 
-      <div className="grid min-w-0 grid-cols-1 gap-x-4 gap-y-10 sm:gap-y-12 md:grid-cols-12 md:gap-y-16">
+      <div className="site-container py-7 sm:py-9 md:py-12">
         <motion.div
           layout
           className="grid grid-cols-1 gap-x-4 gap-y-12 md:grid-cols-12 md:gap-y-16"

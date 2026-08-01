@@ -359,10 +359,7 @@ function PortfolioTransitionOverlay({
           BACKGROUND GRID
       ===================================================== */}
 
-      <div
-        className="pointer-events-none absolute inset-0 hidden sm:block"
-        aria-hidden="true"
-      >
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <span
           className="absolute left-1/4 top-0 h-full w-px"
           style={{
@@ -460,7 +457,7 @@ function PortfolioTransitionOverlay({
 
                 ease: [0.76, 0, 0.24, 1],
               }}
-              className="font-serif text-[clamp(3.6rem,18vw,15rem)] leading-[0.76] tracking-[-0.06em] sm:leading-[0.72]"
+              className="font-serif text-[clamp(4.5rem,15vw,15rem)] leading-[0.72] tracking-[-0.065em]"
             >
               {title}
             </motion.h2>
@@ -507,11 +504,11 @@ function PortfolioTransitionOverlay({
           FOOTER
       ===================================================== */}
 
-      <div className="absolute bottom-5 left-0 right-0 sm:bottom-8">
+      <div className="absolute bottom-8 left-0 right-0">
         <div className="site-container">
           <div className="flex items-end justify-between">
             <p
-              className="max-w-[180px] text-[7px] uppercase leading-4 tracking-[0.18em] sm:max-w-none sm:text-[8px] sm:leading-5 sm:tracking-[0.22em]"
+              className="text-[8px] uppercase leading-5 tracking-[0.22em]"
               style={{
                 color: subtle,
               }}

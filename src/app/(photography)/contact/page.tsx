@@ -11,8 +11,8 @@ const services = [
 const contactLinks = [
   {
     label: "Email",
-    value: "hello@example.com",
-    href: "mailto:hello@example.com",
+    value: "marcaustinbonagua@gmail.com",
+    href: "mailto:marcaustinbonagua@gmail.com",
   },
   {
     label: "Instagram",
@@ -220,7 +220,7 @@ export default function PhotographyContactPage() {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder="you@gmail.com"
                       className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
                     />
                   </div>

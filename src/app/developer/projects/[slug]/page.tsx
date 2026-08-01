@@ -204,7 +204,7 @@ export default async function ProjectPage({
           PROJECT INFORMATION
       ===================================================== */}
 
-      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-16 lg:grid-cols-12">
             {/* Metadata */}
@@ -270,7 +270,7 @@ export default async function ProjectPage({
           CHALLENGE
       ===================================================== */}
 
-      <section className="border-t border-dev-border py-20 sm:py-24 md:py-32 lg:py-40">
+      <section className="border-t border-dev-border py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -336,7 +336,7 @@ export default async function ProjectPage({
           SOLUTION
       ===================================================== */}
 
-      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -416,7 +416,7 @@ export default async function ProjectPage({
           HIGHLIGHTS
       ===================================================== */}
 
-      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="mb-16 grid gap-8 lg:grid-cols-12">
