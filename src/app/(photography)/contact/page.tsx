@@ -1,5 +1,6 @@
 import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
 import Reveal from "@/components/shared/Reveal";
+import PhotographyContactForm from "@/components/photography/PhotographyContactForm";
 
 const services = [
   "Portrait Sessions",
@@ -132,7 +133,7 @@ export default function PhotographyContactPage() {
                       </div>
 
                       <div className="md:col-span-8">
-                        <span className="font-serif text-2xl tracking-[-0.025em] transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
+                        <span className="font-serif text-2xl tracking-tight transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
                           {link.value}
                         </span>
                       </div>
@@ -186,152 +187,7 @@ export default function PhotographyContactPage() {
 
             <div className="lg:col-span-7 lg:col-start-6">
               <Reveal delay={0.08}>
-                <form className="space-y-10">
-                  {/* Name */}
-
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="mb-3 block text-[8px] uppercase tracking-[0.2em] text-white/30"
-                    >
-                      Your name
-                    </label>
-
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Your name"
-                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
-                    />
-                  </div>
-
-                  {/* Email */}
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-3 block text-[8px] uppercase tracking-[0.2em] text-white/30"
-                    >
-                      Email address
-                    </label>
-
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="you@gmail.com"
-                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
-                    />
-                  </div>
-
-                  {/* Shoot type */}
-
-                  <div>
-                    <label
-                      htmlFor="shootType"
-                      className="mb-3 block text-[8px] uppercase tracking-[0.2em] text-white/30"
-                    >
-                      Type of shoot
-                    </label>
-
-                    <select
-                      id="shootType"
-                      name="shootType"
-                      defaultValue=""
-                      className="w-full border-0 border-b border-white/15 bg-photo-background px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors focus:border-white focus:ring-0"
-                    >
-                      <option value="" disabled>
-                        Select photography service
-                      </option>
-
-                      <option value="portrait">Portrait Session</option>
-
-                      <option value="event">Event Photography</option>
-
-                      <option value="creative">Creative Shoot</option>
-
-                      <option value="brand">Brand / Editorial</option>
-
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  {/* Date */}
-
-                  <div>
-                    <label
-                      htmlFor="date"
-                      className="mb-3 block text-[8px] uppercase tracking-[0.2em] text-white/30"
-                    >
-                      Preferred date
-                    </label>
-
-                    <input
-                      id="date"
-                      name="date"
-                      type="date"
-                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors focus:border-white focus:ring-0 [color-scheme:dark]"
-                    />
-                  </div>
-
-                  {/* Location */}
-
-                  <div>
-                    <label
-                      htmlFor="location"
-                      className="mb-3 block text-[8px] uppercase tracking-[0.2em] text-white/30"
-                    >
-                      Location
-                    </label>
-
-                    <input
-                      id="location"
-                      name="location"
-                      type="text"
-                      placeholder="City / Venue / Location"
-                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
-                    />
-                  </div>
-
-                  {/* Message */}
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="mb-3 block text-[8px] uppercase tracking-[0.2em] text-white/30"
-                    >
-                      Tell me about the shoot
-                    </label>
-
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={6}
-                      placeholder="Describe what you have in mind..."
-                      className="w-full resize-none border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg leading-8 text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
-                    />
-                  </div>
-
-                  {/* Submit */}
-
-                  <div className="flex justify-end pt-5">
-                    <button
-                      type="submit"
-                      className="group flex h-36 w-36 items-center justify-center rounded-full bg-white text-center text-[8px] uppercase leading-5 tracking-[0.17em] text-black transition-transform duration-500 hover:-translate-y-2"
-                    >
-                      <span>
-                        Send
-                        <br />
-                        inquiry
-                        <br />
-                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                          ↗
-                        </span>
-                      </span>
-                    </button>
-                  </div>
-                </form>
+                <PhotographyContactForm />
               </Reveal>
             </div>
           </div>
@@ -360,7 +216,7 @@ export default function PhotographyContactPage() {
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white" />
                   </span>
 
-                  <p className="font-serif text-3xl tracking-[-0.025em] md:text-4xl">
+                  <p className="font-serif text-3xl tracking-tight md:text-4xl">
                     Available for selected shoots.
                   </p>
                 </div>
@@ -380,18 +236,18 @@ export default function PhotographyContactPage() {
           VISUAL SECTION
       ===================================================== */}
 
-      <section className="px-5 py-5 md:px-10 md:py-10 lg:px-[60px] lg:py-[60px]">
+      <section className="px-5 py-5 md:px-10 md:py-10 lg:p-15">
         <Reveal>
-          <div className="relative aspect-[16/7] overflow-hidden bg-white/[0.055]">
-            <span className="absolute left-1/4 top-0 h-full w-px bg-white/[0.05]" />
-            <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.05]" />
-            <span className="absolute left-3/4 top-0 h-full w-px bg-white/[0.05]" />
+          <div className="relative aspect-16/7 overflow-hidden bg-white/5.5">
+            <span className="absolute left-1/4 top-0 h-full w-px bg-white/5" />
+            <span className="absolute left-1/2 top-0 h-full w-px bg-white/5" />
+            <span className="absolute left-3/4 top-0 h-full w-px bg-white/5" />
 
-            <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.05]" />
+            <span className="absolute left-0 top-1/2 h-px w-full bg-white/5" />
 
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <p className="font-serif text-5xl italic text-white/[0.09] md:text-7xl">
+                <p className="font-serif text-5xl italic text-white/9 md:text-7xl">
                   Your story,
                   <br />
                   your frame.
@@ -414,9 +270,9 @@ export default function PhotographyContactPage() {
         {/* Grid */}
 
         <div className="pointer-events-none absolute inset-0">
-          <span className="absolute left-1/4 top-0 h-full w-px bg-black/[0.05]" />
-          <span className="absolute left-1/2 top-0 h-full w-px bg-black/[0.05]" />
-          <span className="absolute left-3/4 top-0 h-full w-px bg-black/[0.05]" />
+          <span className="absolute left-1/4 top-0 h-full w-px bg-black/5" />
+          <span className="absolute left-1/2 top-0 h-full w-px bg-black/5" />
+          <span className="absolute left-3/4 top-0 h-full w-px bg-black/5" />
         </div>
 
         <div className="site-container relative">
@@ -430,7 +286,7 @@ export default function PhotographyContactPage() {
                 <h2 className="font-serif text-6xl leading-[0.87] tracking-[-0.055em] md:text-8xl lg:text-[110px]">
                   Different
                   <br />
-                  medium. 
+                  medium.
                   <br />
                   <em className="font-normal text-black/35">Same attention.</em>
                 </h2>

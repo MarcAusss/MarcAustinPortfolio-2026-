@@ -116,20 +116,20 @@ export default function ProjectsPage() {
                 {/* VISUAL */}
 
                 <div className="mt-12 overflow-hidden lg:ml-[8.333%] lg:mt-16">
-                  <div className="relative aspect-[16/8] overflow-hidden bg-[#dedbd4]">
+                  <div className="relative aspect-16/8 overflow-hidden bg-[#dedbd4]">
                     {/* decorative grid */}
 
                     <div className="absolute inset-0 opacity-50">
-                      <div className="absolute left-1/3 top-0 h-full w-px bg-black/[0.08]" />
+                      <div className="absolute left-1/3 top-0 h-full w-px bg-black/8" />
 
-                      <div className="absolute left-2/3 top-0 h-full w-px bg-black/[0.08]" />
+                      <div className="absolute left-2/3 top-0 h-full w-px bg-black/8" />
 
-                      <div className="absolute left-0 top-1/2 h-px w-full bg-black/[0.08]" />
+                      <div className="absolute left-0 top-1/2 h-px w-full bg-black/8" />
                     </div>
 
                     {/* project number */}
 
-                    <span className="absolute -bottom-8 -right-2 font-serif text-[160px] leading-none tracking-[-0.08em] text-black/[0.045] md:text-[240px] lg:text-[320px]">
+                    <span className="absolute -bottom-8 -right-2 font-serif text-[160px] leading-none tracking-[-0.08em] text-black/4.5 md:text-[240px] lg:text-[320px]">
                       {project.number}
                     </span>
 

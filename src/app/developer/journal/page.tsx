@@ -73,18 +73,18 @@ export default function JournalPage() {
               {/* Visual */}
 
               <div className="lg:col-span-6">
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#dcd9d2]">
-                  <span className="absolute left-1/2 top-0 h-full w-px bg-black/[0.06]" />
+                <div className="relative aspect-4/3 overflow-hidden bg-[#dcd9d2]">
+                  <span className="absolute left-1/2 top-0 h-full w-px bg-black/6" />
 
-                  <span className="absolute left-0 top-1/2 h-px w-full bg-black/[0.06]" />
+                  <span className="absolute left-0 top-1/2 h-px w-full bg-black/6" />
 
-                  <span className="absolute -bottom-7 -right-3 font-serif text-[180px] leading-none tracking-[-0.08em] text-black/[0.04] md:text-[240px]">
+                  <span className="absolute -bottom-7 -right-3 font-serif text-[180px] leading-none tracking-[-0.08em] text-black/4 md:text-[240px]">
                     {featuredPost.number}
                   </span>
 
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <p className="font-serif text-5xl italic text-black/[0.15]">
+                      <p className="font-serif text-5xl italic text-black/15">
                         Journal
                       </p>
 
@@ -199,7 +199,7 @@ export default function JournalPage() {
                       {post.category}
                     </p>
 
-                    <h3 className="font-serif max-w-2xl text-4xl leading-[1] tracking-[-0.035em] transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">
+                    <h3 className="font-serif max-w-2xl text-4xl leading-none tracking-[-0.035em] transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">
                       {post.title}
                     </h3>
                   </div>

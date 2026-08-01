@@ -99,7 +99,7 @@ export default function PortfolioPage() {
                   <div className="md:flex md:justify-end">
                     <Link
                       href="/about"
-                      className="group flex h-28 w-28 items-center justify-center rounded-full border border-white/15 text-center text-[8px] uppercase leading-5 tracking-[0.16em] transition-all duration-500 hover:bg-white hover:text-black md:h-32 md:w-32"
+                      className="group flex h-28 w-28 items-center justify-center rounded-full border border-white/15 text-center text-[8px] uppercase leading-5 tracking-[0.16em] transition-all duration-500 hover:bg-white hover:text-black! md:h-32 md:w-32"
                     >
                       <span>
                         About my
@@ -152,7 +152,7 @@ export default function PortfolioPage() {
               <div className="lg:col-span-2 lg:flex lg:justify-end">
                 <Link
                   href="/contact"
-                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-white text-center text-[8px] uppercase leading-5 tracking-[0.17em] text-black transition-transform duration-500 hover:-translate-y-2"
+                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-white text-center text-[8px] uppercase leading-5 tracking-[0.17em] text-black! transition-transform duration-500 hover:-translate-y-2"
                 >
                   <span>
                     Start a

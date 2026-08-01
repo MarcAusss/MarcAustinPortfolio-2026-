@@ -100,7 +100,7 @@ export default async function JournalArticle({
                   </span>
                 </div>
 
-                <h1 className="font-serif max-w-[1200px] text-[clamp(4rem,9vw,9.5rem)] leading-[0.82] tracking-[-0.06em]">
+                <h1 className="font-serif max-w-300 text-[clamp(4rem,9vw,9.5rem)] leading-[0.82] tracking-[-0.06em]">
                   {post.title}
                 </h1>
               </Reveal>
@@ -151,19 +151,19 @@ export default async function JournalArticle({
 
       <section className="site-container py-10 md:py-16">
         <Reveal>
-          <div className="relative aspect-[16/7] overflow-hidden bg-[#dedbd4]">
-            <span className="absolute left-1/4 top-0 h-full w-px bg-black/[0.06]" />
-            <span className="absolute left-1/2 top-0 h-full w-px bg-black/[0.06]" />
-            <span className="absolute left-3/4 top-0 h-full w-px bg-black/[0.06]" />
+          <div className="relative aspect-16/7 overflow-hidden bg-[#dedbd4]">
+            <span className="absolute left-1/4 top-0 h-full w-px bg-black/6" />
+            <span className="absolute left-1/2 top-0 h-full w-px bg-black/6" />
+            <span className="absolute left-3/4 top-0 h-full w-px bg-black/6" />
 
-            <span className="absolute left-0 top-1/2 h-px w-full bg-black/[0.06]" />
+            <span className="absolute left-0 top-1/2 h-px w-full bg-black/6" />
 
             <span className="absolute -bottom-10 right-0 font-serif text-[260px] leading-none tracking-[-0.08em] text-black/[0.035] md:text-[420px]">
               {post.number}
             </span>
 
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="font-serif text-5xl italic text-black/[0.12] md:text-7xl">
+              <p className="font-serif text-5xl italic text-black/12 md:text-7xl">
                 Notes
               </p>
             </div>
@@ -226,7 +226,7 @@ export default async function JournalArticle({
                       <span className="h-px flex-1 bg-dev-border" />
                     </div>
 
-                    <h2 className="font-serif text-4xl leading-[1] tracking-[-0.035em] md:text-5xl lg:text-6xl">
+                    <h2 className="font-serif text-4xl leading-none tracking-[-0.035em] md:text-5xl lg:text-6xl">
                       {section.title}
                     </h2>
 

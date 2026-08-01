@@ -74,7 +74,7 @@ export default function DeveloperPage() {
             </Reveal>
 
             <Reveal delay={0.16}>
-              <div className="mt-10 grid gap-8 md:grid-cols-2 lg:max-w-[760px]">
+              <div className="mt-10 grid gap-8 md:grid-cols-2 lg:max-w-190">
                 <p className="max-w-md text-sm leading-7 text-dev-muted">
                   I create thoughtful digital products where engineering,
                   usability and visual design work together.
@@ -119,17 +119,17 @@ export default function DeveloperPage() {
           {/* Right visual */}
 
           <Reveal delay={0.18} className="relative lg:col-span-5">
-            <div className="relative ml-auto w-full max-w-[500px]">
+            <div className="relative ml-auto w-full max-w-125">
               {/* Developer hero image */}
 
-              <div className="group relative aspect-[4/5] overflow-hidden bg-transparent">
+              <div className="group relative aspect-4/5 overflow-hidden bg-transparent">
                 <Image
                   src="/images/developer/hero.png"
                   alt="Developer working on a laptop"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover object-center transition-transform duration-[1200ms] ease-out group-hover:scale-[1.015]"
+                  className="object-cover object-center transition-transform duration-1200 ease-out group-hover:scale-[1.015]"
                 />
 
                 {/* Subtle editorial grading */}
@@ -152,7 +152,7 @@ export default function DeveloperPage() {
 
                 {/* Bottom subtle gradient */}
 
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/25 to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/25 to-transparent" />
               </div>
 
               {/* Floating status card */}
@@ -326,7 +326,7 @@ export default function DeveloperPage() {
           CTA
       ===================================================== */}
 
-      <section className="px-5 py-5 md:px-10 md:py-10 lg:px-[60px] lg:py-[60px]">
+      <section className="px-5 py-5 md:px-10 md:py-10 lg:px-15 lg:py-15">
         <Reveal>
           <div className="relative overflow-hidden bg-[#dedbd4] px-6 py-20 md:px-12 md:py-28 lg:px-20 lg:py-36">
             <span className="absolute -right-12 -top-20 font-serif text-[240px] leading-none text-black/[0.035] md:text-[400px]">
@@ -339,7 +339,7 @@ export default function DeveloperPage() {
                   Have something in mind?
                 </p>
 
-                <h2 className="font-serif text-6xl leading-[0.9] tracking-[-0.05em] md:text-8xl lg:text-[110px]">
+                <h2 className="font-serif text-6xl leading-[0.9] tracking-tighter md:text-8xl lg:text-[110px]">
                   Let&apos;s create
                   <br />
                   something

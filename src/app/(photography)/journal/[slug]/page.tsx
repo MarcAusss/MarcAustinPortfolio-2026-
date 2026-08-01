@@ -132,7 +132,7 @@ export default async function PhotographyJournalStory({
                   )}
                 </div>
 
-                <h1 className="font-serif max-w-[1200px] text-[clamp(4.5rem,10vw,10rem)] leading-[0.78] tracking-[-0.06em]">
+                <h1 className="font-serif max-w-300 text-[clamp(4.5rem,10vw,10rem)] leading-[0.78] tracking-[-0.06em]">
                   {post.title}
                 </h1>
               </Reveal>
@@ -157,7 +157,7 @@ export default async function PhotographyJournalStory({
           HERO IMAGE
       ===================================================== */}
 
-      <section className="px-5 md:px-10 lg:px-[60px]">
+      <section className="px-5 md:px-10 lg:px-15">
         <Reveal>
           <StoryImage
             image={post.image}
@@ -306,7 +306,7 @@ export default async function PhotographyJournalStory({
       ===================================================== */}
 
       <section className="border-t border-white/10 py-20 sm:py-24 md:py-32 lg:py-40">
-        <div className="px-5 md:px-10 lg:px-[60px]">
+        <div className="px-5 md:px-10 lg:px-15">
           <Reveal>
             <div className="mb-14 grid gap-8 lg:grid-cols-12">
               <div className="lg:col-span-3">
@@ -480,7 +480,7 @@ function StoryImage({
   return (
     <figure>
       <div
-        className={`relative overflow-hidden bg-white/[0.055] ${orientationClasses[orientation]}`}
+        className={`relative overflow-hidden bg-white/5.5 ${orientationClasses[orientation]}`}
       >
         {image ? (
           /*
@@ -499,13 +499,13 @@ function StoryImage({
           <>
             {/* Grid */}
 
-            <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.05]" />
+            <span className="absolute left-1/2 top-0 h-full w-px bg-white/5" />
 
-            <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.05]" />
+            <span className="absolute left-0 top-1/2 h-px w-full bg-white/5" />
 
             {/* Number */}
 
-            <span className="absolute -bottom-6 -right-2 font-serif text-[180px] leading-none tracking-[-0.08em] text-white/[0.025] md:text-[260px]">
+            <span className="absolute -bottom-6 -right-2 font-serif text-[180px] leading-none tracking-[-0.08em] text-white/2.5 md:text-[260px]">
               {number}
             </span>
 
@@ -513,7 +513,7 @@ function StoryImage({
 
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <p className="font-serif text-4xl italic text-white/[0.09] md:text-6xl">
+                <p className="font-serif text-4xl italic text-white/9 md:text-6xl">
                   {label}
                 </p>
 

@@ -175,7 +175,7 @@ export default function PhotographyCursor() {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[10000]"
+      className="pointer-events-none fixed left-0 top-0 z-10000"
       style={{
         x,
         y,

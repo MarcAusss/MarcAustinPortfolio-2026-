@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import Reveal from "@/components/shared/Reveal";
 import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
@@ -28,14 +29,14 @@ export default function PhotographyHome() {
             </Reveal>
 
             <Reveal delay={0.14}>
-              <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between lg:max-w-[760px]">
+              <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between lg:max-w-190">
                 <p className="max-w-md text-sm leading-7 text-white/45">
                   Photography centered on emotion, composition and honest visual
                   storytelling.
                 </p>
 
                 <p className="text-[8px] uppercase leading-5 tracking-[0.22em] text-white/25">
-                  Based in                                                                
+                  Based in
                   <br />
                   Philippines
                 </p>
@@ -46,7 +47,7 @@ export default function PhotographyHome() {
               <div className="mt-10 flex flex-wrap items-center gap-7">
                 <Link
                   href="/portfolio"
-                  className="group flex items-center gap-8 bg-white px-6 py-4 text-[10px] uppercase tracking-[0.16em] text-black"
+                  className="group flex items-center gap-8 bg-white px-6 py-4 text-[10px] uppercase tracking-[0.16em] text-black!"
                 >
                   Explore work
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -70,31 +71,52 @@ export default function PhotographyHome() {
           {/* Hero image placeholder */}
 
           <Reveal delay={0.14} className="lg:col-span-5">
-            <div className="relative ml-auto aspect-[4/5] w-full max-w-[500px] overflow-hidden bg-white/[0.06]">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30" />
+            <div className="group relative aspect-4/5 overflow-hidden bg-[#111111]">
+              <Image
+                src="/images/photography/hero1.png"
+                alt="Photographer holding a camera"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center transition-transform duration-1400 ease-out group-hover:scale-[1.02]"
+              />
 
-              <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.07]" />
+              {/* Subtle dark cinematic treatment */}
 
-              <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.07]" />
+              <div className="pointer-events-none absolute inset-0 bg-black/30" />
 
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <p className="font-serif text-6xl italic text-white/10">
-                    Image
-                  </p>
+              {/* Bottom gradient */}
 
-                  <p className="mt-3 text-[8px] uppercase tracking-[0.27em] text-white/25">
-                    Hero photograph
-                  </p>
-                </div>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[38%] bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+
+              {/* Fine border */}
+
+              <div className="pointer-events-none absolute inset-0 border border-white/8" />
+
+              {/* Image number */}
+
+              <div className="absolute right-5 top-5">
+                <span className="text-[8px] uppercase tracking-[0.22em] text-white/40">
+                  01 / Portrait
+                </span>
               </div>
 
-              <div className="absolute bottom-5 left-5">
-                <p className="text-[8px] uppercase tracking-[0.2em] text-white/35">
-                  Selected frame
-                </p>
+              {/* Caption */}
 
-                <p className="mt-1 font-serif text-xl">Portrait / 2026</p>
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                <div>
+                  <p className="text-[8px] uppercase tracking-[0.22em] text-white/45">
+                    Photographer
+                  </p>
+
+                  <p className="mt-2 font-serif text-2xl text-white md:text-3xl">
+                    Marc Austin
+                  </p>
+                </div>
+
+                <span className="text-[8px] uppercase tracking-[0.2em] text-white/35">
+                  B&W / 2026
+                </span>
               </div>
             </div>
           </Reveal>
@@ -134,7 +156,7 @@ export default function PhotographyHome() {
           <div className="grid gap-4 md:grid-cols-12">
             <Reveal className="md:col-span-7">
               <Link href="/portfolio" className="group block">
-                <div className="relative aspect-[4/3] overflow-hidden bg-white/[0.06]">
+                <div className="relative aspect-4/3 overflow-hidden bg-white/6">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <p className="font-serif text-5xl italic text-white/10">
                       Portraits
@@ -160,7 +182,7 @@ export default function PhotographyHome() {
 
             <Reveal delay={0.08} className="md:col-span-5">
               <Link href="/portfolio" className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden bg-white/[0.08]">
+                <div className="relative aspect-4/5 overflow-hidden bg-white/8">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <p className="font-serif text-5xl italic text-white/10">
                       Places
@@ -263,7 +285,7 @@ export default function PhotographyHome() {
               <div className="lg:col-span-2 lg:flex lg:justify-end">
                 <PortfolioSwitchLink
                   href="/developer"
-                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-white text-center text-[8px] uppercase leading-5 tracking-[0.17em] text-black transition-transform duration-500 hover:-translate-y-2"
+                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-white text-center text-[8px] uppercase leading-5 tracking-[0.17em] text-black! transition-transform duration-500 hover:-translate-y-2"
                 >
                   Developer
                   <br />

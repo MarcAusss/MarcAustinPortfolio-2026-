@@ -124,7 +124,7 @@ export default function NetworkStatusOverlay() {
             transition={{
               duration: 0.35,
             }}
-            className="fixed inset-0 z-[10001] flex h-[100dvh] items-center overflow-hidden bg-[#090909] text-[#f3f0e9]"
+            className="fixed inset-0 z-10001 flex h-dvh items-center overflow-hidden bg-[#090909] text-[#f3f0e9]"
           >
             {/* Background */}
 
@@ -132,11 +132,11 @@ export default function NetworkStatusOverlay() {
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 hidden sm:block"
             >
-              <span className="absolute left-1/4 top-0 h-full w-px bg-white/[0.05]" />
+              <span className="absolute left-1/4 top-0 h-full w-px bg-white/5" />
 
-              <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.05]" />
+              <span className="absolute left-1/2 top-0 h-full w-px bg-white/5" />
 
-              <span className="absolute left-3/4 top-0 h-full w-px bg-white/[0.05]" />
+              <span className="absolute left-3/4 top-0 h-full w-px bg-white/5" />
             </div>
 
             <div className="site-container relative">
@@ -171,7 +171,7 @@ export default function NetworkStatusOverlay() {
               </div>
             </div>
 
-            <div className="loading-progress-line absolute bottom-0 left-0 h-[2px] bg-white" />
+            <div className="loading-progress-line absolute bottom-0 left-0 h-0.5 bg-white" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -195,7 +195,7 @@ export default function NetworkStatusOverlay() {
               opacity: 0,
               y: 20,
             }}
-            className="fixed bottom-5 right-5 z-[9990] max-w-[260px] border border-white/10 bg-[#111111]/95 px-5 py-4 text-white shadow-2xl backdrop-blur-xl"
+            className="fixed bottom-5 right-5 z-9990 max-w-65 border border-white/10 bg-[#111111]/95 px-5 py-4 text-white shadow-2xl backdrop-blur-xl"
           >
             <div className="flex items-start gap-3">
               <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-white/60" />
@@ -233,7 +233,7 @@ export default function NetworkStatusOverlay() {
               opacity: 0,
               y: 20,
             }}
-            className="fixed bottom-5 right-5 z-[10002] border border-white/10 bg-[#111111] px-5 py-4 text-white shadow-2xl"
+            className="fixed bottom-5 right-5 z-10002 border border-white/10 bg-[#111111] px-5 py-4 text-white shadow-2xl"
           >
             <div className="flex items-center gap-3">
               <span className="h-2 w-2 rounded-full bg-white" />

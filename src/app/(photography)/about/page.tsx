@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import Reveal from "@/components/shared/Reveal";
@@ -54,11 +55,10 @@ const philosophy = [
 ];
 
 const equipment = [
-  "Mirrorless Camera",
+  "Canon DSLR Camera",
   "Prime Lenses",
   "Natural Light",
   "Adobe Lightroom",
-  "Adobe Photoshop",
 ];
 
 export default function PhotographyAboutPage() {
@@ -69,7 +69,7 @@ export default function PhotographyAboutPage() {
       ===================================================== */}
 
       <section className="site-container">
-        <div className="grid min-h-[calc(100vh-92px)] gap-14 py-20 lg:grid-cols-12 lg:items-end lg:py-28">
+        <div className="grid min-h-[calc(100dvh-82px)] gap-14 py-20 lg:min-h-[calc(100dvh-92px)] lg:grid-cols-12 lg:items-end lg:py-28">
           <div className="lg:col-span-8">
             <Reveal>
               <div className="mb-8 flex items-center gap-4">
@@ -82,7 +82,7 @@ export default function PhotographyAboutPage() {
             </Reveal>
 
             <Reveal delay={0.07}>
-              <h1 className="font-serif text-[clamp(5rem,10vw,10.5rem)] leading-[0.77] tracking-[-0.06em]">
+              <h1 className="font-serif text-[clamp(4.5rem,15vw,10.5rem)] leading-[0.77] tracking-[-0.06em]">
                 Behind
                 <br />
                 <span className="sm:ml-[5vw] lg:ml-[8vw]">the</span>
@@ -111,33 +111,56 @@ export default function PhotographyAboutPage() {
       <section className="pb-24 md:pb-32 lg:pb-40">
         <div className="site-container">
           <div className="grid gap-16 lg:grid-cols-12">
-            {/* Large portrait */}
+            {/* Main portrait */}
 
             <div className="lg:col-span-6">
               <Reveal>
-                <div className="relative aspect-[4/5] overflow-hidden bg-white/[0.06]">
-                  <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.06]" />
+                <div className="group relative aspect-[4/5] overflow-hidden bg-[#111111]">
+                  <Image
+                    src="/images/photography/IMG_20240505_011352_959.jpg"
+                    alt="Photographer holding a camera"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-[50%_35%] transition-transform duration-1400 ease-out group-hover:scale-[1.02]"
+                  />
 
-                  <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.06]" />
+                  {/* Slight cinematic treatment */}
 
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="font-serif text-6xl italic text-white/[0.1]">
-                        Portrait
-                      </p>
+                  <div className="pointer-events-none absolute inset-0 bg-black/6" />
 
-                      <p className="mt-3 text-[8px] uppercase tracking-[0.28em] text-white/20">
-                        Photographer portrait
-                      </p>
-                    </div>
+                  {/* Bottom gradient */}
+
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[38%] bg-linear-to-t from-black/75 via-black/25 to-transparent" />
+
+                  {/* Border */}
+
+                  <div className="pointer-events-none absolute inset-0 border border-white/[0.07]" />
+
+                  {/* Top metadata */}
+
+                  <div className="absolute right-5 top-5">
+                    <span className="text-[8px] uppercase tracking-[0.22em] text-white/45">
+                      01 / Portrait
+                    </span>
                   </div>
 
-                  <div className="absolute bottom-6 left-6">
-                    <p className="text-[8px] uppercase tracking-[0.2em] text-white/30">
-                      Photographer
-                    </p>
+                  {/* Bottom caption */}
 
-                    <p className="mt-2 font-serif text-2xl">Marc Austin</p>
+                  <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-6">
+                    <div>
+                      <p className="text-[8px] uppercase tracking-[0.2em] text-white/45">
+                        Photographer
+                      </p>
+
+                      <p className="mt-2 font-serif text-2xl text-white md:text-3xl">
+                        Marc Austin
+                      </p>
+                    </div>
+
+                    <span className="text-[8px] uppercase tracking-[0.2em] text-white/35">
+                      B&W / 2026
+                    </span>
                   </div>
                 </div>
               </Reveal>
@@ -191,7 +214,7 @@ export default function PhotographyAboutPage() {
       <section className="border-y border-white/10 py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
-            <div className="mb-16 grid gap-10 lg:grid-cols-12 lg:mb-24">
+            <div className="mb-16 grid gap-10 lg:mb-24 lg:grid-cols-12">
               <div className="lg:col-span-3">
                 <p className="text-[9px] uppercase tracking-[0.25em] text-white/30">
                   02 / Philosophy
@@ -245,35 +268,57 @@ export default function PhotographyAboutPage() {
           EDITORIAL IMAGE BREAK
       ===================================================== */}
 
-      <section className="px-5 py-5 md:px-10 md:py-10 lg:px-[60px] lg:py-[60px]">
+      <section className="px-5 py-5 md:px-10 md:py-10 lg:p-15">
         <div className="grid gap-4 md:grid-cols-12">
+          {/* Large landscape */}
+
           <Reveal className="md:col-span-8">
-            <div className="relative aspect-[16/10] overflow-hidden bg-white/[0.055]">
-              <span className="absolute left-1/3 top-0 h-full w-px bg-white/[0.05]" />
+            <div className="group relative aspect-[16/10] overflow-hidden bg-white/5.5">
+              <Image
+                src="/images/photography/IMG_20263123_123123_232.jpg"
+                alt="Photographer working behind the scenes"
+                fill
+                sizes="(max-width: 768px) 100vw, 66vw"
+                className="object-cover transition-transform duration-1200 ease-out group-hover:scale-[1.015]"
+              />
 
-              <span className="absolute left-2/3 top-0 h-full w-px bg-white/[0.05]" />
+              <div className="pointer-events-none absolute inset-0 bg-black/8" />
 
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="font-serif text-5xl italic text-white/[0.08] md:text-7xl">
-                  Selected frame
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/60 to-transparent" />
+
+              <div className="absolute bottom-6 left-6">
+                <p className="text-[8px] uppercase tracking-[0.22em] text-white/45">
+                  Behind the scenes
                 </p>
               </div>
 
-              <div className="absolute bottom-6 left-6">
-                <p className="text-[8px] uppercase tracking-[0.22em] text-white/25">
-                  Portfolio image / 01
-                </p>
+              <div className="absolute right-6 top-6">
+                <span className="text-[8px] uppercase tracking-[0.22em] text-white/35">
+                  02 / Process
+                </span>
               </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.08} className="md:col-span-4">
-            <div className="relative aspect-[4/5] overflow-hidden bg-[#171717]">
-              <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.04]" />
+          {/* Vertical detail */}
 
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="font-serif text-4xl italic text-white/[0.08]">
-                  Detail
+          <Reveal delay={0.08} className="md:col-span-4">
+            <div className="group relative aspect-[4/5] overflow-hidden bg-[#171717]">
+              <Image
+                src="/images/photography/portfolio/IMG_0646.JPG"
+                alt="Photography portrait detail"
+                fill
+                sizes="(max-width: 768px) 100vw, 34vw"
+                className="object-cover object-center transition-transform duration-1200 ease-out group-hover:scale-[1.02]"
+              />
+
+              <div className="pointer-events-none absolute inset-0 bg-black/6" />
+
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/55 to-transparent" />
+
+              <div className="absolute bottom-6 left-6">
+                <p className="text-[8px] uppercase tracking-[0.22em] text-white/40">
+                  Photographer / Detail
                 </p>
               </div>
             </div>
@@ -410,9 +455,9 @@ export default function PhotographyAboutPage() {
 
       <section className="relative overflow-hidden bg-[#e5e2dc] text-[#141414]">
         <div className="pointer-events-none absolute inset-0">
-          <span className="absolute left-1/4 top-0 h-full w-px bg-black/[0.05]" />
-          <span className="absolute left-1/2 top-0 h-full w-px bg-black/[0.05]" />
-          <span className="absolute left-3/4 top-0 h-full w-px bg-black/[0.05]" />
+          <span className="absolute left-1/4 top-0 h-full w-px bg-black/5" />
+          <span className="absolute left-1/2 top-0 h-full w-px bg-black/5" />
+          <span className="absolute left-3/4 top-0 h-full w-px bg-black/5" />
         </div>
 
         <div className="site-container relative">
@@ -489,7 +534,7 @@ export default function PhotographyAboutPage() {
               <div className="lg:col-span-2 lg:flex lg:justify-end">
                 <Link
                   href="/contact"
-                  className="group flex h-32 w-32 items-center justify-center rounded-full bg-white text-center text-[8px] uppercase leading-5 tracking-[0.17em] text-black transition-transform duration-500 hover:-translate-y-2"
+                  className="group flex h-28 w-28 items-center justify-center rounded-full bg-white text-center text-[8px] uppercase leading-5 tracking-[0.17em] text-black! transition-transform duration-500 hover:-translate-y-2 sm:h-32 sm:w-32"
                 >
                   <span>
                     Contact

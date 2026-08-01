@@ -316,7 +316,7 @@ function PortfolioTransitionOverlay({
       role="status"
       aria-live="polite"
       aria-label={`Opening ${title} portfolio`}
-      className="fixed inset-0 z-[9999] overflow-hidden"
+      className="fixed inset-0 z-9999 overflow-hidden"
       style={{
         background,
         color: foreground,
@@ -389,7 +389,7 @@ function PortfolioTransitionOverlay({
       <div className="absolute left-0 right-0 top-0">
         <div className="site-container">
           <div
-            className="flex h-[82px] items-center justify-between border-b lg:h-[92px]"
+            className="flex h-20.5 items-center justify-between border-b lg:h-23"
             style={{
               borderColor: border,
             }}
@@ -538,7 +538,7 @@ function PortfolioTransitionOverlay({
       ===================================================== */}
 
       <motion.div
-        className="absolute bottom-0 h-[2px]"
+        className="absolute bottom-0 h-0.5"
         style={{
           background: foreground,
         }}

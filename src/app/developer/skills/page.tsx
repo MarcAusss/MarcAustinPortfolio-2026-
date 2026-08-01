@@ -301,7 +301,7 @@ export default function SkillsPage() {
         <div className="site-container">
           <div className="grid lg:grid-cols-2">
             <Reveal>
-              <div className="flex min-h-[520px] flex-col justify-between border-b border-dev-border py-12 lg:border-b-0 lg:border-r lg:py-16 lg:pr-14">
+              <div className="flex min-h-130 flex-col justify-between border-b border-dev-border py-12 lg:border-b-0 lg:border-r lg:py-16 lg:pr-14">
                 <div>
                   <p className="text-[9px] uppercase tracking-[0.24em] text-dev-muted">
                     Development
@@ -324,7 +324,7 @@ export default function SkillsPage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="flex min-h-[520px] flex-col justify-between py-12 lg:py-16 lg:pl-14">
+              <div className="flex min-h-130 flex-col justify-between py-12 lg:py-16 lg:pl-14">
                 <div>
                   <p className="text-[9px] uppercase tracking-[0.24em] text-dev-muted">
                     Design

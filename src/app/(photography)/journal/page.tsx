@@ -92,27 +92,27 @@ export default function PhotographyJournalPage() {
               {/* Visual */}
 
               <div className="lg:col-span-7">
-                <div className="relative aspect-[4/3] overflow-hidden bg-white/[0.06]">
+                <div className="relative aspect-4/3 overflow-hidden bg-white/6">
                   {featured.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={featured.image}
                       alt={featured.title}
-                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.025]"
+                      className="h-full w-full object-cover transition-transform duration-1200 ease-out group-hover:scale-[1.025]"
                     />
                   ) : (
                     <>
-                      <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.05]" />
+                      <span className="absolute left-1/2 top-0 h-full w-px bg-white/5" />
 
-                      <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.05]" />
+                      <span className="absolute left-0 top-1/2 h-px w-full bg-white/5" />
 
-                      <span className="absolute -bottom-8 -right-2 font-serif text-[260px] leading-none tracking-[-0.08em] text-white/[0.025]">
+                      <span className="absolute -bottom-8 -right-2 font-serif text-[260px] leading-none tracking-[-0.08em] text-white/2.5">
                         {featured.number}
                       </span>
 
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center">
-                          <p className="font-serif text-6xl italic text-white/[0.1]">
+                          <p className="font-serif text-6xl italic text-white/10">
                             Photo Story
                           </p>
 
@@ -216,9 +216,9 @@ export default function PhotographyJournalPage() {
                     {/* Image */}
 
                     <div
-                      className={`relative overflow-hidden bg-white/[0.055] ${
+                      className={`relative overflow-hidden bg-white/5.5 ${
                         large
-                          ? "aspect-[4/3]"
+                          ? "aspect-4/3"
                           : orientationClasses[post.orientation]
                       }`}
                     >
@@ -227,20 +227,20 @@ export default function PhotographyJournalPage() {
                         <img
                           src={post.image}
                           alt={post.title}
-                          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.025]"
+                          className="h-full w-full object-cover transition-transform duration-1200 ease-out group-hover:scale-[1.025]"
                         />
                       ) : (
                         <>
-                          <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.05]" />
+                          <span className="absolute left-1/2 top-0 h-full w-px bg-white/5" />
 
-                          <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.05]" />
+                          <span className="absolute left-0 top-1/2 h-px w-full bg-white/5" />
 
-                          <span className="absolute -bottom-6 -right-2 font-serif text-[180px] leading-none tracking-[-0.08em] text-white/[0.025]">
+                          <span className="absolute -bottom-6 -right-2 font-serif text-[180px] leading-none tracking-[-0.08em] text-white/2.5">
                             {post.number}
                           </span>
 
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <p className="font-serif text-4xl italic text-white/[0.09] md:text-5xl">
+                            <p className="font-serif text-4xl italic text-white/9 md:text-5xl">
                               {post.category}
                             </p>
                           </div>

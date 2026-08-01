@@ -120,7 +120,7 @@ export default function PhotographyGallery() {
           FILTERS
       ===================================================== */}
 
-      <div className="sticky top-[82px] z-30 border-y border-white/10 bg-photo-background/90 backdrop-blur-xl lg:top-[92px]">
+      <div className="sticky top-20.5 z-30 border-y border-white/10 bg-photo-background/90 backdrop-blur-xl lg:top-23">
         <div className="site-container">
           <div className="hide-scrollbar flex items-center gap-6 overflow-x-auto overscroll-x-contain py-4 pr-6 md:gap-7 md:py-5">
             <span className="shrink-0 text-[8px] uppercase tracking-[0.24em] text-white/25">
@@ -269,7 +269,7 @@ function PhotographyCard({
         ============================================= */}
 
         <div
-          className={`relative overflow-hidden bg-white/[0.055] ${
+          className={`relative overflow-hidden bg-white/5.5 ${
             aspectClasses[item.size]
           }`}
         >
@@ -283,7 +283,7 @@ function PhotographyCard({
                   ? "(max-width: 768px) 100vw, 66vw"
                   : "(max-width: 768px) 100vw, 34vw"
               }
-              className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.025]"
+              className="object-cover transition-transform duration-1200 ease-out group-hover:scale-[1.025]"
             />
           ) : (
             <PhotographyPlaceholder item={item} />
@@ -318,7 +318,7 @@ function PhotographyCard({
 
         <div className="mt-5 flex items-start justify-between gap-6 border-t border-white/10 pt-4">
           <div>
-            <p className="font-serif text-2xl leading-none tracking-[-0.025em] md:text-3xl">
+            <p className="font-serif text-2xl leading-none tracking-tight md:text-3xl">
               {item.title}
             </p>
 
@@ -357,13 +357,13 @@ function PhotographyPlaceholder({ item }: { item: PhotographyItem }) {
     <div className="absolute inset-0">
       {/* Grid */}
 
-      <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.05]" />
+      <span className="absolute left-1/2 top-0 h-full w-px bg-white/5" />
 
-      <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.05]" />
+      <span className="absolute left-0 top-1/2 h-px w-full bg-white/5" />
 
       {/* Background number */}
 
-      <span className="absolute -bottom-5 -right-2 font-serif text-[140px] leading-none tracking-[-0.08em] text-white/[0.025] md:text-[200px]">
+      <span className="absolute -bottom-5 -right-2 font-serif text-[140px] leading-none tracking-[-0.08em] text-white/2.5 md:text-[200px]">
         {String(item.id).padStart(2, "0")}
       </span>
 
@@ -371,7 +371,7 @@ function PhotographyPlaceholder({ item }: { item: PhotographyItem }) {
 
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
-          <p className="font-serif text-4xl italic text-white/[0.1] md:text-5xl">
+          <p className="font-serif text-4xl italic text-white/10 md:text-5xl">
             {item.category}
           </p>
 

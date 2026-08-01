@@ -9,7 +9,7 @@ export default function JournalNotFound() {
             404 / Journal
           </p>
 
-          <h1 className="font-serif text-6xl leading-[0.9] tracking-[-0.05em] md:text-8xl lg:text-9xl">
+          <h1 className="font-serif text-6xl leading-[0.9] tracking-tighter md:text-8xl lg:text-9xl">
             Article
             <br />
 

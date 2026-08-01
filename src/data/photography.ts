@@ -36,6 +36,8 @@ export const photographyItems: PhotographyItem[] = [
     category: "Portraits",
     location: "Legazpi City",
     year: "2026",
+    image:
+      "/images/photography/portfolio/IMG_0054.JPG",
     size: "large",
   },
 
@@ -43,16 +45,18 @@ export const photographyItems: PhotographyItem[] = [
     id: 2,
     title: "Between Moments",
     category: "Street",
-    location: "Albay",
+    location: "Bulusan, Sorsogon",
+    image: "/images/photography/portfolio/20250524_142646.jpg",
     year: "2026",
     size: "portrait",
   },
 
   {
     id: 3,
-    title: "After the Rain",
+    title: "Majestic Mayon",
     category: "Landscape",
-    location: "Bicol",
+    location: "Cagsawa Ruins, Daraga, Albay",
+    image: "/images/photography/portfolio/IMG_0649.jpg",
     year: "2026",
     size: "standard",
   },
@@ -61,75 +65,85 @@ export const photographyItems: PhotographyItem[] = [
     id: 4,
     title: "Unscripted",
     category: "Events",
-    location: "Legazpi City",
+    location: "Tabaco City",
+    image: "/images/photography/portfolio/IMG_0014_1.jpg",
     year: "2026",
     size: "wide",
   },
 
-  {
+   {
     id: 5,
-    title: "Stillness",
-    category: "Portraits",
-    location: "Albay",
+    title: "Movement",
+    category: "Creative",
+    year: "2026",
+    image: "/images/photography/portfolio/IMG_0334.jpg",
+    size: "wide",
+  },
+
+  {
+    
+    id: 6,
+    title: "Passing Through",
+    category: "Street",
+    location: "Virac, Catanduanes",
+    image: "/images/photography/portfolio/IMG_0040.JPG",
     year: "2026",
     size: "portrait",
   },
 
-  {
-    id: 6,
-    title: "Passing Through",
-    category: "Street",
-    location: "Legazpi City",
-    year: "2026",
-    size: "standard",
-  },
-
-  {
+   {
     id: 7,
-    title: "Open Horizon",
-    category: "Landscape",
-    location: "Bicol",
-    year: "2026",
-    size: "large",
+    title: "Stillness",
+    category: "Portraits",
+    location: "Malinao, Albay",
+    year: "2017",
+    image: "/images/photography/portfolio/IMG_9218.jpg",
+    size: "standard",
   },
 
   {
     id: 8,
-    title: "Movement",
-    category: "Creative",
-    year: "2026",
-    size: "portrait",
+    title: "Open Horizon",
+    category: "Landscape",
+    location: "Bicol",
+    image: "/images/photography/portfolio/IMG_0886.jpg",
+    year: "2025",
+    size: "large",
   },
 
   {
     id: 9,
-    title: "In Between",
-    category: "Portraits",
-    year: "2026",
-    size: "standard",
-  },
-
-  {
-    id: 10,
-    title: "Gathered",
+    title: "Concert",
     category: "Events",
+    image: "/images/photography/portfolio/IMG_4834.JPG",
     year: "2026",
     size: "wide",
   },
 
   {
-    id: 11,
+    id: 10,
     title: "Fragments",
-    category: "Creative",
+    category: "Portraits",
+    image: "/images/photography/portfolio/IMG_0232.JPG",
     year: "2026",
+    size: "portrait",
+  },
+
+  {
+    id: 11,
+    title: "In Between",
+    category: "Portraits",
+    image: "/images/photography/portfolio/IMG_1214.jpg",
+    year: "2025",
     size: "standard",
   },
 
   {
     id: 12,
     title: "Last Light",
-    category: "Landscape",
-    year: "2026",
+    category: "Creative",
+    image: "/images/photography/portfolio/_MG_3484.JPG",
+    year: "2018",
     size: "portrait",
   },
 ];

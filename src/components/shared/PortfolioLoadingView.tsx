@@ -20,7 +20,7 @@ export default function PortfolioLoadingView({
       role="status"
       aria-live="polite"
       aria-label="Loading portfolio"
-      className="fixed inset-0 z-[9997] h-[100dvh] overflow-hidden"
+      className="fixed inset-0 z-9997 h-dvh overflow-hidden"
       style={{
         background,
         color: foreground,
@@ -63,7 +63,7 @@ export default function PortfolioLoadingView({
       <div className="absolute left-0 right-0 top-0">
         <div className="site-container">
           <div
-            className="flex h-[82px] items-center justify-between border-b lg:h-[92px]"
+            className="flex h-20.5 items-center justify-between border-b lg:h-23"
             style={{
               borderColor: border,
             }}
@@ -180,7 +180,7 @@ export default function PortfolioLoadingView({
       =============================================== */}
 
       <div
-        className="loading-progress-line absolute bottom-0 left-0 h-[2px]"
+        className="loading-progress-line absolute bottom-0 left-0 h-0.5"
         style={{
           background: foreground,
         }}

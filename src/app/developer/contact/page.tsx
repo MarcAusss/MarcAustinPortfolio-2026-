@@ -1,6 +1,7 @@
-import Link from "next/link";
+// import Link from "next/link";
 import Reveal from "@/components/shared/Reveal";
 import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
+import DeveloperContactForm from "@/components/developer/DeveloperContactForm";
 
 const services = [
   "Web Development",
@@ -134,7 +135,7 @@ export default function ContactPage() {
                       </div>
 
                       <div className="md:col-span-8">
-                        <span className="font-serif text-2xl tracking-[-0.025em] transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
+                        <span className="font-serif text-2xl tracking-tight transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
                           {link.value}
                         </span>
                       </div>
@@ -181,147 +182,7 @@ export default function ContactPage() {
 
             <div className="lg:col-span-7 lg:col-start-6">
               <Reveal delay={0.08}>
-                <form className="space-y-10">
-                  {/* Name */}
-
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="mb-3 block text-[9px] uppercase tracking-[0.2em] text-dev-muted"
-                    >
-                      Your name
-                    </label>
-
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Your name"
-                      className="w-full border-0 border-b border-dev-border bg-transparent px-0 py-4 text-lg outline-none transition-colors placeholder:text-dev-subtle focus:border-dev-foreground focus:ring-0"
-                    />
-                  </div>
-
-                  {/* Email */}
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-3 block text-[9px] uppercase tracking-[0.2em] text-dev-muted"
-                    >
-                      Email address
-                    </label>
-
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="you@gmail.com"
-                      className="w-full border-0 border-b border-dev-border bg-transparent px-0 py-4 text-lg outline-none transition-colors placeholder:text-dev-subtle focus:border-dev-foreground focus:ring-0"
-                    />
-                  </div>
-
-                  {/* Project type */}
-
-                  <div>
-                    <label
-                      htmlFor="projectType"
-                      className="mb-3 block text-[9px] uppercase tracking-[0.2em] text-dev-muted"
-                    >
-                      Project type
-                    </label>
-
-                    <select
-                      id="projectType"
-                      name="projectType"
-                      defaultValue=""
-                      className="w-full border-0 border-b border-dev-border bg-transparent px-0 py-4 text-lg outline-none transition-colors focus:border-dev-foreground focus:ring-0"
-                    >
-                      <option value="" disabled>
-                        Select project type
-                      </option>
-
-                      <option value="web-development">Web Development</option>
-
-                      <option value="system-development">
-                        System Development
-                      </option>
-
-                      <option value="ui-ux">UI / UX Design</option>
-
-                      <option value="frontend">Frontend Development</option>
-
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  {/* Budget */}
-
-                  <div>
-                    <label
-                      htmlFor="budget"
-                      className="mb-3 block text-[9px] uppercase tracking-[0.2em] text-dev-muted"
-                    >
-                      Budget
-                    </label>
-
-                    <select
-                      id="budget"
-                      name="budget"
-                      defaultValue=""
-                      className="w-full border-0 border-b border-dev-border bg-transparent px-0 py-4 text-lg outline-none transition-colors focus:border-dev-foreground focus:ring-0"
-                    >
-                      <option value="" disabled>
-                        Select budget range
-                      </option>
-
-                      <option value="discussion">Let&apos;s discuss</option>
-
-                      <option value="small">Small project</option>
-
-                      <option value="medium">Medium project</option>
-
-                      <option value="large">Large project</option>
-                    </select>
-                  </div>
-
-                  {/* Message */}
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="mb-3 block text-[9px] uppercase tracking-[0.2em] text-dev-muted"
-                    >
-                      Tell me about the project
-                    </label>
-
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={6}
-                      placeholder="What are you trying to build?"
-                      className="w-full resize-none border-0 border-b border-dev-border bg-transparent px-0 py-4 text-lg leading-8 outline-none transition-colors placeholder:text-dev-subtle focus:border-dev-foreground focus:ring-0"
-                    />
-                  </div>
-
-                  {/* Submit */}
-
-                  <div className="flex justify-end pt-4">
-                    <button
-                      type="submit"
-                      className="group flex h-36 w-36 items-center justify-center rounded-full bg-dev-dark text-center text-[9px] uppercase leading-5 tracking-[0.17em] text-white transition-transform duration-500 hover:-translate-y-2"
-                    >
-                      <span>
-                        Send
-                        <br />
-                        message
-                        <br />
-                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                          ↗
-                        </span>
-                      </span>
-                    </button>
-                  </div>
-                </form>
+                <DeveloperContactForm />
               </Reveal>
             </div>
           </div>
@@ -350,7 +211,7 @@ export default function ContactPage() {
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-current" />
                   </span>
 
-                  <p className="font-serif text-3xl tracking-[-0.025em] md:text-4xl">
+                  <p className="font-serif text-3xl tracking-tight md:text-4xl">
                     Open to interesting projects.
                   </p>
                 </div>
@@ -379,7 +240,7 @@ export default function ContactPage() {
                   Another side of my work
                 </p>
 
-                <h2 className="font-serif text-6xl leading-[0.88] tracking-[-0.05em] md:text-8xl lg:text-[110px]">
+                <h2 className="font-serif text-6xl leading-[0.88] tracking-tighter md:text-8xl lg:text-[110px]">
                   Prefer
                   <br />
                   something
@@ -391,7 +252,7 @@ export default function ContactPage() {
 
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={0.1}>
-                <div className="relative aspect-[4/5] overflow-hidden bg-white/[0.07]">
+                <div className="relative aspect-4/5 overflow-hidden bg-white/[0.07]">
                   <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.07]" />
 
                   <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.07]" />

@@ -98,7 +98,7 @@ export default function PhotographyLightbox({
       role="dialog"
       aria-modal="true"
       aria-label={`${item.title} photograph viewer`}
-      className="fixed inset-0 z-[9998] h-[100dvh] overflow-hidden bg-[#090909] text-white"
+      className="fixed inset-0 z-9998 h-dvh overflow-hidden bg-[#090909] text-white"
       initial={{
         opacity: 0,
       }}
@@ -133,7 +133,7 @@ export default function PhotographyLightbox({
 
       <header className="absolute left-0 right-0 top-0 z-30">
         <div className="site-container">
-          <div className="flex h-[72px] items-center justify-between border-b border-white/10 md:h-[88px]">
+          <div className="flex h-18 items-center justify-between border-b border-white/10 md:h-22">
             {/* Counter */}
 
             <div className="flex items-center gap-3 md:gap-4">
@@ -175,7 +175,7 @@ export default function PhotographyLightbox({
           IMAGE
       ===================================================== */}
 
-      <div className="absolute inset-x-0 bottom-[150px] top-[78px] flex items-center justify-center px-4 sm:bottom-[145px] sm:px-6 md:bottom-[150px] md:top-[96px] md:px-20 lg:px-28 xl:px-36">
+      <div className="absolute inset-x-0 bottom-37.5 top-19.5 flex items-center justify-center px-4 sm:bottom-36.25 sm:px-6 md:bottom-37.5 md:top-24 md:px-20 lg:px-28 xl:px-36">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={item.id}
@@ -295,7 +295,7 @@ export default function PhotographyLightbox({
 
       <footer className="absolute bottom-0 left-0 right-0 z-30 bg-[#090909]">
         <div className="site-container">
-          <div className="grid min-h-[145px] grid-cols-12 items-center gap-x-4 border-t border-white/10 py-4 md:min-h-[150px] md:py-6">
+          <div className="grid min-h-36.25 grid-cols-12 items-center gap-x-4 border-t border-white/10 py-4 md:min-h-37.5 md:py-6">
             {/* Title */}
 
             <div className="col-span-8 md:col-span-5">
@@ -380,18 +380,18 @@ export default function PhotographyLightbox({
 
 function LightboxPlaceholder({ item }: { item: PhotographyItem }) {
   return (
-    <div className="absolute inset-0 m-auto h-full w-full max-w-[1200px] overflow-hidden bg-white/[0.045]">
-      <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.05]" />
+    <div className="absolute inset-0 m-auto h-full w-full `max-w-300 overflow-hidden bg-white/4.5">
+      <span className="absolute left-1/2 top-0 h-full w-px bg-white/5" />
 
-      <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.05]" />
+      <span className="absolute left-0 top-1/2 h-px w-full bg-white/5" />
 
-      <span className="absolute -bottom-7 -right-2 font-serif text-[150px] leading-none tracking-[-0.09em] text-white/[0.025] sm:text-[220px] md:text-[320px]">
+      <span className="absolute -bottom-7 -right-2 font-serif text-[150px] leading-none tracking-[-0.09em] text-white/2.5 sm:text-[220px] md:text-[320px]">
         {String(item.id).padStart(2, "0")}
       </span>
 
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
-          <p className="font-serif text-4xl italic text-white/[0.1] sm:text-5xl md:text-7xl">
+          <p className="font-serif text-4xl italic text-white/10 sm:text-5xl md:text-7xl">
             {item.category}
           </p>
 
