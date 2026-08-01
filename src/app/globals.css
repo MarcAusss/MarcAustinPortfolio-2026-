@@ -177,3 +177,236 @@ img {
   }
 }
 
+/* ==========================================================
+   Global responsive safeguards
+========================================================== */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+main {
+  width: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+::selection {
+  background: #171717;
+  color: #fff;
+}
+
+/* ==========================================================
+   Main site container
+========================================================== */
+
+.site-container {
+  width: calc(100% - 32px);
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    width: calc(100% - 48px);
+  }
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    width: calc(100% - 64px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    width: calc(100% - 80px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-container {
+    width: calc(100% - 120px);
+  }
+}
+
+/* ==========================================================
+   Themes
+========================================================== */
+
+.developer-theme {
+  min-width: 0;
+  overflow-x: clip;
+  background: var(--dev-background);
+  color: var(--dev-foreground);
+}
+
+.photography-theme {
+  min-width: 0;
+  overflow-x: clip;
+  background: var(--photo-background);
+  color: var(--photo-foreground);
+}
+
+/* ==========================================================
+   Mobile viewport helpers
+========================================================== */
+
+.screen-height {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.full-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.safe-bottom {
+  padding-bottom: max(
+    1rem,
+    env(safe-area-inset-bottom)
+  );
+}
+
+.safe-top {
+  padding-top: max(
+    1rem,
+    env(safe-area-inset-top)
+  );
+}
+
+/* ==========================================================
+   Better mobile text wrapping
+========================================================== */
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ==========================================================
+   Photography custom cursor
+========================================================== */
+
+/*
+ * Hide the normal pointer only on devices
+ * that actually have a precise mouse.
+ *
+ * Form inputs keep their native cursor.
+ */
+
+@media (pointer: fine) {
+  .photography-theme
+    [data-cursor] {
+    cursor: none;
+  }
+
+  .photography-theme
+    button:not(input):not(textarea):not(select) {
+    cursor: none;
+  }
+
+  .photography-theme a {
+    cursor: none;
+  }
+
+  .photography-theme input,
+  .photography-theme textarea {
+    cursor: text;
+  }
+
+  .photography-theme select {
+    cursor: pointer;
+  }
+}
+
+@media (pointer: coarse) {
+  .photography-theme,
+  .photography-theme *,
+  .developer-theme,
+  .developer-theme * {
+    cursor: auto;
+  }
+}
+
+/* ==========================================================
+   Prevent mobile date/input overflow
+========================================================== */
+
+input,
+textarea,
+select {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* ==========================================================
+   Horizontal scrolling helpers
+========================================================== */
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================
+   Reduced motion
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

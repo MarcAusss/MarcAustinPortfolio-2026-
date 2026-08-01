@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { AnimatePresence, motion } from "motion/react";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import type { PhotographyItem } from "@/data/photography";
 
@@ -29,15 +29,33 @@ export default function PhotographyLightbox({
 
   /*
   |--------------------------------------------------------------------------
-  | Lock body scroll
+  | Navigation
+  |--------------------------------------------------------------------------
+  */
+
+  const handlePrevious = useCallback(() => {
+    setDirection(-1);
+    onPrevious();
+  }, [onPrevious]);
+
+  const handleNext = useCallback(() => {
+    setDirection(1);
+    onNext();
+  }, [onNext]);
+
+  /*
+  |--------------------------------------------------------------------------
+  | Lock page
   |--------------------------------------------------------------------------
   */
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, []);
 
@@ -55,14 +73,12 @@ export default function PhotographyLightbox({
       }
 
       if (event.key === "ArrowRight") {
-        setDirection(1);
-        onNext();
+        handleNext();
         return;
       }
 
       if (event.key === "ArrowLeft") {
-        setDirection(-1);
-        onPrevious();
+        handlePrevious();
       }
     };
 
@@ -71,28 +87,18 @@ export default function PhotographyLightbox({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose, onNext, onPrevious]);
+  }, [handleNext, handlePrevious, onClose]);
 
   if (!item) {
     return null;
   }
-
-  const handlePrevious = () => {
-    setDirection(-1);
-    onPrevious();
-  };
-
-  const handleNext = () => {
-    setDirection(1);
-    onNext();
-  };
 
   return (
     <motion.div
       role="dialog"
       aria-modal="true"
       aria-label={`${item.title} photograph viewer`}
-      className="fixed inset-0 z-[9998] bg-[#090909] text-white"
+      className="fixed inset-0 z-[9998] h-[100dvh] overflow-hidden bg-[#090909] text-white"
       initial={{
         opacity: 0,
       }}
@@ -103,14 +109,17 @@ export default function PhotographyLightbox({
         opacity: 0,
       }}
       transition={{
-        duration: 0.4,
+        duration: 0.35,
       }}
     >
       {/* =====================================================
-          BACKGROUND GRID
+          GRID
       ===================================================== */}
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 hidden md:block"
+      >
         <span className="absolute left-1/4 top-0 h-full w-px bg-white/[0.035]" />
 
         <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.035]" />
@@ -119,22 +128,22 @@ export default function PhotographyLightbox({
       </div>
 
       {/* =====================================================
-          TOP BAR
+          HEADER
       ===================================================== */}
 
-      <div className="absolute left-0 right-0 top-0 z-30">
+      <header className="absolute left-0 right-0 top-0 z-30">
         <div className="site-container">
-          <div className="flex h-[76px] items-center justify-between border-b border-white/10 md:h-[88px]">
+          <div className="flex h-[72px] items-center justify-between border-b border-white/10 md:h-[88px]">
             {/* Counter */}
 
-            <div className="flex items-center gap-4">
-              <span className="text-[9px] uppercase tracking-[0.22em] text-white/60">
+            <div className="flex items-center gap-3 md:gap-4">
+              <span className="text-[8px] uppercase tracking-[0.22em] text-white/70 md:text-[9px]">
                 {String(activeIndex + 1).padStart(2, "0")}
               </span>
 
-              <span className="h-px w-5 bg-white/20" />
+              <span className="h-px w-4 bg-white/20 md:w-5" />
 
-              <span className="text-[9px] uppercase tracking-[0.22em] text-white/25">
+              <span className="text-[8px] uppercase tracking-[0.22em] text-white/25 md:text-[9px]">
                 {String(items.length).padStart(2, "0")}
               </span>
             </div>
@@ -144,15 +153,15 @@ export default function PhotographyLightbox({
             <button
               type="button"
               onClick={onClose}
-              autoFocus
+              aria-label="Close photograph viewer"
               data-cursor="close"
-              className="group flex items-center gap-4"
+              className="group flex min-h-11 items-center gap-3 md:gap-4"
             >
-              <span className="text-[9px] uppercase tracking-[0.2em] text-white/45 transition-colors group-hover:text-white">
+              <span className="hidden text-[8px] uppercase tracking-[0.2em] text-white/45 transition-colors group-hover:text-white sm:block md:text-[9px]">
                 Close
               </span>
 
-              <span className="relative flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-all duration-500 group-hover:rotate-90 group-hover:bg-white group-hover:text-black">
+              <span className="relative flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-all duration-500 group-hover:rotate-90 group-hover:bg-white group-hover:text-black md:h-11 md:w-11">
                 <span className="absolute h-px w-4 rotate-45 bg-current" />
 
                 <span className="absolute h-px w-4 -rotate-45 bg-current" />
@@ -160,23 +169,23 @@ export default function PhotographyLightbox({
             </button>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* =====================================================
-          IMAGE AREA
+          IMAGE
       ===================================================== */}
 
-      <div className="absolute inset-0 flex items-center justify-center px-5 pb-[180px] pt-[105px] md:px-20 md:pb-[170px] md:pt-[115px] lg:px-32">
+      <div className="absolute inset-x-0 bottom-[150px] top-[78px] flex items-center justify-center px-4 sm:bottom-[145px] sm:px-6 md:bottom-[150px] md:top-[96px] md:px-20 lg:px-28 xl:px-36">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={item.id}
             custom={direction}
             data-cursor="drag"
             variants={{
-              enter: (directionValue: 1 | -1) => ({
+              enter: (value: 1 | -1) => ({
                 opacity: 0,
 
-                x: directionValue === 1 ? 55 : -55,
+                x: value === 1 ? 45 : -45,
 
                 scale: 0.985,
               }),
@@ -187,10 +196,10 @@ export default function PhotographyLightbox({
                 scale: 1,
               },
 
-              exit: (directionValue: 1 | -1) => ({
+              exit: (value: 1 | -1) => ({
                 opacity: 0,
 
-                x: directionValue === 1 ? -55 : 55,
+                x: value === 1 ? -45 : 45,
 
                 scale: 0.985,
               }),
@@ -199,7 +208,7 @@ export default function PhotographyLightbox({
             animate="center"
             exit="exit"
             transition={{
-              duration: 0.5,
+              duration: 0.45,
 
               ease: [0.22, 1, 0.36, 1],
             }}
@@ -208,20 +217,28 @@ export default function PhotographyLightbox({
               left: 0,
               right: 0,
             }}
-            dragElastic={0.15}
+            dragElastic={0.12}
             onDragEnd={(_event, info) => {
-              const threshold = 60;
+              const offsetThreshold = 55;
 
-              if (info.offset.x < -threshold) {
+              const velocityThreshold = 450;
+
+              if (
+                info.offset.x < -offsetThreshold ||
+                info.velocity.x < -velocityThreshold
+              ) {
                 handleNext();
                 return;
               }
 
-              if (info.offset.x > threshold) {
+              if (
+                info.offset.x > offsetThreshold ||
+                info.velocity.x > velocityThreshold
+              ) {
                 handlePrevious();
               }
             }}
-            className="relative h-full w-full"
+            className="relative h-full w-full touch-pan-y"
           >
             {item.image ? (
               <Image
@@ -230,8 +247,8 @@ export default function PhotographyLightbox({
                 fill
                 priority
                 sizes="100vw"
-                className="select-none object-contain"
                 draggable={false}
+                className="select-none object-contain"
               />
             ) : (
               <LightboxPlaceholder item={item} />
@@ -241,7 +258,7 @@ export default function PhotographyLightbox({
       </div>
 
       {/* =====================================================
-          PREVIOUS
+          DESKTOP PREVIOUS
       ===================================================== */}
 
       <button
@@ -249,15 +266,15 @@ export default function PhotographyLightbox({
         aria-label="Previous photograph"
         onClick={handlePrevious}
         data-cursor="previous"
-        className="group absolute left-4 top-1/2 z-30 hidden -translate-y-1/2 items-center gap-3 md:flex lg:left-8"
+        className="group absolute left-5 top-1/2 z-30 hidden -translate-y-1/2 lg:block"
       >
-        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white group-hover:text-black">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white group-hover:text-black">
           ←
         </span>
       </button>
 
       {/* =====================================================
-          NEXT
+          DESKTOP NEXT
       ===================================================== */}
 
       <button
@@ -265,9 +282,9 @@ export default function PhotographyLightbox({
         aria-label="Next photograph"
         onClick={handleNext}
         data-cursor="next"
-        className="group absolute right-4 top-1/2 z-30 hidden -translate-y-1/2 items-center gap-3 md:flex lg:right-8"
+        className="group absolute right-5 top-1/2 z-30 hidden -translate-y-1/2 lg:block"
       >
-        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white group-hover:text-black">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white group-hover:text-black">
           →
         </span>
       </button>
@@ -276,20 +293,30 @@ export default function PhotographyLightbox({
           BOTTOM INFORMATION
       ===================================================== */}
 
-      <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-[#090909] via-[#090909]/95 to-transparent pt-14">
+      <footer className="absolute bottom-0 left-0 right-0 z-30 bg-[#090909]">
         <div className="site-container">
-          <div className="grid min-h-[135px] gap-7 border-t border-white/10 py-6 md:grid-cols-12 md:items-end">
+          <div className="grid min-h-[145px] grid-cols-12 items-center gap-x-4 border-t border-white/10 py-4 md:min-h-[150px] md:py-6">
             {/* Title */}
 
-            <div className="md:col-span-5">
-              <p className="font-serif text-3xl leading-none tracking-[-0.035em] md:text-4xl">
+            <div className="col-span-8 md:col-span-5">
+              <p className="truncate font-serif text-2xl leading-none tracking-[-0.035em] sm:text-3xl md:text-4xl">
                 {item.title}
               </p>
+
+              <div className="mt-3 flex max-w-full items-center gap-2 overflow-hidden md:hidden">
+                <span className="truncate text-[7px] uppercase tracking-[0.18em] text-white/35">
+                  {item.category}
+
+                  {item.location ? ` · ${item.location}` : ""}
+
+                  {` · ${item.year}`}
+                </span>
+              </div>
             </div>
 
-            {/* Metadata */}
+            {/* Desktop metadata */}
 
-            <div className="flex flex-wrap items-center gap-4 md:col-span-5">
+            <div className="hidden flex-wrap items-center gap-4 md:col-span-5 md:flex">
               <span className="text-[8px] uppercase tracking-[0.2em] text-white/40">
                 {item.category}
               </span>
@@ -311,16 +338,25 @@ export default function PhotographyLightbox({
               </span>
             </div>
 
-            {/* Mobile navigation */}
+            {/* Controls */}
 
-            <div className="flex items-center justify-between md:col-span-2 md:justify-end md:gap-3">
+            <div className="col-span-4 flex justify-end gap-2 md:col-span-2">
               <button
                 type="button"
                 aria-label="Previous photograph"
                 onClick={handlePrevious}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-colors hover:bg-white hover:text-black md:hidden"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 transition-colors hover:bg-white hover:text-black lg:hidden"
               >
                 ←
+              </button>
+
+              <button
+                type="button"
+                aria-label="Next photograph"
+                onClick={handleNext}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 transition-colors hover:bg-white hover:text-black lg:hidden"
+              >
+                →
               </button>
 
               <p className="hidden text-[7px] uppercase leading-5 tracking-[0.2em] text-white/20 lg:block">
@@ -328,19 +364,10 @@ export default function PhotographyLightbox({
                 <br />
                 arrow keys
               </p>
-
-              <button
-                type="button"
-                aria-label="Next photograph"
-                onClick={handleNext}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-colors hover:bg-white hover:text-black md:hidden"
-              >
-                →
-              </button>
             </div>
           </div>
         </div>
-      </div>
+      </footer>
     </motion.div>
   );
 }
@@ -353,32 +380,22 @@ export default function PhotographyLightbox({
 
 function LightboxPlaceholder({ item }: { item: PhotographyItem }) {
   return (
-    <div className="absolute inset-0 m-auto h-full max-h-[75vh] w-full max-w-[1200px] overflow-hidden bg-white/[0.045]">
-      {/* Grid */}
-
-      <span className="absolute left-1/4 top-0 h-full w-px bg-white/[0.05]" />
-
+    <div className="absolute inset-0 m-auto h-full w-full max-w-[1200px] overflow-hidden bg-white/[0.045]">
       <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.05]" />
-
-      <span className="absolute left-3/4 top-0 h-full w-px bg-white/[0.05]" />
 
       <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.05]" />
 
-      {/* Large number */}
-
-      <span className="absolute -bottom-10 -right-3 font-serif text-[240px] leading-none tracking-[-0.09em] text-white/[0.025] md:text-[400px]">
+      <span className="absolute -bottom-7 -right-2 font-serif text-[150px] leading-none tracking-[-0.09em] text-white/[0.025] sm:text-[220px] md:text-[320px]">
         {String(item.id).padStart(2, "0")}
       </span>
 
-      {/* Label */}
-
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
-          <p className="font-serif text-5xl italic text-white/[0.1] md:text-8xl">
+          <p className="font-serif text-4xl italic text-white/[0.1] sm:text-5xl md:text-7xl">
             {item.category}
           </p>
 
-          <p className="mt-5 text-[8px] uppercase tracking-[0.3em] text-white/20">
+          <p className="mt-4 text-[7px] uppercase tracking-[0.28em] text-white/20">
             Add photograph
           </p>
         </div>

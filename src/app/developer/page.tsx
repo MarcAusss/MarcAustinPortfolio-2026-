@@ -48,7 +48,7 @@ export default function DeveloperPage() {
       ===================================================== */}
 
       <section className="site-container">
-        <div className="grid min-h-[calc(100vh-92px)] items-center gap-16 py-16 lg:grid-cols-12 lg:py-20">
+        <div className="grid min-h-[calc(100dvh-82px)] items-center gap-14 py-12 sm:py-16 lg:min-h-[calc(100dvh-92px)] lg:grid-cols-12 lg:py-20">
           {/* Left content */}
 
           <div className="relative z-10 lg:col-span-7">
@@ -63,7 +63,7 @@ export default function DeveloperPage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <h1 className="font-serif text-[clamp(4rem,8vw,8.8rem)] leading-[0.84] tracking-[-0.055em]">
+              <h1 className="font-serif text-[clamp(3.8rem,15vw,8.8rem)] leading-[0.84] tracking-[-0.055em]">
                 I build digital
                 <br />
 
@@ -191,7 +191,7 @@ export default function DeveloperPage() {
           PROJECTS
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end lg:mb-24">

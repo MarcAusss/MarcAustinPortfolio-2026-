@@ -228,9 +228,9 @@ export default function DeveloperHeader() {
                 1,
               ],
             }}
-            className="fixed inset-0 z-40 bg-dev-background lg:hidden"
+            className="fixed inset-0 z-40 h-[100dvh] overflow-y-auto bg-dev-background lg:hidden"
           >
-            <div className="site-container flex min-h-screen flex-col">
+            <div className="site-container flex min-h-[100dvh] flex-col">
               {/* Header spacing */}
 
               <div className="h-[105px]" />
@@ -285,7 +285,7 @@ export default function DeveloperHeader() {
                               </span>
 
                               <span
-                                className={`font-serif text-[42px] leading-none tracking-[-0.03em] sm:text-5xl ${
+                                className={`font-serif text-[clamp(2.25rem,11vw,3rem)] leading-none tracking-[-0.03em] ${
                                   active
                                     ? "text-dev-foreground"
                                     : "text-dev-muted"

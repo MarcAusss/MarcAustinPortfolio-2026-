@@ -307,7 +307,7 @@ export default function PhotographyJournalPage() {
           QUOTE / PHILOSOPHY
       ===================================================== */}
 
-      <section className="border-y border-white/10 bg-[#111111] py-24 md:py-32 lg:py-40">
+      <section className="border-y border-white/10 bg-[#111111] py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -338,7 +338,7 @@ export default function PhotographyJournalPage() {
           ARCHIVE
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="grid gap-12 lg:grid-cols-12 lg:items-end">

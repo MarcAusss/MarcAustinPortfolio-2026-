@@ -155,7 +155,7 @@ export default function PhotographyContactPage() {
           INQUIRY FORM
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-16 lg:grid-cols-12">
             {/* Intro */}
@@ -202,7 +202,7 @@ export default function PhotographyContactPage() {
                       name="name"
                       type="text"
                       placeholder="Your name"
-                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
+                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
                     />
                   </div>
 
@@ -221,7 +221,7 @@ export default function PhotographyContactPage() {
                       name="email"
                       type="email"
                       placeholder="you@example.com"
-                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
+                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
                     />
                   </div>
 
@@ -239,7 +239,7 @@ export default function PhotographyContactPage() {
                       id="shootType"
                       name="shootType"
                       defaultValue=""
-                      className="w-full border-0 border-b border-white/15 bg-photo-background px-0 py-4 text-lg text-white outline-none transition-colors focus:border-white focus:ring-0"
+                      className="w-full border-0 border-b border-white/15 bg-photo-background px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors focus:border-white focus:ring-0"
                     >
                       <option value="" disabled>
                         Select photography service
@@ -271,7 +271,7 @@ export default function PhotographyContactPage() {
                       id="date"
                       name="date"
                       type="date"
-                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-lg text-white outline-none transition-colors focus:border-white focus:ring-0 [color-scheme:dark]"
+                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors focus:border-white focus:ring-0 [color-scheme:dark]"
                     />
                   </div>
 
@@ -290,7 +290,7 @@ export default function PhotographyContactPage() {
                       name="location"
                       type="text"
                       placeholder="City / Venue / Location"
-                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
+                      className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
                     />
                   </div>
 
@@ -309,7 +309,7 @@ export default function PhotographyContactPage() {
                       name="message"
                       rows={6}
                       placeholder="Describe what you have in mind..."
-                      className="w-full resize-none border-0 border-b border-white/15 bg-transparent px-0 py-4 text-lg leading-8 text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
+                      className="w-full resize-none border-0 border-b border-white/15 bg-transparent px-0 py-4 text-base sm:text-lg leading-8 text-white outline-none transition-colors placeholder:text-white/20 focus:border-white focus:ring-0"
                     />
                   </div>
 
@@ -424,7 +424,7 @@ export default function PhotographyContactPage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <p className="mb-8 text-[9px] uppercase tracking-[0.25em] text-black/35">
-                  Looking for development?
+                  Looking for developer?
                 </p>
 
                 <h2 className="font-serif text-6xl leading-[0.87] tracking-[-0.055em] md:text-8xl lg:text-[110px]">

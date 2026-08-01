@@ -157,7 +157,7 @@ export default function ContactPage() {
           FORM
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-16 lg:grid-cols-12">
             <div className="lg:col-span-4">

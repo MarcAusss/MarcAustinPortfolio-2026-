@@ -174,7 +174,7 @@ export default async function PhotographyJournalStory({
           INTRODUCTION
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -209,7 +209,7 @@ export default async function PhotographyJournalStory({
           <section
             key={section.number}
             id={`section-${section.number}`}
-            className="scroll-mt-32 border-t border-white/10 py-24 md:py-32 lg:py-40"
+            className="scroll-mt-32 border-t border-white/10 py-20 sm:py-24 md:py-32 lg:py-40"
           >
             <div className="site-container">
               {/* =============================================
@@ -305,7 +305,7 @@ export default async function PhotographyJournalStory({
           PHOTO SEQUENCE
       ===================================================== */}
 
-      <section className="border-t border-white/10 py-24 md:py-32 lg:py-40">
+      <section className="border-t border-white/10 py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="px-5 md:px-10 lg:px-[60px]">
           <Reveal>
             <div className="mb-14 grid gap-8 lg:grid-cols-12">
@@ -352,7 +352,7 @@ export default async function PhotographyJournalStory({
           FINAL NOTE
       ===================================================== */}
 
-      <section className="bg-[#111111] py-24 md:py-32 lg:py-40">
+      <section className="bg-[#111111] py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -408,7 +408,7 @@ export default async function PhotographyJournalStory({
       ===================================================== */}
 
       <section className="border-b border-white/10">
-        <Link href={nextRoute} className="group block py-24 md:py-32 lg:py-40">
+        <Link href={nextRoute} className="group block py-20 sm:py-24 md:py-32 lg:py-40">
           <div className="site-container">
             <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-3">

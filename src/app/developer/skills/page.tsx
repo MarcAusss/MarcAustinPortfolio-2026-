@@ -241,7 +241,7 @@ export default function SkillsPage() {
           WORKFLOW
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="mb-16 grid gap-10 lg:grid-cols-12 lg:mb-24">
@@ -353,7 +353,7 @@ export default function SkillsPage() {
           WORK CTA
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="grid gap-12 lg:grid-cols-12 lg:items-end">

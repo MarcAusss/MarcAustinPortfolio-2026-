@@ -58,7 +58,7 @@ export default function PortfolioPage() {
           PHILOSOPHY
       ===================================================== */}
 
-      <section className="border-t border-white/10 py-24 md:py-32 lg:py-40">
+      <section className="border-t border-white/10 py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -121,7 +121,7 @@ export default function PortfolioPage() {
           CONTACT CTA
       ===================================================== */}
 
-      <section className="bg-[#111111] py-24 md:py-32 lg:py-40">
+      <section className="bg-[#111111] py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="grid gap-14 lg:grid-cols-12 lg:items-end">

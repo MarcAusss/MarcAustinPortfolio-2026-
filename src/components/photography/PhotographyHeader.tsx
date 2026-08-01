@@ -190,9 +190,9 @@ export default function PhotographyHeader() {
                 1,
               ],
             }}
-            className="fixed inset-0 z-40 bg-photo-background text-white lg:hidden"
+            className="fixed inset-0 z-40 h-[100dvh] overflow-y-auto bg-photo-background text-white lg:hidden"
           >
-            <div className="site-container flex min-h-screen flex-col">
+            <div className="site-container flex min-h-dvh flex-col">
               <div className="h-[105px]" />
 
               <nav className="flex flex-1 flex-col justify-center">
@@ -245,7 +245,7 @@ export default function PhotographyHeader() {
                               </span>
 
                               <span
-                                className={`font-serif text-[42px] leading-none tracking-[-0.035em] ${
+                                className={`font-serif text-[clamp(2.25rem,11vw,3rem)] leading-none tracking-[-0.035em] ${
                                   active
                                     ? "text-white"
                                     : "text-white/45"

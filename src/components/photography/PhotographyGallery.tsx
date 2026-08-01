@@ -122,7 +122,7 @@ export default function PhotographyGallery() {
 
       <div className="sticky top-[82px] z-30 border-y border-white/10 bg-photo-background/90 backdrop-blur-xl lg:top-[92px]">
         <div className="site-container">
-          <div className="flex items-center gap-7 overflow-x-auto py-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="hide-scrollbar flex items-center gap-6 overflow-x-auto overscroll-x-contain py-4 pr-6 md:gap-7 md:py-5">
             <span className="shrink-0 text-[8px] uppercase tracking-[0.24em] text-white/25">
               Filter
             </span>
@@ -147,7 +147,7 @@ export default function PhotographyGallery() {
 
                     setLightboxIndex(null);
                   }}
-                  className="group relative shrink-0 py-1 text-[9px] uppercase tracking-[0.19em]"
+                  className="group relative min-h-10 shrink-0 py-3 text-[9px] uppercase tracking-[0.19em]"
                 >
                   <span
                     className={
@@ -181,7 +181,7 @@ export default function PhotographyGallery() {
           GALLERY
       ===================================================== */}
 
-      <div className="site-container py-8 md:py-12">
+      <div className="grid min-w-0 grid-cols-1 gap-x-4 gap-y-10 sm:gap-y-12 md:grid-cols-12 md:gap-y-16">
         <motion.div
           layout
           className="grid grid-cols-1 gap-x-4 gap-y-12 md:grid-cols-12 md:gap-y-16"

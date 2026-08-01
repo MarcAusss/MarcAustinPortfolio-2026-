@@ -85,7 +85,7 @@ export default function PhotographyAboutPage() {
               <h1 className="font-serif text-[clamp(5rem,10vw,10.5rem)] leading-[0.77] tracking-[-0.06em]">
                 Behind
                 <br />
-                <span className="ml-[8vw]">the</span>
+                <span className="sm:ml-[5vw] lg:ml-[8vw]">the</span>
                 <br />
                 <em className="font-normal text-white/40">camera.</em>
               </h1>
@@ -188,7 +188,7 @@ export default function PhotographyAboutPage() {
           PHILOSOPHY
       ===================================================== */}
 
-      <section className="border-y border-white/10 py-24 md:py-32 lg:py-40">
+      <section className="border-y border-white/10 py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="mb-16 grid gap-10 lg:grid-cols-12 lg:mb-24">
@@ -285,7 +285,7 @@ export default function PhotographyAboutPage() {
           WHAT I SHOOT
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-16 lg:grid-cols-12">
             <div className="lg:col-span-4">
@@ -355,7 +355,7 @@ export default function PhotographyAboutPage() {
           EQUIPMENT
       ===================================================== */}
 
-      <section className="bg-[#111111] py-24 md:py-32 lg:py-40">
+      <section className="bg-[#111111] py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -467,7 +467,7 @@ export default function PhotographyAboutPage() {
           CONTACT CTA
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="grid gap-12 lg:grid-cols-12 lg:items-end">

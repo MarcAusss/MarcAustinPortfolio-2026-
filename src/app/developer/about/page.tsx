@@ -193,7 +193,7 @@ export default function AboutPage() {
           APPROACH
       ===================================================== */}
 
-      <section className="border-y border-dev-border py-24 md:py-32 lg:py-40">
+      <section className="border-y border-dev-border py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="mb-16 grid gap-10 lg:grid-cols-12 lg:mb-24">
@@ -245,7 +245,7 @@ export default function AboutPage() {
           EXPERIENCE
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-16 lg:grid-cols-12">
             <div className="lg:col-span-4">
@@ -302,7 +302,7 @@ export default function AboutPage() {
           EDUCATION
       ===================================================== */}
 
-      <section className="bg-[#dedbd4] py-24 md:py-32 lg:py-40">
+      <section className="bg-[#dedbd4] py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-16 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -357,7 +357,7 @@ export default function AboutPage() {
           CAPABILITIES
       ===================================================== */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="mb-16 grid gap-8 lg:grid-cols-12">

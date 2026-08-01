@@ -9,7 +9,7 @@ export default function PhotographyHome() {
       {/* HERO */}
 
       <section className="site-container">
-        <div className="grid min-h-[calc(100vh-92px)] items-center gap-14 py-16 lg:grid-cols-12">
+        <div className="grid min-h-[calc(100dvh-82px)] items-center gap-12 py-12 sm:py-16 lg:min-h-[calc(100dvh-92px)] lg:grid-cols-12">
           <div className="relative z-10 lg:col-span-7">
             <Reveal>
               <p className="mb-8 text-[9px] uppercase tracking-[0.28em] text-white/40">
@@ -18,7 +18,7 @@ export default function PhotographyHome() {
             </Reveal>
 
             <Reveal delay={0.07}>
-              <h1 className="font-serif text-[clamp(4.5rem,9vw,9.5rem)] leading-[0.8] tracking-[-0.055em]">
+              <h1 className="font-serif text-[clamp(4rem,17vw,9.5rem)] leading-[0.8] tracking-[-0.055em]">
                 Capturing
                 <br />
                 timeless
@@ -103,7 +103,7 @@ export default function PhotographyHome() {
 
       {/* SELECTED WORK */}
 
-      <section className="border-t border-white/10 py-24 md:py-32 lg:py-40">
+      <section className="border-t border-white/10 py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="mb-16 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -189,7 +189,7 @@ export default function PhotographyHome() {
 
       {/* ABOUT PREVIEW */}
 
-      <section className="bg-[#111111] py-24 md:py-32 lg:py-40">
+      <section className="bg-[#111111] py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-3">
@@ -238,7 +238,7 @@ export default function PhotographyHome() {
 
       {/* PORTFOLIO BRIDGE */}
 
-      <section className="py-24 md:py-32 lg:py-40">
+      <section className="py-20 sm:py-24 md:py-32 lg:py-40">
         <div className="site-container">
           <Reveal>
             <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
