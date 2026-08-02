@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import Image from "next/image";
+
 import Reveal from "@/components/shared/Reveal";
 import { projects } from "@/data/projects";
 
@@ -34,10 +36,9 @@ export default function ProjectsPage() {
                 <div />
 
                 <p className="max-w-md text-sm leading-7 text-dev-muted">
-                  A selection of systems, applications and digital
-                  experiences I&apos;ve designed and developed — focusing on
-                  solving real problems through thoughtful engineering and
-                  interface design.
+                  A selection of systems, applications and digital experiences
+                  I&apos;ve designed and developed — focusing on solving real
+                  problems through thoughtful engineering and interface design.
                 </p>
               </div>
             </Reveal>
@@ -52,10 +53,7 @@ export default function ProjectsPage() {
       <section className="border-t border-dev-border">
         <div className="site-container">
           {projects.map((project, index) => (
-            <Reveal
-              key={project.slug}
-              delay={index * 0.04}
-            >
+            <Reveal key={project.slug} delay={index * 0.04}>
               <Link
                 href={`/developer/projects/${project.slug}`}
                 className="group block border-b border-dev-border py-12 md:py-16 lg:py-20"
@@ -113,53 +111,89 @@ export default function ProjectsPage() {
                   </div>
                 </div>
 
-                {/* VISUAL */}
-
                 <div className="mt-12 overflow-hidden lg:ml-[8.333%] lg:mt-16">
                   <div className="relative aspect-16/8 overflow-hidden bg-[#dedbd4]">
-                    {/* decorative grid */}
+                    {/* PROJECT IMAGE */}
 
-                    <div className="absolute inset-0 opacity-50">
-                      <div className="absolute left-1/3 top-0 h-full w-px bg-black/8" />
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} project preview`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 92vw"
+                      className="object-cover object-top transition-transform duration-1200 ease-out group-hover:scale-[1.015]"
+                    />
 
-                      <div className="absolute left-2/3 top-0 h-full w-px bg-black/8" />
+                    {/* SUBTLE IMAGE TREATMENT */}
 
-                      <div className="absolute left-0 top-1/2 h-px w-full bg-black/8" />
+                    <div className="pointer-events-none absolute inset-0 bg-black/3" />
+
+                    {/* DECORATIVE GRID */}
+
+                    <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                      <div className="absolute left-1/3 top-0 h-full w-px bg-white/12" />
+
+                      <div className="absolute left-2/3 top-0 h-full w-px bg-white/12" />
+
+                      <div className="absolute left-0 top-1/2 h-px w-full bg-white/12" />
                     </div>
 
-                    {/* project number */}
+                    {/* TOP INFORMATION */}
 
-                    <span className="absolute -bottom-8 -right-2 font-serif text-[160px] leading-none tracking-[-0.08em] text-black/4.5 md:text-[240px] lg:text-[320px]">
-                      {project.number}
-                    </span>
+                    <div className="absolute left-4 top-4 flex items-center gap-3 sm:left-6 sm:top-6">
+                      <div className="bg-dev-background px-3 py-2 shadow-sm">
+                        <span className="text-[8px] uppercase tracking-[0.18em] text-dev-muted">
+                          {project.number}
+                        </span>
+                      </div>
 
-                    {/* center */}
-
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <p className="font-serif text-4xl tracking-[-0.04em] text-black/20 md:text-6xl">
-                          {project.title}
-                        </p>
-
-                        <p className="mt-4 text-[8px] uppercase tracking-[0.3em] text-black/30">
-                          Project preview
-                        </p>
+                      <div className="hidden bg-dev-dark/90 px-3 py-2 text-white backdrop-blur-sm sm:block">
+                        <span className="text-[8px] uppercase tracking-[0.18em] text-white/60">
+                          {project.category}
+                        </span>
                       </div>
                     </div>
 
-                    {/* hover overlay */}
+                    {/* YEAR */}
 
-                    <div className="absolute inset-0 flex items-center justify-center bg-dev-dark opacity-0 transition-all duration-700 group-hover:opacity-100">
-                      <div className="translate-y-5 text-center text-white opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                        <p className="font-serif text-4xl italic md:text-6xl">
-                          View case study
-                        </p>
+                    <div className="absolute right-4 top-4 bg-dev-background px-3 py-2 shadow-sm sm:right-6 sm:top-6">
+                      <span className="text-[8px] tracking-[0.18em] text-dev-muted">
+                        {project.year}
+                      </span>
+                    </div>
 
-                        <p className="mt-5 text-[9px] uppercase tracking-[0.22em] text-white/50">
-                          Explore project ↗
-                        </p>
+                    {/* BOTTOM GRADIENT */}
+
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-linear-to-t from-black/70 via-black/15 to-transparent opacity-60 transition-opacity duration-700 group-hover:opacity-90" />
+
+                    {/* PROJECT TITLE ON IMAGE */}
+
+                    <div className="absolute bottom-5 left-5 transition-all duration-700 group-hover:-translate-y-2 sm:bottom-7 sm:left-7">
+                      <p className="mb-2 text-[8px] uppercase tracking-[0.24em] text-white/55">
+                        Selected project
+                      </p>
+
+                      <p className="font-serif text-3xl tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
+                        {project.title}
+                      </p>
+                    </div>
+
+                    {/* VIEW BUTTON */}
+
+                    <div className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7">
+                      <div className="flex h-12 w-12 translate-y-3 items-center justify-center rounded-full bg-white text-black opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 sm:h-14 sm:w-14">
+                        <span className="text-sm transition-transform duration-500 group-hover:rotate-45">
+                          ↗
+                        </span>
                       </div>
                     </div>
+
+                    {/* HOVER OVERLAY */}
+
+                    <div className="pointer-events-none absolute inset-0 bg-dev-dark/0 transition-colors duration-700 group-hover:bg-dev-dark/8!" />
+
+                    {/* BORDER */}
+
+                    <div className="pointer-events-none absolute inset-0 border border-black/6" />
                   </div>
                 </div>
               </Link>
@@ -191,16 +225,16 @@ export default function ProjectsPage() {
                 </h2>
 
                 <p className="mt-10 max-w-lg text-sm leading-7 text-dev-muted">
-                  Additional experiments, prototypes and smaller projects
-                  will be added as the portfolio develops.
+                  Additional experiments, prototypes and smaller projects will
+                  be added as the portfolio develops.
                 </p>
 
                 <a
-                  href="https://github.com/MarcAusss" target="_blank"
+                  href="https://github.com/MarcAusss"
+                  target="_blank"
                   className="group mt-10 inline-flex items-center gap-4 border-b border-dev-foreground pb-2 text-[10px] uppercase tracking-[0.18em]"
                 >
                   Visit GitHub
-
                   <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                     ↗
                   </span>

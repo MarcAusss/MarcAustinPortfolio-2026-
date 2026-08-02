@@ -170,7 +170,10 @@ export default function DeveloperPage() {
                   </p>
                 </div>
 
-                <p className="mt-2 text-xs">Designing & developing System for <br/> DOLE Integrated Livelihood Program</p>
+                <p className="mt-2 text-xs">
+                  Designing & developing System for <br /> DOLE Integrated
+                  Livelihood Program
+                </p>
               </div>
             </div>
           </Reveal>

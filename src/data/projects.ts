@@ -18,6 +18,13 @@ export type Project = {
 
   responsibilities: string[];
 
+  image: string;
+
+  images?: {
+    src: string;
+    alt: string;
+  }[];
+
   highlights: string[];
 
   next?: string;
@@ -67,6 +74,24 @@ export const projects: Project[] = [
       "Role and permission workflows",
       "Data validation",
       "Location data integration",
+    ],
+
+    image:
+      "/images/developer/projects/clpmis/hero.png",
+
+    images: [
+      {
+        src: "/images/developer/projects/clpmis/dashboard.png",
+        alt: "CLPMIS dashboard",
+      },
+      {
+        src: "/images/developer/projects/clpmis/profiling.png",
+        alt: "CLPMIS profiling interface",
+      },
+      {
+        src: "/images/developer/projects/clpmis/records.png",
+        alt: "CLPMIS records management",
+      },
     ],
 
     highlights: [
@@ -135,6 +160,24 @@ export const projects: Project[] = [
       "Role-based workflows",
     ],
 
+    image:
+      "/images/developer/projects/tupad/IMG_20240505_011352_959.jpg",
+
+    images: [
+      {
+        src: "/images/developer/projects/tupad/IMG_20240505_011352_959.jpg",
+        alt: "TUPAD PPE Inventory",
+      },
+      {
+        src: "/images/developer/projects/tupad/profiling.png",
+        alt: "tupad profiling interface",
+      },
+      {
+        src: "/images/developer/projects/tupad/records.png",
+        alt: "CLPMIS records management",
+      },
+    ],
+
     next: "lease-for-me",
   },
 
@@ -190,6 +233,24 @@ export const projects: Project[] = [
       "Reusable components",
     ],
 
+    image:
+      "/images/developer/projects/clpmis/hero.png",
+
+    images: [
+      {
+        src: "/images/developer/projects/clpmis/dashboard.png",
+        alt: "CLPMIS dashboard",
+      },
+      {
+        src: "/images/developer/projects/clpmis/profiling.png",
+        alt: "CLPMIS profiling interface",
+      },
+      {
+        src: "/images/developer/projects/clpmis/records.png",
+        alt: "CLPMIS records management",
+      },
+    ],
+
     next: "mentor-shift",
   },
 
@@ -243,6 +304,24 @@ export const projects: Project[] = [
       "Activities and assessments",
       "Student progress",
       "Mentor communication",
+    ],
+
+    image:
+      "/images/developer/projects/clpmis/hero.png",
+
+    images: [
+      {
+        src: "/images/developer/projects/clpmis/dashboard.png",
+        alt: "CLPMIS dashboard",
+      },
+      {
+        src: "/images/developer/projects/clpmis/profiling.png",
+        alt: "CLPMIS profiling interface",
+      },
+      {
+        src: "/images/developer/projects/clpmis/records.png",
+        alt: "CLPMIS records management",
+      },
     ],
 
     next: "clpmis",
