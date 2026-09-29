@@ -10,7 +10,7 @@ import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
 const navigation = [
   {
     label: "Home",
-    href: "/",
+    href: "/photography",
   },
   {
     label: "Portfolio",
@@ -44,8 +44,8 @@ export default function PhotographyHeader() {
   }, [menuOpen]);
 
   const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
+    if (href === "/photography") {
+      return pathname === "/photography";
     }
 
     return pathname.startsWith(href);
@@ -63,7 +63,7 @@ export default function PhotographyHeader() {
             {/* Brand */}
 
             <Link
-              href="/"
+              href="/photography"
               onClick={closeMenu}
               className="relative z-50 text-[10px] font-medium uppercase tracking-[0.22em]"
             >

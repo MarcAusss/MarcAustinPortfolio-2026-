@@ -109,7 +109,7 @@ export default function DeveloperHeader() {
 
             {/* Photography Switch */}
             <PortfolioSwitchLink
-              href="/"
+              href="/photography"
               className="group hidden items-center gap-3 text-[11px] uppercase tracking-[0.15em] lg:flex"
             >
               <span>Photography</span>
@@ -187,23 +187,32 @@ export default function DeveloperHeader() {
                         }}
                         className="border-b border-dev-border"
                       >
-                        <PortfolioSwitchLink
-                          href="/"
+                        <Link
+                          href={item.href}
                           onClick={closeMenu}
-                          className="flex items-center justify-between border-t border-dev-border pt-6"
+                          aria-current={active ? "page" : undefined}
+                          className="group flex items-center justify-between py-5"
                         >
-                          <div>
-                            <p className="mb-1 text-[9px] uppercase tracking-[0.2em] text-dev-muted">
-                              Switch portfolio
-                            </p>
+                          <div className="flex items-start gap-4">
+                            <span className="mt-2 text-[8px] text-dev-subtle">
+                              {String(index + 1).padStart(2, "0")}
+                            </span>
 
-                            <p className="font-serif text-2xl">Photography</p>
+                            <span
+                              className={`font-serif text-[42px] leading-none tracking-[-0.035em] ${
+                                active
+                                  ? "text-dev-foreground"
+                                  : "text-dev-muted"
+                              }`}
+                            >
+                              {item.label}
+                            </span>
                           </div>
 
-                          <span className="flex h-11 w-11 items-center justify-center rounded-full border border-dev-border">
-                            ↗
+                          <span className="text-dev-muted transition-transform duration-300 group-hover:translate-x-1">
+                            →
                           </span>
-                        </PortfolioSwitchLink>
+                        </Link>
                       </motion.div>
                     );
                   })}
@@ -211,8 +220,8 @@ export default function DeveloperHeader() {
               </nav>
 
               <div className="pb-8 pt-6">
-                <Link
-                  href="/"
+                <PortfolioSwitchLink
+                  href="/photography"
                   onClick={closeMenu}
                   className="flex items-center justify-between border-t border-dev-border pt-6"
                 >
@@ -227,7 +236,7 @@ export default function DeveloperHeader() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-full border border-dev-border">
                     ↗
                   </span>
-                </Link>
+                </PortfolioSwitchLink>
               </div>
             </div>
           </motion.div>

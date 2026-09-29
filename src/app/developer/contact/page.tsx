@@ -266,7 +266,7 @@ export default function ContactPage() {
                 </div>
 
                 <PortfolioSwitchLink
-                  href="/"
+                  href="/photography"
                   className="group mt-8 flex items-center justify-between border-t border-white/15 pt-6"
                 >
                   <div>

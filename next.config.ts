@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        // The developer portfolio is the front page; photography lives at /photography.
+        source: "/",
+        destination: "/developer",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

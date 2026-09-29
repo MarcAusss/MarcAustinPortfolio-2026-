@@ -477,7 +477,7 @@ export default function AboutPage() {
                 </p>
 
                 <PortfolioSwitchLink
-                  href="/"
+                  href="/photography"
                   className="group mt-8 inline-flex items-center gap-4 border-b border-white/30 pb-2 text-[9px] uppercase tracking-[0.2em]"
                 >
                   Photography portfolio

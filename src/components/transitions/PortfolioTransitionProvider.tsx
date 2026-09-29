@@ -14,7 +14,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 type PortfolioMode = "developer" | "photography";
 
-export type PortfolioRoute = "/" | "/developer";
+export type PortfolioRoute = "/photography" | "/developer";
 
 type TransitionPhase = "cover" | "waiting" | "reveal";
 

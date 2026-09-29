@@ -12,7 +12,7 @@ export default function PhotographyFooter() {
         <div className="grid gap-14 py-12 md:grid-cols-2 lg:py-16">
           <div>
             <Link
-              href="/"
+              href="/photography"
               className="text-[10px] uppercase tracking-[0.22em]"
             >
               Marc Austin
