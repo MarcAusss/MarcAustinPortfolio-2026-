@@ -3,12 +3,23 @@ export type ProjectImage = {
   alt: string;
 };
 
+export type ProjectMetric = {
+  value: string;
+  label: string;
+};
+
 export type Project = {
-  number: string;
   slug: string;
+
+  // Unpublished projects are hidden everywhere until their content is filled in.
+  published: boolean;
+
   title: string;
   category: string;
   year: string;
+
+  // Where the work was done, e.g. an organization or program
+  context?: string;
 
   summary: string;
   description: string;
@@ -16,7 +27,7 @@ export type Project = {
   technologies: string[];
 
   role: string;
-  status: string;
+  status?: string;
 
   challenge: string;
   solution: string;
@@ -38,81 +49,38 @@ export type Project = {
     wide?: ProjectImage;
   };
 
-  highlights: string[];
+  // Up to 3 measurable outcomes
+  impact?: ProjectMetric[];
 
-  next?: string;
+  // Internal government system: source is private, screenshots use sample data
+  internal?: boolean;
+
+  links?: {
+    demo?: string;
+    source?: string;
+  };
+
+  highlights: string[];
 };
+
+export const DOLE_CONTEXT =
+  "DOLE Regional Office V · Government Internship Program";
+
+export const INTERNAL_PROJECT_NOTE =
+  "Internal government system. Source code isn't public; screenshots use sample data.";
 
 export const projects: Project[] = [
   {
-    number: "01",
-    slug: "clpmis",
-
-    title: "CLPMIS",
-
-    category: "Information System",
-
-    year: "2026",
-
-    summary:
-      "A centralized platform for child labor profiling, monitoring, case management and reporting.",
-
-    description:
-      "CLPMIS was designed to organize child labor information into a structured digital workflow, allowing authorized personnel to manage profiles, locations, monitoring activities and administrative processes from one centralized system.",
-
-    technologies: [
-      "Laravel",
-      "PHP",
-      "Tailwind CSS",
-      "MySQL",
-      "JavaScript",
-    ],
-
-    role: "Full Stack Developer / UI Designer",
-
-    status: "In Development",
-
-    challenge:
-      "Child labor records involve multiple pieces of information, administrative roles and location-based data. The system needed to reduce fragmented record handling while maintaining a clear workflow for profiling, review, monitoring and reporting.",
-
-    solution:
-      "I designed the application around structured user roles, centralized records and reusable location data. The interface focuses on reducing form complexity while giving administrators clear visibility into records and workflow status.",
-
-    responsibilities: [
-      "System architecture",
-      "Database design",
-      "Laravel backend development",
-      "UI/UX design",
-      "Responsive frontend development",
-      "Role and permission workflows",
-      "Data validation",
-      "Location data integration",
-    ],
-
-    // TODO(marc): add CLPMIS screenshots to public/images/developer/projects/clpmis/ and set images.cover / details / wide
-    images: {},
-
-    highlights: [
-      "Centralized child labor profiling",
-      "Role-based access control",
-      "PSGC location integration",
-      "Monitoring workflow",
-      "Administrative record management",
-      "Responsive interface",
-    ],
-
-    next: "tupad-ppe-inventory",
-  },
-
-  {
-    number: "02",
     slug: "tupad-ppe-inventory",
+    published: true,
 
     title: "TUPAD PPE Inventory",
 
     category: "Inventory Management System",
 
     year: "2026",
+
+    context: DOLE_CONTEXT,
 
     summary:
       "A PPE inventory and provincial distribution management system.",
@@ -130,7 +98,7 @@ export const projects: Project[] = [
 
     role: "Full Stack Developer / System Designer",
 
-    status: "In Development",
+    status: "In use across all provincial offices, Region V",
 
     challenge:
       "Managing PPE allocations across different provinces required several related workflows including call-offs, beginning inventory, distributions, delivery receipts and ending balances.",
@@ -166,17 +134,153 @@ export const projects: Project[] = [
       // TODO(marc): add more screenshots to public/images/developer/projects/tupad-ppe-inventory/ and set images.details / wide
     },
 
-    next: "lease-for-me",
+    // TODO(marc): up to 3 impact metrics, e.g. { value: "…", label: "provincial offices using it" }
+    impact: [],
+
+    // TODO(marc): confirm the dashboard screenshot shows sample data, since this note says so
+    internal: true,
   },
 
   {
-    number: "03",
+    slug: "clpmis",
+    published: true,
+
+    title: "CLPMIS",
+
+    category: "Information System",
+
+    year: "2026",
+
+    context: DOLE_CONTEXT,
+
+    summary:
+      "A centralized platform for child labor profiling, monitoring, case management and reporting.",
+
+    description:
+      "CLPMIS was designed to organize child labor information into a structured digital workflow, allowing authorized personnel to manage profiles, locations, monitoring activities and administrative processes from one centralized system.",
+
+    technologies: [
+      "Laravel",
+      "PHP",
+      "Tailwind CSS",
+      "MySQL",
+      "JavaScript",
+    ],
+
+    role: "Full Stack Developer / UI Designer",
+
+    // TODO(marc): confirm CLPMIS status (was "In Development") and set `status`
+
+    challenge:
+      "Child labor records involve multiple pieces of information, administrative roles and location-based data. The system needed to reduce fragmented record handling while maintaining a clear workflow for profiling, review, monitoring and reporting.",
+
+    solution:
+      "I designed the application around structured user roles, centralized records and reusable location data. The interface focuses on reducing form complexity while giving administrators clear visibility into records and workflow status.",
+
+    responsibilities: [
+      "System architecture",
+      "Database design",
+      "Laravel backend development",
+      "UI/UX design",
+      "Responsive frontend development",
+      "Role and permission workflows",
+      "Data validation",
+      "Location data integration",
+    ],
+
+    // TODO(marc): add CLPMIS screenshots to public/images/developer/projects/clpmis/ and set images.cover / details / wide
+    images: {},
+
+    // TODO(marc): up to 3 impact metrics
+    impact: [],
+
+    internal: true,
+
+    highlights: [
+      "Centralized child labor profiling",
+      "Role-based access control",
+      "PSGC location integration",
+      "Monitoring workflow",
+      "Administrative record management",
+      "Responsive interface",
+    ],
+  },
+
+  {
+    slug: "tupad-reporting-system",
+    published: false,
+
+    title: "TUPAD Reporting System",
+    category: "TODO(marc): category",
+    year: "TODO(marc): year",
+    context: DOLE_CONTEXT,
+    summary: "TODO(marc): one-sentence summary",
+    description: "TODO(marc): description",
+    technologies: [], // TODO(marc): technologies
+    role: "TODO(marc): role",
+    status: "TODO(marc): status",
+    challenge: "TODO(marc): challenge",
+    solution: "TODO(marc): solution",
+    responsibilities: [], // TODO(marc): responsibilities
+    highlights: [], // TODO(marc): highlights
+    images: {}, // TODO(marc): screenshots in public/images/developer/projects/tupad-reporting-system/
+    impact: [], // TODO(marc): up to 3 impact metrics
+    internal: true,
+  },
+
+  {
+    slug: "dilp-beneficiary-mapping",
+    published: false,
+
+    title: "DILP Beneficiary & Undertaking Mapping",
+    category: "TODO(marc): category",
+    year: "TODO(marc): year",
+    context: DOLE_CONTEXT,
+    summary: "TODO(marc): one-sentence summary",
+    description: "TODO(marc): description",
+    technologies: [], // TODO(marc): technologies
+    role: "TODO(marc): role",
+    status: "TODO(marc): status",
+    challenge: "TODO(marc): challenge",
+    solution: "TODO(marc): solution",
+    responsibilities: [], // TODO(marc): responsibilities
+    highlights: [], // TODO(marc): highlights
+    images: {}, // TODO(marc): screenshots in public/images/developer/projects/dilp-beneficiary-mapping/
+    impact: [], // TODO(marc): up to 3 impact metrics
+    internal: true,
+  },
+
+  {
+    slug: "dilp-reporting-system",
+    published: false,
+
+    title: "DILP Reporting System",
+    category: "TODO(marc): category",
+    year: "TODO(marc): year",
+    context: DOLE_CONTEXT,
+    summary: "TODO(marc): one-sentence summary",
+    description: "TODO(marc): description",
+    technologies: [], // TODO(marc): technologies
+    role: "TODO(marc): role",
+    status: "TODO(marc): status",
+    challenge: "TODO(marc): challenge",
+    solution: "TODO(marc): solution",
+    responsibilities: [], // TODO(marc): responsibilities
+    highlights: [], // TODO(marc): highlights
+    images: {}, // TODO(marc): screenshots in public/images/developer/projects/dilp-reporting-system/
+    impact: [], // TODO(marc): up to 3 impact metrics
+    internal: true,
+  },
+
+  {
     slug: "lease-for-me",
+    published: true,
 
     title: "Lease For Me",
 
     category: "Property Platform",
 
+    // TODO(marc): confirm year; your CV lists Lease For Me under 2022–2024
     year: "2026",
 
     summary:
@@ -224,12 +328,13 @@ export const projects: Project[] = [
     // TODO(marc): add Lease For Me screenshots to public/images/developer/projects/lease-for-me/ and set images.cover / details / wide
     images: {},
 
-    next: "mentor-shift",
+    // TODO(marc): live demo and/or source code URLs, e.g. { demo: "https://…", source: "https://github.com/MarcAusss/…" }
+    links: {},
   },
 
   {
-    number: "04",
     slug: "mentor-shift",
+    published: true,
 
     title: "Mentor-Shift",
 
@@ -282,10 +387,35 @@ export const projects: Project[] = [
     // TODO(marc): add Mentor-Shift screenshots to public/images/developer/projects/mentor-shift/ and set images.cover / details / wide
     images: {},
 
-    next: "clpmis",
+    // TODO(marc): live demo and/or source code URLs
+    links: {},
   },
 ];
 
+/*
+|--------------------------------------------------------------------------
+| Published projects
+|--------------------------------------------------------------------------
+|
+| Numbering and "next project" follow the published order, so hidden
+| projects never leave gaps.
+|
+*/
+
+export const publishedProjects = projects.filter(
+  (project) => project.published,
+);
+
 export function getProject(slug: string) {
-  return projects.find((project) => project.slug === slug);
+  return publishedProjects.find((project) => project.slug === slug);
+}
+
+export function getProjectNumber(project: Project) {
+  return String(publishedProjects.indexOf(project) + 1).padStart(2, "0");
+}
+
+export function getNextProject(project: Project) {
+  const index = publishedProjects.indexOf(project);
+
+  return publishedProjects[(index + 1) % publishedProjects.length];
 }

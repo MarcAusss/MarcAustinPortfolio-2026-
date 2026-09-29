@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import Reveal from "@/components/shared/Reveal";
-import { resumePath } from "@/data/site";
+import { getProjectNumber, publishedProjects } from "@/data/projects";
+import { contact, resumePath } from "@/data/site";
 
 const technologies = [
   "Next.js",
@@ -10,37 +11,13 @@ const technologies = [
   "TypeScript",
   "Laravel",
   "PHP",
+  "Alpine.js",
   "Tailwind CSS",
   "MySQL",
   "Git",
 ];
 
-const projects = [
-  {
-    number: "01",
-    title: "CLPMIS",
-    category: "Information System",
-    description:
-      "A centralized child labor profiling, monitoring and administrative information system.",
-    href: "/developer/projects/clpmis",
-  },
-  {
-    number: "02",
-    title: "TUPAD PPE Inventory",
-    category: "Inventory Management",
-    description:
-      "A complete PPE inventory, provincial allocation and distribution management platform.",
-    href: "/developer/projects/tupad-ppe-inventory",
-  },
-  {
-    number: "03",
-    title: "Lease For Me",
-    category: "Property Platform",
-    description:
-      "A modern property leasing experience focused on simplified discovery and leasing services.",
-    href: "/developer/projects/lease-for-me",
-  },
-] as const;
+const featuredProjects = publishedProjects.slice(0, 3);
 
 export default function DeveloperPage() {
   return (
@@ -59,7 +36,8 @@ export default function DeveloperPage() {
                 <span className="h-px w-8 bg-dev-foreground" />
 
                 <p className="text-[10px] font-medium uppercase tracking-[0.26em] text-dev-muted">
-                  Full Stack Developer
+                  Laravel &amp; React Developer · Philippines · Available on US
+                  hours
                 </p>
               </div>
             </Reveal>
@@ -72,6 +50,13 @@ export default function DeveloperPage() {
                 <br />
                 <em className="font-normal">with clean code.</em>
               </h1>
+            </Reveal>
+
+            <Reveal delay={0.12}>
+              <p className="mt-10 max-w-xl text-base leading-7 text-dev-foreground">
+                Built 5 internal systems for DOLE Regional Office V, including
+                a PPE inventory used by every provincial office in the region.
+              </p>
             </Reveal>
 
             <Reveal delay={0.16}>
@@ -93,26 +78,36 @@ export default function DeveloperPage() {
 
             <Reveal delay={0.22}>
               <div className="mt-10 flex flex-wrap items-center gap-7">
-                <Link
-                  href="/developer/projects"
-                  className="group flex items-center gap-8 bg-dev-dark px-6 py-4 text-xs text-white transition-transform duration-500 hover:-translate-y-1"
-                >
-                  <span className="text-white">View selected work</span>
-
-                  <span className="text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                    ↗
-                  </span>
-                </Link>
-
                 <a
                   href={resumePath}
-                  className="group flex items-center gap-3 border-b border-black/30 pb-1 text-xs"
+                  className="group flex items-center gap-8 bg-dev-dark px-6 py-4 text-xs text-white transition-transform duration-500 hover:-translate-y-1"
                 >
-                  Download CV
-                  <span className="transition-transform duration-300 group-hover:translate-y-1">
+                  <span className="text-white">Download CV</span>
+
+                  <span className="text-white transition-transform duration-300 group-hover:translate-y-1">
                     ↓
                   </span>
                 </a>
+
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="group flex items-center gap-3 border-b border-black/30 pb-1 text-xs"
+                >
+                  Email me
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
+
+                <Link
+                  href="/developer/projects"
+                  className="group flex items-center gap-3 border-b border-black/30 pb-1 text-xs"
+                >
+                  View projects
+                  <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                    ↗
+                  </span>
+                </Link>
               </div>
             </Reveal>
           </div>
@@ -171,9 +166,9 @@ export default function DeveloperPage() {
                   </p>
                 </div>
 
-                <p className="mt-2 text-xs">
-                  Designing & developing System for <br /> DOLE Integrated
-                  Livelihood Program
+                <p className="mt-2 max-w-64 text-xs leading-5">
+                  Building systems for the DOLE Integrated Livelihood Program
+                  (DILP), Regional Office V
                 </p>
               </div>
             </div>
@@ -234,15 +229,15 @@ export default function DeveloperPage() {
           </Reveal>
 
           <div className="border-t border-dev-border">
-            {projects.map((project, index) => (
-              <Reveal key={project.title} delay={index * 0.05}>
+            {featuredProjects.map((project, index) => (
+              <Reveal key={project.slug} delay={index * 0.05}>
                 <Link
-                  href={project.href}
+                  href={`/developer/projects/${project.slug}`}
                   className="group grid gap-7 border-b border-dev-border py-10 md:grid-cols-12 md:items-center lg:py-14"
                 >
                   <div className="md:col-span-1">
                     <span className="text-[9px] text-dev-subtle">
-                      {project.number}
+                      {getProjectNumber(project)}
                     </span>
                   </div>
 
@@ -258,7 +253,7 @@ export default function DeveloperPage() {
 
                   <div className="md:col-span-5">
                     <p className="max-w-md text-sm leading-7 text-dev-muted">
-                      {project.description}
+                      {project.summary}
                     </p>
                   </div>
 

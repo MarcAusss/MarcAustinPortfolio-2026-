@@ -6,8 +6,11 @@ import { notFound } from "next/navigation";
 
 import Reveal from "@/components/shared/Reveal";
 import {
+  getNextProject,
   getProject,
-  projects,
+  getProjectNumber,
+  INTERNAL_PROJECT_NOTE,
+  publishedProjects,
 } from "@/data/projects";
 
 type ProjectPageProps = {
@@ -23,7 +26,7 @@ type ProjectPageProps = {
 */
 
 export function generateStaticParams() {
-  return projects.map((project) => ({
+  return publishedProjects.map((project) => ({
     slug: project.slug,
   }));
 }
@@ -71,13 +74,14 @@ export default async function ProjectPage({
     notFound();
   }
 
-  const nextProject =
-    getProject(project.next ?? "") ??
-    projects[0];
+  const nextProject = getNextProject(project);
 
   const cover = project.images?.cover;
   const details = project.images?.details?.slice(0, 2) ?? [];
   const wide = project.images?.wide;
+
+  const impact = project.impact?.slice(0, 3) ?? [];
+  const { demo, source } = project.links ?? {};
 
   return (
     <main>
@@ -103,8 +107,8 @@ export default async function ProjectPage({
               </Link>
 
               <span className="text-[9px] uppercase tracking-[0.2em] text-dev-subtle">
-                {project.number} /{" "}
-                {projects.length
+                {getProjectNumber(project)} /{" "}
+                {publishedProjects.length
                   .toString()
                   .padStart(2, "0")}
               </span>
@@ -123,6 +127,12 @@ export default async function ProjectPage({
                 <h1 className="font-serif text-[clamp(4.5rem,10vw,10rem)] leading-[0.8] tracking-[-0.06em]">
                   {project.title}
                 </h1>
+
+                {project.context && (
+                  <p className="mt-8 text-[10px] uppercase tracking-[0.2em] text-dev-muted">
+                    {project.context}
+                  </p>
+                )}
               </Reveal>
             </div>
 
@@ -208,10 +218,12 @@ export default async function ProjectPage({
                     value={project.year}
                   />
 
-                  <ProjectMeta
-                    label="Status"
-                    value={project.status}
-                  />
+                  {project.status && (
+                    <ProjectMeta
+                      label="Status"
+                      value={project.status}
+                    />
+                  )}
 
                   <div className="border-b border-dev-border py-5">
                     <p className="mb-4 text-[8px] uppercase tracking-[0.2em] text-dev-subtle">
@@ -231,6 +243,38 @@ export default async function ProjectPage({
                       )}
                     </div>
                   </div>
+
+                  {(demo || source) && (
+                    <div className="flex flex-wrap gap-x-6 gap-y-3 border-b border-dev-border py-5">
+                      {demo && (
+                        <a
+                          href={demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group inline-flex items-center gap-2 border-b border-dev-foreground pb-1 text-[10px] uppercase tracking-[0.18em]"
+                        >
+                          Live demo
+                          <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                            ↗
+                          </span>
+                        </a>
+                      )}
+
+                      {source && (
+                        <a
+                          href={source}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group inline-flex items-center gap-2 border-b border-dev-foreground pb-1 text-[10px] uppercase tracking-[0.18em]"
+                        >
+                          Source code
+                          <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                            ↗
+                          </span>
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -246,6 +290,12 @@ export default async function ProjectPage({
                 <p className="font-serif text-4xl leading-[1.15] tracking-[-0.03em] md:text-5xl">
                   {project.description}
                 </p>
+
+                {project.internal && (
+                  <p className="mt-10 max-w-xl border-l border-dev-border pl-5 text-sm leading-7 text-dev-muted">
+                    {INTERNAL_PROJECT_NOTE}
+                  </p>
+                )}
               </Reveal>
             </div>
           </div>
@@ -342,6 +392,42 @@ export default async function ProjectPage({
           </div>
         </div>
       </section>
+
+      {/* =====================================================
+          IMPACT
+      ===================================================== */}
+
+      {impact.length > 0 && (
+        <section className="border-t border-dev-border py-24 md:py-32">
+          <div className="site-container">
+            <div className="grid gap-14 lg:grid-cols-12">
+              <div className="lg:col-span-3">
+                <Reveal>
+                  <h2 className="text-[9px] uppercase tracking-[0.25em] text-dev-muted">
+                    Impact
+                  </h2>
+                </Reveal>
+              </div>
+
+              <div className="grid gap-10 sm:grid-cols-3 lg:col-span-9">
+                {impact.map((metric, index) => (
+                  <Reveal key={metric.label} delay={index * 0.05}>
+                    <div className="border-t border-dev-border pt-6">
+                      <p className="font-serif text-6xl tracking-[-0.04em] md:text-7xl">
+                        {metric.value}
+                      </p>
+
+                      <p className="mt-4 max-w-56 text-sm leading-6 text-dev-muted">
+                        {metric.label}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* =====================================================
           RESPONSIBILITIES

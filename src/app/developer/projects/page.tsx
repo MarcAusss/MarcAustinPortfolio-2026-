@@ -3,7 +3,22 @@ import Link from "next/link";
 import Image from "next/image";
 
 import Reveal from "@/components/shared/Reveal";
-import { projects } from "@/data/projects";
+import {
+  DOLE_CONTEXT,
+  getProjectNumber,
+  publishedProjects as projects,
+} from "@/data/projects";
+
+const projectGroups = [
+  {
+    heading: DOLE_CONTEXT,
+    projects: projects.filter((project) => project.context === DOLE_CONTEXT),
+  },
+  {
+    heading: "Other projects",
+    projects: projects.filter((project) => project.context !== DOLE_CONTEXT),
+  },
+].filter((group) => group.projects.length > 0);
 
 export default function ProjectsPage() {
   return (
@@ -50,159 +65,165 @@ export default function ProjectsPage() {
           PROJECT INDEX
       ===================================================== */}
 
-      <section className="border-t border-dev-border">
-        <div className="site-container">
-          {projects.map((project, index) => (
-            <Reveal key={project.slug} delay={index * 0.04}>
-              <Link
-                href={`/developer/projects/${project.slug}`}
-                className="group block border-b border-dev-border py-12 md:py-16 lg:py-20"
-              >
-                <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
-                  {/* NUMBER */}
+      {projectGroups.map((group) => (
+        <section key={group.heading} className="border-t border-dev-border">
+          <div className="site-container">
+            <h2 className="border-b border-dev-border pb-6 pt-14 text-[10px] uppercase tracking-[0.22em] text-dev-muted md:pt-20">
+              {group.heading}
+            </h2>
 
-                  <div className="lg:col-span-1">
-                    <span className="text-[9px] text-dev-subtle">
-                      {project.number}
-                    </span>
-                  </div>
+            {group.projects.map((project, index) => (
+              <Reveal key={project.slug} delay={index * 0.04}>
+                <Link
+                  href={`/developer/projects/${project.slug}`}
+                  className="group block border-b border-dev-border py-12 md:py-16 lg:py-20"
+                >
+                  <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+                    {/* NUMBER */}
 
-                  {/* TITLE */}
+                    <div className="lg:col-span-1">
+                      <span className="text-[9px] text-dev-subtle">
+                        {getProjectNumber(project)}
+                      </span>
+                    </div>
 
-                  <div className="lg:col-span-5">
-                    <p className="mb-4 text-[9px] uppercase tracking-[0.2em] text-dev-muted">
-                      {project.category}
-                    </p>
+                    {/* TITLE */}
 
-                    <h2 className="font-serif text-[clamp(3rem,5vw,5.6rem)] leading-[0.9] tracking-[-0.045em] transition-transform duration-700 ease-out group-hover:translate-x-3">
-                      {project.title}
-                    </h2>
-                  </div>
+                    <div className="lg:col-span-5">
+                      <p className="mb-4 text-[9px] uppercase tracking-[0.2em] text-dev-muted">
+                        {project.category}
+                      </p>
 
-                  {/* DESCRIPTION */}
+                      <h3 className="font-serif text-[clamp(3rem,5vw,5.6rem)] leading-[0.9] tracking-[-0.045em] transition-transform duration-700 ease-out group-hover:translate-x-3">
+                        {project.title}
+                      </h3>
+                    </div>
 
-                  <div className="lg:col-span-4">
-                    <p className="max-w-md text-sm leading-7 text-dev-muted">
-                      {project.summary}
-                    </p>
+                    {/* DESCRIPTION */}
 
-                    <div className="mt-7 flex flex-wrap gap-x-4 gap-y-2">
-                      {project.technologies.map((technology) => (
-                        <span
-                          key={technology}
-                          className="text-[9px] uppercase tracking-[0.15em] text-dev-subtle"
-                        >
-                          {technology}
-                        </span>
-                      ))}
+                    <div className="lg:col-span-4">
+                      <p className="max-w-md text-sm leading-7 text-dev-muted">
+                        {project.summary}
+                      </p>
+
+                      <div className="mt-7 flex flex-wrap gap-x-4 gap-y-2">
+                        {project.technologies.map((technology) => (
+                          <span
+                            key={technology}
+                            className="text-[9px] uppercase tracking-[0.15em] text-dev-subtle"
+                          >
+                            {technology}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* YEAR / ACTION */}
+
+                    <div className="flex items-start justify-between lg:col-span-2 lg:justify-end lg:gap-8">
+                      <span className="text-[10px] text-dev-muted">
+                        {project.year}
+                      </span>
+
+                      <span className="flex h-12 w-12 items-center justify-center rounded-full border border-dev-border transition-all duration-500 group-hover:rotate-45 group-hover:border-dev-dark group-hover:bg-dev-dark group-hover:text-white">
+                        ↗
+                      </span>
                     </div>
                   </div>
 
-                  {/* YEAR / ACTION */}
+                  {project.images?.cover && (
+                    <div className="mt-12 overflow-hidden lg:ml-[8.333%] lg:mt-16">
+                      <div className="relative aspect-16/8 overflow-hidden bg-[#dedbd4]">
+                        {/* PROJECT IMAGE */}
 
-                  <div className="flex items-start justify-between lg:col-span-2 lg:justify-end lg:gap-8">
-                    <span className="text-[10px] text-dev-muted">
-                      {project.year}
-                    </span>
+                        <Image
+                          src={project.images.cover.src}
+                          alt={project.images.cover.alt}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 92vw"
+                          className="object-cover object-top transition-transform duration-1200 ease-out group-hover:scale-[1.015]"
+                        />
 
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-dev-border transition-all duration-500 group-hover:rotate-45 group-hover:border-dev-dark group-hover:bg-dev-dark group-hover:text-white">
-                      ↗
-                    </span>
-                  </div>
-                </div>
+                        {/* SUBTLE IMAGE TREATMENT */}
 
-                {project.images?.cover && (
-                  <div className="mt-12 overflow-hidden lg:ml-[8.333%] lg:mt-16">
-                    <div className="relative aspect-16/8 overflow-hidden bg-[#dedbd4]">
-                      {/* PROJECT IMAGE */}
+                        <div className="pointer-events-none absolute inset-0 bg-black/3" />
 
-                      <Image
-                        src={project.images.cover.src}
-                        alt={project.images.cover.alt}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 92vw"
-                        className="object-cover object-top transition-transform duration-1200 ease-out group-hover:scale-[1.015]"
-                      />
+                        {/* DECORATIVE GRID */}
 
-                      {/* SUBTLE IMAGE TREATMENT */}
+                        <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                          <div className="absolute left-1/3 top-0 h-full w-px bg-white/12" />
 
-                      <div className="pointer-events-none absolute inset-0 bg-black/3" />
+                          <div className="absolute left-2/3 top-0 h-full w-px bg-white/12" />
 
-                      {/* DECORATIVE GRID */}
+                          <div className="absolute left-0 top-1/2 h-px w-full bg-white/12" />
+                        </div>
 
-                      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
-                        <div className="absolute left-1/3 top-0 h-full w-px bg-white/12" />
+                        {/* TOP INFORMATION */}
 
-                        <div className="absolute left-2/3 top-0 h-full w-px bg-white/12" />
+                        <div className="absolute left-4 top-4 flex items-center gap-3 sm:left-6 sm:top-6">
+                          <div className="bg-dev-background px-3 py-2 shadow-sm">
+                            <span className="text-[8px] uppercase tracking-[0.18em] text-dev-muted">
+                              {getProjectNumber(project)}
+                            </span>
+                          </div>
 
-                        <div className="absolute left-0 top-1/2 h-px w-full bg-white/12" />
-                      </div>
+                          <div className="hidden bg-dev-dark/90 px-3 py-2 text-white backdrop-blur-sm sm:block">
+                            <span className="text-[8px] uppercase tracking-[0.18em] text-white/60">
+                              {project.category}
+                            </span>
+                          </div>
+                        </div>
 
-                      {/* TOP INFORMATION */}
+                        {/* YEAR */}
 
-                      <div className="absolute left-4 top-4 flex items-center gap-3 sm:left-6 sm:top-6">
-                        <div className="bg-dev-background px-3 py-2 shadow-sm">
-                          <span className="text-[8px] uppercase tracking-[0.18em] text-dev-muted">
-                            {project.number}
+                        <div className="absolute right-4 top-4 bg-dev-background px-3 py-2 shadow-sm sm:right-6 sm:top-6">
+                          <span className="text-[8px] tracking-[0.18em] text-dev-muted">
+                            {project.year}
                           </span>
                         </div>
 
-                        <div className="hidden bg-dev-dark/90 px-3 py-2 text-white backdrop-blur-sm sm:block">
-                          <span className="text-[8px] uppercase tracking-[0.18em] text-white/60">
-                            {project.category}
-                          </span>
+                        {/* BOTTOM GRADIENT */}
+
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-linear-to-t from-black/70 via-black/15 to-transparent opacity-60 transition-opacity duration-700 group-hover:opacity-90" />
+
+                        {/* PROJECT TITLE ON IMAGE */}
+
+                        <div className="absolute bottom-5 left-5 transition-all duration-700 group-hover:-translate-y-2 sm:bottom-7 sm:left-7">
+                          <p className="mb-2 text-[8px] uppercase tracking-[0.24em] text-white/55">
+                            Selected project
+                          </p>
+
+                          <p className="font-serif text-3xl tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
+                            {project.title}
+                          </p>
                         </div>
-                      </div>
 
-                      {/* YEAR */}
+                        {/* VIEW BUTTON */}
 
-                      <div className="absolute right-4 top-4 bg-dev-background px-3 py-2 shadow-sm sm:right-6 sm:top-6">
-                        <span className="text-[8px] tracking-[0.18em] text-dev-muted">
-                          {project.year}
-                        </span>
-                      </div>
-
-                      {/* BOTTOM GRADIENT */}
-
-                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-linear-to-t from-black/70 via-black/15 to-transparent opacity-60 transition-opacity duration-700 group-hover:opacity-90" />
-
-                      {/* PROJECT TITLE ON IMAGE */}
-
-                      <div className="absolute bottom-5 left-5 transition-all duration-700 group-hover:-translate-y-2 sm:bottom-7 sm:left-7">
-                        <p className="mb-2 text-[8px] uppercase tracking-[0.24em] text-white/55">
-                          Selected project
-                        </p>
-
-                        <p className="font-serif text-3xl tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
-                          {project.title}
-                        </p>
-                      </div>
-
-                      {/* VIEW BUTTON */}
-
-                      <div className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7">
-                        <div className="flex h-12 w-12 translate-y-3 items-center justify-center rounded-full bg-white text-black opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 sm:h-14 sm:w-14">
-                          <span className="text-sm transition-transform duration-500 group-hover:rotate-45">
-                            ↗
-                          </span>
+                        <div className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7">
+                          <div className="flex h-12 w-12 translate-y-3 items-center justify-center rounded-full bg-white text-black opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 sm:h-14 sm:w-14">
+                            <span className="text-sm transition-transform duration-500 group-hover:rotate-45">
+                              ↗
+                            </span>
+                          </div>
                         </div>
+
+                        {/* HOVER OVERLAY */}
+
+                        <div className="pointer-events-none absolute inset-0 bg-dev-dark/0 transition-colors duration-700 group-hover:bg-dev-dark/8!" />
+
+                        {/* BORDER */}
+
+                        <div className="pointer-events-none absolute inset-0 border border-black/6" />
                       </div>
-
-                      {/* HOVER OVERLAY */}
-
-                      <div className="pointer-events-none absolute inset-0 bg-dev-dark/0 transition-colors duration-700 group-hover:bg-dev-dark/8!" />
-
-                      {/* BORDER */}
-
-                      <div className="pointer-events-none absolute inset-0 border border-black/6" />
                     </div>
-                  </div>
-                )}
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+                  )}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      ))}
 
       {/* =====================================================
           MORE
