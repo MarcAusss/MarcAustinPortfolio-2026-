@@ -5,6 +5,8 @@ import {
   useState,
 } from "react";
 
+import { contact } from "@/data/site";
+
 type FormStatus =
   | "idle"
   | "sending"
@@ -83,8 +85,8 @@ export default function DeveloperContactForm() {
 
       if (!response.ok) {
         throw new Error(
-          result.error ??
-            "Unable to send message.",
+          result.message ??
+            "Your message couldn't be sent.",
         );
       }
 
@@ -97,7 +99,7 @@ export default function DeveloperContactForm() {
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Unable to send message.",
+          : "Your message couldn't be sent.",
       );
     }
   }
@@ -294,17 +296,31 @@ export default function DeveloperContactForm() {
       >
         {status ===
           "success" && (
-          <p className="text-sm">
-            Message sent successfully.
-            I&apos;ll get back to
-            you soon.
+          <p
+            role="status"
+            className="border-l-2 border-green-700 pl-4 text-sm leading-7"
+          >
+            Thanks, your message was sent.
+            I&apos;ll reply to the email
+            address you entered.
           </p>
         )}
 
         {status ===
           "error" && (
-          <p className="text-sm text-red-700">
-            {errorMessage}
+          <p
+            role="alert"
+            className="border-l-2 border-red-700 pl-4 text-sm leading-7 text-red-800"
+          >
+            {errorMessage} Please email
+            me directly at{" "}
+            <a
+              href={`mailto:${contact.email}`}
+              className="underline underline-offset-4"
+            >
+              {contact.email}
+            </a>
+            .
           </p>
         )}
       </div>

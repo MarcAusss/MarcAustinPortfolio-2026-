@@ -89,7 +89,7 @@ export default function PhotographyContactForm() {
 
       if (!response.ok) {
         throw new Error(
-          result.error ??
+          result.message ??
             "Unable to send inquiry.",
         );
       }

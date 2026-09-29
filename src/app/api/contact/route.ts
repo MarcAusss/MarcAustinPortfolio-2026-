@@ -1,6 +1,22 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+import { contact } from "@/data/site";
+
+/*
+|--------------------------------------------------------------------------
+| Optional fields sent by the developer and photography forms
+|--------------------------------------------------------------------------
+*/
+
+const detailFields = [
+    ["projectType", "Enquiry type"],
+    ["budget", "Budget / scope"],
+    ["shootType", "Shoot type"],
+    ["date", "Preferred date"],
+    ["location", "Location"],
+] as const;
+
 export async function POST(request: Request) {
     try {
         /*
@@ -23,7 +39,7 @@ export async function POST(request: Request) {
             return NextResponse.json(
                 {
                     success: false,
-                    message: "Email service is currently unavailable.",
+                    message: "The contact form is temporarily unavailable.",
                 },
                 {
                     status: 503,
@@ -33,26 +49,26 @@ export async function POST(request: Request) {
 
         /*
         |--------------------------------------------------------------------------
-        | Create Resend client only when the API is actually called
-        |--------------------------------------------------------------------------
-        */
-
-        const resend = new Resend(resendApiKey);
-
-        /*
-        |--------------------------------------------------------------------------
         | Read contact form
         |--------------------------------------------------------------------------
         */
 
         const body = await request.json();
 
-        const {
-            name,
-            email,
-            subject,
-            message,
-        } = body;
+        const { name, email, message, source, website } = body;
+
+        /*
+        |--------------------------------------------------------------------------
+        | Honeypot
+        |--------------------------------------------------------------------------
+        |
+        | Bots fill the hidden "website" field. Pretend it worked.
+        |
+        */
+
+        if (website) {
+            return NextResponse.json({ success: true, message: "Message sent." });
+        }
 
         /*
         |--------------------------------------------------------------------------
@@ -72,27 +88,39 @@ export async function POST(request: Request) {
             );
         }
 
+        const details = detailFields.flatMap(([key, label]) =>
+            body[key] ? [{ label, value: body[key] }] : []
+        );
+
+        const sourceLabel =
+            source === "photography" ? "Photography" : "Developer";
+
+        const subject = body.projectType || body.shootType;
+
         /*
         |--------------------------------------------------------------------------
         | Send Email
         |--------------------------------------------------------------------------
         */
 
+        const resend = new Resend(resendApiKey);
+
         const { data, error } = await resend.emails.send({
+            // Resend's shared test sender only delivers to the Resend account
+            // owner's address. Use a verified domain to send anywhere else.
             from: "Website Contact <onboarding@resend.dev>",
 
-            // Replace this with your receiving email.
-            to: ["your-email@example.com"],
+            to: [contact.email],
 
             replyTo: email,
 
             subject: subject
-                ? `Website Contact: ${subject}`
-                : `Website Contact from ${name}`,
+                ? `[${sourceLabel}] ${subject} from ${name}`
+                : `[${sourceLabel}] Website contact from ${name}`,
 
             html: `
                 <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-                    <h2>New Website Contact Message</h2>
+                    <h2>New ${escapeHtml(sourceLabel)} Contact Message</h2>
 
                     <p>
                         <strong>Name:</strong><br>
@@ -104,10 +132,15 @@ export async function POST(request: Request) {
                         ${escapeHtml(email)}
                     </p>
 
+                    ${details
+                        .map(
+                            ({ label, value }) => `
                     <p>
-                        <strong>Subject:</strong><br>
-                        ${escapeHtml(subject || "No subject")}
-                    </p>
+                        <strong>${escapeHtml(label)}:</strong><br>
+                        ${escapeHtml(value)}
+                    </p>`
+                        )
+                        .join("")}
 
                     <p>
                         <strong>Message:</strong><br>
@@ -129,10 +162,10 @@ export async function POST(request: Request) {
             return NextResponse.json(
                 {
                     success: false,
-                    message: "Unable to send your message.",
+                    message: "Your message couldn't be sent.",
                 },
                 {
-                    status: 500,
+                    status: 502,
                 }
             );
         }
@@ -159,7 +192,7 @@ export async function POST(request: Request) {
         return NextResponse.json(
             {
                 success: false,
-                message: "An unexpected error occurred.",
+                message: "Your message couldn't be sent.",
             },
             {
                 status: 500,
