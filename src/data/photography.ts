@@ -159,3 +159,10 @@ export const photographyCategories = [
 
 export type PhotographyFilter =
   (typeof photographyCategories)[number];
+/*
+ * Photo used where the developer pages link across to photography.
+ */
+export const photographyPreview = {
+  src: "/images/photography/portfolio/IMG_0649.jpg",
+  alt: "Mayon Volcano seen from the Cagsawa Ruins in Daraga, Albay",
+};

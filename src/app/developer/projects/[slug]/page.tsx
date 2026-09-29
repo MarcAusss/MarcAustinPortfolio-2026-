@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -73,6 +74,10 @@ export default async function ProjectPage({
   const nextProject =
     getProject(project.next ?? "") ??
     projects[0];
+
+  const cover = project.images?.cover;
+  const details = project.images?.details?.slice(0, 2) ?? [];
+  const wide = project.images?.wide;
 
   return (
     <main>
@@ -164,41 +169,22 @@ export default async function ProjectPage({
           HERO PROJECT VISUAL
       ===================================================== */}
 
-      <section className="site-container">
-        <Reveal>
-          <div className="relative aspect-[16/9] overflow-hidden bg-[#dcd9d2] md:aspect-[16/8]">
-            {/* Grid lines */}
-
-            <div className="absolute inset-0">
-              <span className="absolute left-1/4 top-0 h-full w-px bg-black/[0.06]" />
-              <span className="absolute left-1/2 top-0 h-full w-px bg-black/[0.06]" />
-              <span className="absolute left-3/4 top-0 h-full w-px bg-black/[0.06]" />
-
-              <span className="absolute left-0 top-1/2 h-px w-full bg-black/[0.06]" />
+      {cover && (
+        <section className="site-container">
+          <Reveal>
+            <div className="relative aspect-video overflow-hidden bg-[#dcd9d2] md:aspect-16/8">
+              <Image
+                src={cover.src}
+                alt={cover.alt}
+                fill
+                priority
+                sizes="(max-width: 1440px) 100vw, 1320px"
+                className="object-cover object-top"
+              />
             </div>
-
-            {/* Number */}
-
-            <span className="absolute -bottom-[0.15em] right-0 font-serif text-[25vw] leading-none tracking-[-0.08em] text-black/[0.035]">
-              {project.number}
-            </span>
-
-            {/* Placeholder */}
-
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <p className="font-serif text-4xl italic text-black/20 md:text-7xl">
-                  {project.title}
-                </p>
-
-                <p className="mt-5 text-[8px] uppercase tracking-[0.3em] text-black/30">
-                  Main project screenshot
-                </p>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+          </Reveal>
+        </section>
+      )}
 
       {/* =====================================================
           PROJECT INFORMATION
@@ -302,35 +288,28 @@ export default async function ProjectPage({
           EDITORIAL VISUAL
       ===================================================== */}
 
-      <section className="px-5 md:px-10 lg:px-[60px]">
-        <Reveal>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="flex aspect-[4/5] items-center justify-center bg-[#dad7d0]">
-              <div className="text-center">
-                <p className="font-serif text-4xl italic text-black/15">
-                  Interface
-                </p>
-
-                <p className="mt-3 text-[8px] uppercase tracking-[0.25em] text-black/30">
-                  Screenshot 01
-                </p>
-              </div>
+      {details.length > 0 && (
+        <section className="px-5 md:px-10 lg:px-[60px]">
+          <Reveal>
+            <div className="grid gap-4 md:grid-cols-2">
+              {details.map((image) => (
+                <div
+                  key={image.src}
+                  className="relative aspect-4/5 overflow-hidden bg-[#dad7d0]"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+              ))}
             </div>
-
-            <div className="flex aspect-[4/5] items-center justify-center bg-[#222222]">
-              <div className="text-center text-white">
-                <p className="font-serif text-4xl italic text-white/25">
-                  System
-                </p>
-
-                <p className="mt-3 text-[8px] uppercase tracking-[0.25em] text-white/30">
-                  Screenshot 02
-                </p>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+          </Reveal>
+        </section>
+      )}
 
       {/* =====================================================
           SOLUTION
@@ -474,21 +453,21 @@ export default async function ProjectPage({
           FULL-WIDTH SCREENSHOT
       ===================================================== */}
 
-      <section className="site-container pb-24 md:pb-32 lg:pb-40">
-        <Reveal>
-          <div className="flex aspect-[16/9] items-center justify-center bg-[#d8d5ce] md:aspect-[16/7]">
-            <div className="text-center">
-              <p className="font-serif text-5xl italic text-black/[0.15] md:text-7xl">
-                Final interface
-              </p>
-
-              <p className="mt-4 text-[8px] uppercase tracking-[0.3em] text-black/30">
-                Full-width project screenshot
-              </p>
+      {wide && (
+        <section className="site-container pb-24 md:pb-32 lg:pb-40">
+          <Reveal>
+            <div className="relative aspect-video overflow-hidden bg-[#d8d5ce] md:aspect-16/7">
+              <Image
+                src={wide.src}
+                alt={wide.alt}
+                fill
+                sizes="(max-width: 1440px) 100vw, 1320px"
+                className="object-cover object-top"
+              />
             </div>
-          </div>
-        </Reveal>
-      </section>
+          </Reveal>
+        </section>
+      )}
 
       {/* =====================================================
           NEXT PROJECT

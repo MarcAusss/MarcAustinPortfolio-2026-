@@ -1,7 +1,10 @@
-// import Link from "next/link";
+import Image from "next/image";
+
 import Reveal from "@/components/shared/Reveal";
 import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
 import DeveloperContactForm from "@/components/developer/DeveloperContactForm";
+import { photographyPreview } from "@/data/photography";
+import { contact } from "@/data/site";
 
 const services = [
   "Web Development",
@@ -13,18 +16,18 @@ const services = [
 const contactLinks = [
   {
     label: "Email",
-    value: "marcaustinbonagua@gmail.com",
-    href: "mailto:marcaustinbonagua@gmail.com",
+    value: contact.email,
+    href: `mailto:${contact.email}`,
   },
   {
     label: "GitHub",
-    value: "github.com/yourusername",
-    href: "https://github.com/",
+    value: `github.com/${contact.github.handle}`,
+    href: contact.github.url,
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/yourusername",
-    href: "https://linkedin.com/",
+    value: `linkedin.com/in/${contact.linkedin.handle}`,
+    href: contact.linkedin.url,
   },
 ];
 
@@ -135,7 +138,7 @@ export default function ContactPage() {
                       </div>
 
                       <div className="md:col-span-8">
-                        <span className="font-serif text-2xl tracking-tight transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
+                        <span className="inline-block font-serif text-2xl tracking-tight wrap-anywhere transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
                           {link.value}
                         </span>
                       </div>
@@ -253,21 +256,13 @@ export default function ContactPage() {
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={0.1}>
                 <div className="relative aspect-4/5 overflow-hidden bg-white/[0.07]">
-                  <span className="absolute left-1/2 top-0 h-full w-px bg-white/[0.07]" />
-
-                  <span className="absolute left-0 top-1/2 h-px w-full bg-white/[0.07]" />
-
-                  <div className="absolute inset-0 flex items-center justify-center text-center">
-                    <div>
-                      <p className="font-serif text-5xl italic text-white/15">
-                        Photography
-                      </p>
-
-                      <p className="mt-3 text-[8px] uppercase tracking-[0.25em] text-white/25">
-                        Portfolio preview
-                      </p>
-                    </div>
-                  </div>
+                  <Image
+                    src={photographyPreview.src}
+                    alt={photographyPreview.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 30vw"
+                    className="object-cover"
+                  />
                 </div>
 
                 <PortfolioSwitchLink

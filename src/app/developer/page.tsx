@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import Reveal from "@/components/shared/Reveal";
+import { resumePath } from "@/data/site";
 
 const technologies = [
   "Next.js",
@@ -104,7 +105,7 @@ export default function DeveloperPage() {
                 </Link>
 
                 <a
-                  href="/resume/marc-austin-cv.pdf"
+                  href={resumePath}
                   className="group flex items-center gap-3 border-b border-black/30 pb-1 text-xs"
                 >
                   Download CV

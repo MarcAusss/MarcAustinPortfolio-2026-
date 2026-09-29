@@ -1,3 +1,8 @@
+export type ProjectImage = {
+  src: string;
+  alt: string;
+};
+
 export type Project = {
   number: string;
   slug: string;
@@ -18,12 +23,20 @@ export type Project = {
 
   responsibilities: string[];
 
-  image: string;
-
+  /*
+   * Screenshots live in public/images/developer/projects/<slug>/.
+   * Each image block on the project page only renders when its image is set.
+   */
   images?: {
-    src: string;
-    alt: string;
-  }[];
+    // Hero on the project page and preview on the projects index
+    cover?: ProjectImage;
+
+    // Side-by-side pair after the challenge section (first two are used)
+    details?: ProjectImage[];
+
+    // Full-width image after the highlights
+    wide?: ProjectImage;
+  };
 
   highlights: string[];
 
@@ -76,23 +89,8 @@ export const projects: Project[] = [
       "Location data integration",
     ],
 
-    image:
-      "/images/developer/projects/clpmis/hero.png",
-
-    images: [
-      {
-        src: "/images/developer/projects/clpmis/dashboard.png",
-        alt: "CLPMIS dashboard",
-      },
-      {
-        src: "/images/developer/projects/clpmis/profiling.png",
-        alt: "CLPMIS profiling interface",
-      },
-      {
-        src: "/images/developer/projects/clpmis/records.png",
-        alt: "CLPMIS records management",
-      },
-    ],
+    // TODO(marc): add CLPMIS screenshots to public/images/developer/projects/clpmis/ and set images.cover / details / wide
+    images: {},
 
     highlights: [
       "Centralized child labor profiling",
@@ -160,23 +158,13 @@ export const projects: Project[] = [
       "Role-based workflows",
     ],
 
-    image:
-      "/images/developer/projects/tupad/IMG_20240505_011352_959.jpg",
-
-    images: [
-      {
-        src: "/images/developer/projects/tupad/IMG_20240505_011352_959.jpg",
-        alt: "TUPAD PPE Inventory",
+    images: {
+      cover: {
+        src: "/images/developer/projects/tupad-ppe-inventory/dashboard.jpg",
+        alt: "TUPAD PPE Inventory distribution monitoring dashboard with PPE totals per provincial office, call-off status and province receiving progress",
       },
-      {
-        src: "/images/developer/projects/tupad/profiling.png",
-        alt: "tupad profiling interface",
-      },
-      {
-        src: "/images/developer/projects/tupad/records.png",
-        alt: "CLPMIS records management",
-      },
-    ],
+      // TODO(marc): add more screenshots to public/images/developer/projects/tupad-ppe-inventory/ and set images.details / wide
+    },
 
     next: "lease-for-me",
   },
@@ -233,23 +221,8 @@ export const projects: Project[] = [
       "Reusable components",
     ],
 
-    image:
-      "/images/developer/projects/clpmis/hero.png",
-
-    images: [
-      {
-        src: "/images/developer/projects/clpmis/dashboard.png",
-        alt: "CLPMIS dashboard",
-      },
-      {
-        src: "/images/developer/projects/clpmis/profiling.png",
-        alt: "CLPMIS profiling interface",
-      },
-      {
-        src: "/images/developer/projects/clpmis/records.png",
-        alt: "CLPMIS records management",
-      },
-    ],
+    // TODO(marc): add Lease For Me screenshots to public/images/developer/projects/lease-for-me/ and set images.cover / details / wide
+    images: {},
 
     next: "mentor-shift",
   },
@@ -306,23 +279,8 @@ export const projects: Project[] = [
       "Mentor communication",
     ],
 
-    image:
-      "/images/developer/projects/clpmis/hero.png",
-
-    images: [
-      {
-        src: "/images/developer/projects/clpmis/dashboard.png",
-        alt: "CLPMIS dashboard",
-      },
-      {
-        src: "/images/developer/projects/clpmis/profiling.png",
-        alt: "CLPMIS profiling interface",
-      },
-      {
-        src: "/images/developer/projects/clpmis/records.png",
-        alt: "CLPMIS records management",
-      },
-    ],
+    // TODO(marc): add Mentor-Shift screenshots to public/images/developer/projects/mentor-shift/ and set images.cover / details / wide
+    images: {},
 
     next: "clpmis",
   },

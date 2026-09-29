@@ -1,6 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
+
 import Reveal from "@/components/shared/Reveal";
 import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
+import { photographyPreview } from "@/data/photography";
+import { portrait } from "@/data/site";
 
 const principles = [
   {
@@ -120,41 +124,37 @@ export default function AboutPage() {
           <div className="grid gap-16 lg:grid-cols-12">
             {/* Portrait */}
 
-            <div className="lg:col-span-5">
-              <Reveal>
-                <div className="relative aspect-[4/5] overflow-hidden bg-[#d9d6cf]">
-                  <div className="absolute inset-0">
-                    <span className="absolute left-1/2 top-0 h-full w-px bg-black/[0.06]" />
+            {portrait && (
+              <div className="lg:col-span-5">
+                <Reveal>
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#d9d6cf]">
+                    <Image
+                      src={portrait.src}
+                      alt={portrait.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover"
+                    />
 
-                    <span className="absolute left-0 top-1/2 h-px w-full bg-black/[0.06]" />
+                    <div className="absolute bottom-5 left-5 bg-dev-dark px-5 py-4 text-white">
+                      <p className="text-[8px] uppercase tracking-[0.2em] text-white/60">
+                        Based in
+                      </p>
 
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <p className="font-serif text-6xl italic text-black/[0.12]">
-                          Portrait
-                        </p>
-
-                        <p className="mt-3 text-[8px] uppercase tracking-[0.28em] text-black/30">
-                          Your photo here
-                        </p>
-                      </div>
+                      <p className="mt-1 text-xs">Philippines</p>
                     </div>
                   </div>
-
-                  <div className="absolute bottom-5 left-5 bg-dev-dark px-5 py-4 text-white">
-                    <p className="text-[8px] uppercase tracking-[0.2em] text-white/40">
-                      Based in
-                    </p>
-
-                    <p className="mt-1 text-xs">Philippines</p>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
+                </Reveal>
+              </div>
+            )}
 
             {/* Introduction */}
 
-            <div className="flex items-end lg:col-span-6 lg:col-start-7">
+            <div
+              className={`flex items-end ${
+                portrait ? "lg:col-span-6 lg:col-start-7" : "lg:col-span-8"
+              }`}
+            >
               <div>
                 <Reveal>
                   <p className="mb-8 text-[9px] uppercase tracking-[0.24em] text-dev-muted">
@@ -385,13 +385,9 @@ export default function AboutPage() {
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <h3 className="col-span-9 font-serif text-2xl tracking-[-0.02em] transition-transform duration-500 group-hover:translate-x-2 md:col-span-10 md:text-3xl">
+                  <h3 className="col-span-10 font-serif text-2xl tracking-[-0.02em] md:col-span-11 md:text-3xl">
                     {capability}
                   </h3>
-
-                  <span className="col-span-1 text-right text-dev-subtle">
-                    ↗
-                  </span>
                 </div>
               </Reveal>
             ))}
@@ -465,17 +461,13 @@ export default function AboutPage() {
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={0.12}>
                 <div className="relative aspect-[4/5] overflow-hidden bg-white/[0.08]">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="font-serif text-5xl italic text-white/15">
-                        Photography
-                      </p>
-
-                      <p className="mt-3 text-[8px] uppercase tracking-[0.25em] text-white/25">
-                        Photo preview
-                      </p>
-                    </div>
-                  </div>
+                  <Image
+                    src={photographyPreview.src}
+                    alt={photographyPreview.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 30vw"
+                    className="object-cover"
+                  />
                 </div>
 
                 <p className="mt-8 max-w-sm text-sm leading-7 text-white/50">

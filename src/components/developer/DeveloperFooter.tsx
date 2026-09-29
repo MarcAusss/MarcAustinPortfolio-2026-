@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { contact } from "@/data/site";
+
 export default function DeveloperFooter() {
   const year = new Date().getFullYear();
 
@@ -24,7 +26,7 @@ export default function DeveloperFooter() {
           <div className="md:text-right">
             <div className="flex flex-wrap gap-x-6 gap-y-3 md:justify-end">
               <a
-                href="https://github.com/MarcAusss"
+                href={contact.github.url}
                 target="_blank"
                 rel="noreferrer"
                 className="text-[10px] uppercase tracking-[0.18em] text-dev-muted transition-colors hover:text-dev-foreground"
@@ -33,7 +35,7 @@ export default function DeveloperFooter() {
               </a>
 
               <a
-                href="#"
+                href={contact.linkedin.url}
                 target="_blank"
                 rel="noreferrer"
                 className="text-[10px] uppercase tracking-[0.18em] text-dev-muted transition-colors hover:text-dev-foreground"
@@ -42,7 +44,7 @@ export default function DeveloperFooter() {
               </a>
 
               <a
-                href="mailto:marcaustinbonagua@gmail.com"
+                href={`mailto:${contact.email}`}
                 target="_blank"
                 rel="noreferrer"
                 className="text-[10px] uppercase tracking-[0.18em] text-dev-muted transition-colors hover:text-dev-foreground"

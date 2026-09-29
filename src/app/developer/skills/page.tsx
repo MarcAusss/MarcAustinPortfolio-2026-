@@ -186,8 +186,6 @@ export default function SkillsPage() {
                             {item}
                           </span>
                         </div>
-
-                        <span className="text-xs text-dev-subtle">↗</span>
                       </div>
                     ))}
                   </div>

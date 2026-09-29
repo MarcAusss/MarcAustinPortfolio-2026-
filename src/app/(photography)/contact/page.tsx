@@ -1,6 +1,7 @@
 import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
 import Reveal from "@/components/shared/Reveal";
 import PhotographyContactForm from "@/components/photography/PhotographyContactForm";
+import { contact, photographySocials } from "@/data/site";
 
 const services = [
   "Portrait Sessions",
@@ -12,19 +13,12 @@ const services = [
 const contactLinks = [
   {
     label: "Email",
-    value: "marcaustinbonagua@gmail.com",
-    href: "mailto:marcaustinbonagua@gmail.com",
+    value: contact.email,
+    href: `mailto:${contact.email}`,
   },
-  {
-    label: "Instagram",
-    value: "@yourusername",
-    href: "https://instagram.com/",
-  },
-  {
-    label: "Facebook",
-    value: "Marc Austin Photography",
-    href: "https://facebook.com/",
-  },
+  ...photographySocials.flatMap(({ label, value, href }) =>
+    value && href ? [{ label, value, href }] : [],
+  ),
 ];
 
 export default function PhotographyContactPage() {
