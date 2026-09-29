@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,6 +7,15 @@ import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
 import { photographyPreview } from "@/data/photography";
 import { DOLE_CONTEXT, projects } from "@/data/projects";
 import { portrait } from "@/data/site";
+
+import { developerPageMetadata } from "../metadata";
+
+export const metadata: Metadata = developerPageMetadata({
+  title: "About",
+  description:
+    "About Marc Austin, a Laravel & React developer in the Philippines building internal systems for DOLE Regional Office V. Available on US hours.",
+  path: "/developer/about",
+});
 
 const principles = [
   {
@@ -102,7 +112,7 @@ export default function AboutPage() {
       <section className="site-container">
         <div className="grid min-h-[calc(100vh-92px)] gap-14 py-20 lg:grid-cols-12 lg:items-end lg:py-28">
           <div className="lg:col-span-8">
-            <Reveal>
+            <Reveal immediate>
               <div className="mb-8 flex items-center gap-4">
                 <span className="h-px w-8 bg-dev-foreground" />
 
@@ -112,7 +122,7 @@ export default function AboutPage() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.08}>
+            <Reveal immediate delay={0.08}>
               <h1 className="font-serif text-[clamp(4.6rem,10vw,10.5rem)] leading-[0.77] tracking-[-0.06em]">
                 Developer,
                 <br />
@@ -124,7 +134,7 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-4 lg:pb-3">
-            <Reveal delay={0.15}>
+            <Reveal immediate delay={0.15}>
               <p className="max-w-sm text-sm leading-7 text-dev-muted">
                 I&apos;m interested in the point where technology, design and
                 real-world workflows meet — turning complex requirements into
@@ -512,7 +522,7 @@ export default function AboutPage() {
           <div className="grid min-h-[75vh] items-center gap-16 py-24 lg:grid-cols-12 lg:py-32">
             <div className="lg:col-span-7">
               <Reveal>
-                <p className="mb-8 text-[9px] uppercase tracking-[0.25em] text-white/40">
+                <p className="mb-8 text-[9px] uppercase tracking-[0.25em] text-white/60">
                   07 / Beyond development
                 </p>
 

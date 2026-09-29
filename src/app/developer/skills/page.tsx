@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/shared/Reveal";
 import { getProject } from "@/data/projects";
+
+import { developerPageMetadata } from "../metadata";
+
+export const metadata: Metadata = developerPageMetadata({
+  title: "Skills",
+  description:
+    "Skills and tools Marc Austin works with, each linked to the projects that use it: Laravel, PHP, MySQL, Tailwind CSS, Alpine.js and more.",
+  path: "/developer/skills",
+});
 
 /*
  * `projects` lists the slugs of projects that use a skill. Only published
@@ -174,7 +184,7 @@ export default function SkillsPage() {
       <section className="site-container">
         <div className="grid min-h-[72vh] items-end gap-12 pb-20 pt-24 lg:grid-cols-12 lg:pb-28">
           <div className="lg:col-span-3">
-            <Reveal>
+            <Reveal immediate>
               <p className="text-[9px] uppercase tracking-[0.25em] text-dev-muted">
                 Capabilities / 05
               </p>
@@ -182,7 +192,7 @@ export default function SkillsPage() {
           </div>
 
           <div className="lg:col-span-9">
-            <Reveal delay={0.08}>
+            <Reveal immediate delay={0.08}>
               <h1 className="font-serif text-[clamp(5rem,11vw,11rem)] leading-[0.76] tracking-[-0.06em]">
                 Tools,
                 <br />
@@ -192,7 +202,7 @@ export default function SkillsPage() {
               </h1>
             </Reveal>
 
-            <Reveal delay={0.14}>
+            <Reveal immediate delay={0.14}>
               <div className="mt-12 grid gap-8 md:grid-cols-2">
                 <div />
 
@@ -297,7 +307,7 @@ export default function SkillsPage() {
           <div className="grid gap-16 lg:grid-cols-12">
             <div className="lg:col-span-3">
               <Reveal>
-                <p className="text-[9px] uppercase tracking-[0.25em] text-white/40">
+                <p className="text-[9px] uppercase tracking-[0.25em] text-white/60">
                   Philosophy
                 </p>
               </Reveal>

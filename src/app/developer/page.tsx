@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 
 import Reveal from "@/components/shared/Reveal";
 import { getProjectNumber, publishedProjects } from "@/data/projects";
 import { contact, resumePath } from "@/data/site";
+
+import { developerPageMetadata } from "./metadata";
 
 const technologies = [
   "Next.js",
@@ -19,6 +22,10 @@ const technologies = [
 
 const featuredProjects = publishedProjects.slice(0, 3);
 
+export const metadata: Metadata = developerPageMetadata({
+  path: "/developer",
+});
+
 export default function DeveloperPage() {
   return (
     <main>
@@ -31,7 +38,7 @@ export default function DeveloperPage() {
           {/* Left content */}
 
           <div className="relative z-10 lg:col-span-7">
-            <Reveal>
+            <Reveal immediate>
               <div className="mb-8 flex items-center gap-4">
                 <span className="h-px w-8 bg-dev-foreground" />
 
@@ -42,7 +49,7 @@ export default function DeveloperPage() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.08}>
+            <Reveal immediate delay={0.08}>
               <h1 className="font-serif text-[clamp(3.8rem,15vw,8.8rem)] leading-[0.84] tracking-[-0.055em]">
                 I build digital
                 <br />
@@ -52,14 +59,14 @@ export default function DeveloperPage() {
               </h1>
             </Reveal>
 
-            <Reveal delay={0.12}>
+            <Reveal immediate delay={0.12}>
               <p className="mt-10 max-w-xl text-base leading-7 text-dev-foreground">
                 Built 5 internal systems for DOLE Regional Office V, including
                 a PPE inventory used by every provincial office in the region.
               </p>
             </Reveal>
 
-            <Reveal delay={0.16}>
+            <Reveal immediate delay={0.16}>
               <div className="mt-10 grid gap-8 md:grid-cols-2 lg:max-w-190">
                 <p className="max-w-md text-sm leading-7 text-dev-muted">
                   I create thoughtful digital products where engineering,
@@ -76,7 +83,7 @@ export default function DeveloperPage() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.22}>
+            <Reveal immediate delay={0.22}>
               <div className="mt-10 flex flex-wrap items-center gap-7">
                 <a
                   href={resumePath}
@@ -114,7 +121,7 @@ export default function DeveloperPage() {
 
           {/* Right visual */}
 
-          <Reveal delay={0.18} className="relative lg:col-span-5">
+          <Reveal immediate delay={0.18} className="relative lg:col-span-5">
             <div className="relative ml-auto w-full max-w-125">
               {/* Developer hero image */}
 
@@ -278,7 +285,7 @@ export default function DeveloperPage() {
           <div className="grid gap-16 lg:grid-cols-12">
             <div className="lg:col-span-3">
               <Reveal>
-                <p className="text-[9px] uppercase tracking-[0.25em] text-white/40">
+                <p className="text-[9px] uppercase tracking-[0.25em] text-white/60">
                   02 / About
                 </p>
               </Reveal>

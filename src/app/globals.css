@@ -10,8 +10,8 @@
   --dev-surface: #ebe8e2;
   --dev-foreground: #141414;
 
-  --dev-muted: #77736d;
-  --dev-subtle: #a19d96;
+  --dev-muted: #595550;
+  --dev-subtle: #625e58;
 
   --dev-border: #d9d5ce;
   --dev-border-dark: #c8c3bb;
@@ -390,6 +390,43 @@ select {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* ==========================================================
+   Keyboard focus (developer)
+   Unlayered, so it wins over Tailwind's outline-none utilities.
+========================================================== */
+
+.developer-theme :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.developer-theme input:focus-visible,
+.developer-theme select:focus-visible,
+.developer-theme textarea:focus-visible {
+  outline-color: var(--dev-foreground);
+}
+
+/* ==========================================================
+   Above-the-fold reveal
+   CSS-only so hero content animates in without waiting for JS.
+========================================================== */
+
+@keyframes reveal-immediate {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal-immediate {
+  animation: reveal-immediate 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* ==========================================================

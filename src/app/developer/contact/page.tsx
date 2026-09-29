@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import Reveal from "@/components/shared/Reveal";
@@ -5,6 +6,15 @@ import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
 import DeveloperContactForm from "@/components/developer/DeveloperContactForm";
 import { photographyPreview } from "@/data/photography";
 import { contact } from "@/data/site";
+
+import { developerPageMetadata } from "../metadata";
+
+export const metadata: Metadata = developerPageMetadata({
+  title: "Contact",
+  description:
+    "Contact Marc Austin about full-time remote roles or freelance projects. Laravel & React developer, available on US hours from the Philippines.",
+  path: "/developer/contact",
+});
 
 const services = [
   "Web Development",
@@ -41,7 +51,7 @@ export default function ContactPage() {
       <section className="site-container">
         <div className="grid min-h-[72vh] items-end gap-14 pb-20 pt-24 lg:grid-cols-12 lg:pb-28">
           <div className="lg:col-span-3">
-            <Reveal>
+            <Reveal immediate>
               <p className="text-[9px] uppercase tracking-[0.25em] text-dev-muted">
                 Contact / 06
               </p>
@@ -49,7 +59,7 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-9">
-            <Reveal delay={0.08}>
+            <Reveal immediate delay={0.08}>
               <p className="mb-7 text-[10px] uppercase tracking-[0.24em] text-dev-muted">
                 Have an idea?
               </p>
@@ -63,7 +73,7 @@ export default function ContactPage() {
               </h1>
             </Reveal>
 
-            <Reveal delay={0.14}>
+            <Reveal immediate delay={0.14}>
               <div className="mt-12 grid gap-10 md:grid-cols-2">
                 <div />
 
@@ -234,7 +244,7 @@ export default function ContactPage() {
           <div className="grid min-h-[70vh] gap-16 py-24 lg:grid-cols-12 lg:items-center lg:py-32">
             <div className="lg:col-span-7">
               <Reveal>
-                <p className="mb-8 text-[9px] uppercase tracking-[0.25em] text-white/40">
+                <p className="mb-8 text-[9px] uppercase tracking-[0.25em] text-white/60">
                   Another side of my work
                 </p>
 
@@ -265,7 +275,7 @@ export default function ContactPage() {
                   className="group mt-8 flex items-center justify-between border-t border-white/15 pt-6"
                 >
                   <div>
-                    <p className="mb-2 text-[8px] uppercase tracking-[0.2em] text-white/35">
+                    <p className="mb-2 text-[8px] uppercase tracking-[0.2em] text-white/60">
                       Switch portfolio
                     </p>
 

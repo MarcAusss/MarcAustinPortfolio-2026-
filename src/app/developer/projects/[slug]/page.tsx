@@ -13,6 +13,8 @@ import {
   publishedProjects,
 } from "@/data/projects";
 
+import { developerPageMetadata } from "../../metadata";
+
 type ProjectPageProps = {
   params: Promise<{
     slug: string;
@@ -50,11 +52,11 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return developerPageMetadata({
     title: project.title,
-
     description: project.summary,
-  };
+    path: `/developer/projects/${project.slug}`,
+  });
 }
 
 /*
@@ -93,7 +95,7 @@ export default async function ProjectPage({
         <div className="pb-20 pt-20 md:pt-28 lg:pb-28 lg:pt-32">
           {/* Breadcrumb */}
 
-          <Reveal>
+          <Reveal immediate>
             <div className="mb-16 flex items-center justify-between border-b border-dev-border pb-5">
               <Link
                 href="/developer/projects"
@@ -119,7 +121,7 @@ export default async function ProjectPage({
             {/* Main title */}
 
             <div className="lg:col-span-9">
-              <Reveal delay={0.05}>
+              <Reveal immediate delay={0.05}>
                 <p className="mb-6 text-[9px] uppercase tracking-[0.25em] text-dev-muted">
                   {project.category}
                 </p>
@@ -139,7 +141,7 @@ export default async function ProjectPage({
             {/* Year */}
 
             <div className="flex items-end lg:col-span-3 lg:justify-end">
-              <Reveal delay={0.12}>
+              <Reveal immediate delay={0.12}>
                 <div>
                   <p className="mb-2 text-[8px] uppercase tracking-[0.2em] text-dev-subtle">
                     Year
@@ -157,7 +159,7 @@ export default async function ProjectPage({
 
           <div className="mt-16 grid gap-10 md:grid-cols-2 lg:mt-24 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <Reveal>
+              <Reveal immediate>
                 <p className="text-[9px] uppercase tracking-[0.22em] text-dev-subtle">
                   Overview
                 </p>
@@ -165,7 +167,7 @@ export default async function ProjectPage({
             </div>
 
             <div className="lg:col-span-6">
-              <Reveal delay={0.08}>
+              <Reveal immediate delay={0.08}>
                 <p className="font-serif text-3xl leading-[1.15] tracking-[-0.025em] md:text-4xl lg:text-5xl">
                   {project.summary}
                 </p>
@@ -181,7 +183,7 @@ export default async function ProjectPage({
 
       {cover && (
         <section className="site-container">
-          <Reveal>
+          <Reveal immediate>
             <div className="relative aspect-video overflow-hidden bg-[#dcd9d2] md:aspect-16/8">
               <Image
                 src={cover.src}
@@ -438,7 +440,7 @@ export default async function ProjectPage({
           <div className="grid gap-16 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <Reveal>
-                <p className="mb-5 text-[9px] uppercase tracking-[0.25em] text-white/40">
+                <p className="mb-5 text-[9px] uppercase tracking-[0.25em] text-white/60">
                   03 / Contribution
                 </p>
 
@@ -457,7 +459,7 @@ export default async function ProjectPage({
                       delay={index * 0.035}
                     >
                       <div className="grid grid-cols-12 border-b border-white/15 py-6">
-                        <span className="col-span-2 text-[9px] text-white/30">
+                        <span className="col-span-2 text-[9px] text-white/60">
                           {String(index + 1).padStart(
                             2,
                             "0",

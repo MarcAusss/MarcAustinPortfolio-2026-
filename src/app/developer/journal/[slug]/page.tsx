@@ -9,6 +9,8 @@ import {
   journalPosts,
 } from "@/data/journal";
 
+import { developerPageMetadata } from "../../metadata";
+
 type JournalArticleProps = {
   params: Promise<{
     slug: string;
@@ -34,10 +36,11 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return developerPageMetadata({
     title: post.title,
     description: post.excerpt,
-  };
+    path: `/developer/journal/${post.slug}`,
+  });
 }
 
 export default async function JournalArticle({
@@ -265,7 +268,7 @@ export default async function JournalArticle({
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-3">
               <Reveal>
-                <p className="text-[9px] uppercase tracking-[0.24em] text-white/40">
+                <p className="text-[9px] uppercase tracking-[0.24em] text-white/60">
                   Author
                 </p>
               </Reveal>

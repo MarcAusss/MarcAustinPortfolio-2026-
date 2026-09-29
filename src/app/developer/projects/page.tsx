@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import Image from "next/image";
@@ -8,6 +9,15 @@ import {
   getProjectNumber,
   publishedProjects as projects,
 } from "@/data/projects";
+
+import { developerPageMetadata } from "../metadata";
+
+export const metadata: Metadata = developerPageMetadata({
+  title: "Projects",
+  description:
+    "Selected work by Marc Austin: internal systems for DOLE Regional Office V, including the TUPAD PPE Inventory, plus web platforms built with Laravel.",
+  path: "/developer/projects",
+});
 
 const projectGroups = [
   {
@@ -30,7 +40,7 @@ export default function ProjectsPage() {
       <section className="site-container">
         <div className="grid min-h-[65vh] items-end gap-12 pb-20 pt-24 lg:grid-cols-12 lg:pb-28">
           <div className="lg:col-span-3">
-            <Reveal>
+            <Reveal immediate>
               <p className="text-[9px] uppercase tracking-[0.25em] text-dev-muted">
                 Selected work / {projects.length.toString().padStart(2, "0")}
               </p>
@@ -38,7 +48,7 @@ export default function ProjectsPage() {
           </div>
 
           <div className="lg:col-span-9">
-            <Reveal delay={0.08}>
+            <Reveal immediate delay={0.08}>
               <h1 className="font-serif text-[clamp(5rem,11vw,11rem)] leading-[0.76] tracking-[-0.06em]">
                 Selected
                 <br />
@@ -46,7 +56,7 @@ export default function ProjectsPage() {
               </h1>
             </Reveal>
 
-            <Reveal delay={0.15}>
+            <Reveal immediate delay={0.15}>
               <div className="mt-10 grid gap-8 md:grid-cols-2">
                 <div />
 
