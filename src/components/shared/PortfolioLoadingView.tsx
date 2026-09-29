@@ -1,10 +1,56 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 type PortfolioLoadingViewProps = {
   theme: "photography" | "developer";
 };
 
+const SEEN_KEY = "portfolio-loader-seen";
+
+const MAX_DURATION_MS = 600;
+
+/*
+ * Shown only on the first load of a visit, for at most 600ms, and never
+ * when the viewer prefers reduced motion.
+ */
+function shouldShowLoader() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return false;
+  }
+
+  try {
+    return window.sessionStorage.getItem(SEEN_KEY) === null;
+  } catch {
+    return false;
+  }
+}
+
 export default function PortfolioLoadingView({
   theme,
 }: PortfolioLoadingViewProps) {
+  const [visible, setVisible] = useState(shouldShowLoader);
+
+  useEffect(() => {
+    try {
+      window.sessionStorage.setItem(SEEN_KEY, "1");
+    } catch {
+      // Storage unavailable: the loader just won't be suppressed next time.
+    }
+
+    const timer = window.setTimeout(() => setVisible(false), MAX_DURATION_MS);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  if (!visible) {
+    return null;
+  }
+
   const photography = theme === "photography";
 
   const background = photography ? "#090909" : "#f3f1ec";
@@ -100,7 +146,7 @@ export default function PortfolioLoadingView({
           </p>
 
           <div className="overflow-hidden">
-            <h1 className="font-serif text-[clamp(4rem,18vw,13rem)] leading-[0.78] tracking-[-0.06em]">
+            <p className="font-serif text-[clamp(4rem,18vw,13rem)] leading-[0.78] tracking-[-0.06em]">
               {photography ? "Loading" : "Building"}
               <br />
 
@@ -112,7 +158,7 @@ export default function PortfolioLoadingView({
               >
                 {photography ? "the frame." : "the view."}
               </em>
-            </h1>
+            </p>
           </div>
 
           <div className="mt-10 flex items-center gap-5">
