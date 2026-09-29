@@ -208,6 +208,10 @@ export default function DeveloperContactForm() {
             Select project type
           </option>
 
+          <option value="Job opportunity (full-time / contract)">
+            Job opportunity (full-time / contract)
+          </option>
+
           <option value="Web Development">
             Web Development
           </option>
@@ -222,10 +226,6 @@ export default function DeveloperContactForm() {
 
           <option value="Frontend Development">
             Frontend Development
-          </option>
-
-          <option value="Employment Opportunity">
-            Employment Opportunity
           </option>
 
           <option value="Other">

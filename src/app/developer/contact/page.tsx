@@ -206,24 +206,19 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="md:col-span-6">
-                <div className="flex items-center gap-4">
-                  <span className="relative flex h-2.5 w-2.5">
+              <div className="md:col-span-9">
+                <div className="flex items-start gap-4">
+                  <span className="relative mt-3 flex h-2.5 w-2.5 shrink-0">
                     <span className="absolute inline-flex h-full w-full rounded-full bg-current opacity-20" />
 
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-current" />
                   </span>
 
-                  <p className="font-serif text-3xl tracking-tight md:text-4xl">
-                    Open to interesting projects.
+                  <p className="font-serif text-2xl leading-tight tracking-tight md:text-3xl">
+                    Open to full-time remote roles and freelance projects ·
+                    Available on US hours (Philippines, GMT+8)
                   </p>
                 </div>
-              </div>
-
-              <div className="md:col-span-3 md:text-right">
-                <p className="text-[9px] uppercase tracking-[0.2em] text-dev-subtle">
-                  Philippines / GMT+8
-                </p>
               </div>
             </div>
           </Reveal>

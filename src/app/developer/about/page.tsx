@@ -4,6 +4,7 @@ import Link from "next/link";
 import Reveal from "@/components/shared/Reveal";
 import PortfolioSwitchLink from "@/components/transitions/PortfolioSwitchLink";
 import { photographyPreview } from "@/data/photography";
+import { DOLE_CONTEXT, projects } from "@/data/projects";
 import { portrait } from "@/data/site";
 
 const principles = [
@@ -51,24 +52,43 @@ const technologies = [
   "Figma",
 ];
 
-const timeline = [
+// TODO(marc: start month) month you started at DOLE Regional Office V, e.g. "March"
+const doleStartMonth: string | undefined = undefined;
+
+// DOLE systems in the order they appear on the projects page. Names link to
+// their project page once it's published.
+const doleSystems = projects.filter(
+  (project) => project.context === DOLE_CONTEXT,
+);
+
+// TODO(marc): was Mentor-Shift your capstone project? If so, set this to true.
+const mentorShiftIsCapstone = false;
+
+// TODO(marc): graduation year (your CV lists 2021–2025)
+const graduationYear: string | undefined = undefined;
+
+type TimelineItem = {
+  period: string;
+  title: string;
+  organization?: string;
+  description?: string;
+  href?: string;
+  systems?: typeof doleSystems;
+};
+
+const timeline: TimelineItem[] = [
   {
-    year: "Present",
-    title: "Full Stack Development",
-    description:
-      "Building web-based information systems, internal platforms and modern user interfaces.",
+    period: `${doleStartMonth ? `${doleStartMonth} ` : ""}2026 – Present`,
+    title: "Web Developer, Government Internship Program",
+    organization: "DOLE Regional Office V",
+    systems: doleSystems,
   },
   {
-    year: "2026",
-    title: "System & Product Development",
-    description:
-      "Developing administrative, inventory, monitoring and workflow-based applications.",
-  },
-  {
-    year: "2025",
-    title: "Mentor-Shift",
+    period: "2025",
+    title: mentorShiftIsCapstone ? "Mentor-Shift (Capstone project)" : "Mentor-Shift",
     description:
       "Designed and developed a personalized learning and mentorship platform.",
+    href: "/developer/projects/mentor-shift",
   },
 ];
 
@@ -268,26 +288,64 @@ export default function AboutPage() {
               <div className="border-t border-dev-border">
                 {timeline.map((item, index) => (
                   <Reveal
-                    key={`${item.year}-${item.title}`}
+                    key={`${item.period}-${item.title}`}
                     delay={index * 0.06}
                   >
                     <div className="grid gap-6 border-b border-dev-border py-10 md:grid-cols-12">
                       <div className="md:col-span-2">
                         <span className="text-[10px] text-dev-muted">
-                          {item.year}
+                          {item.period}
                         </span>
                       </div>
 
                       <div className="md:col-span-4">
                         <h3 className="font-serif text-3xl tracking-[-0.03em]">
-                          {item.title}
+                          {item.href ? (
+                            <Link
+                              href={item.href}
+                              className="underline-offset-4 hover:underline"
+                            >
+                              {item.title}
+                            </Link>
+                          ) : (
+                            item.title
+                          )}
                         </h3>
+
+                        {item.organization && (
+                          <p className="mt-3 text-[10px] uppercase tracking-[0.18em] text-dev-muted">
+                            {item.organization}
+                          </p>
+                        )}
                       </div>
 
                       <div className="md:col-span-6">
-                        <p className="max-w-md text-sm leading-7 text-dev-muted">
-                          {item.description}
-                        </p>
+                        {item.description && (
+                          <p className="max-w-md text-sm leading-7 text-dev-muted">
+                            {item.description}
+                          </p>
+                        )}
+
+                        {item.systems && (
+                          <ul className="max-w-md space-y-3 text-sm leading-7 text-dev-muted">
+                            {item.systems.map((system) => (
+                              <li key={system.slug} className="flex gap-3">
+                                <span aria-hidden="true">—</span>
+
+                                {system.published ? (
+                                  <Link
+                                    href={`/developer/projects/${system.slug}`}
+                                    className="border-b border-dev-border text-dev-foreground transition-colors hover:border-dev-foreground"
+                                  >
+                                    {system.title}
+                                  </Link>
+                                ) : (
+                                  <span>{system.title}</span>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     </div>
                   </Reveal>
@@ -346,6 +404,16 @@ export default function AboutPage() {
 
                     <p className="mt-2 text-sm">Information Technology</p>
                   </div>
+
+                  {graduationYear && (
+                    <div>
+                      <p className="text-[8px] uppercase tracking-[0.2em] text-dev-subtle">
+                        Graduated
+                      </p>
+
+                      <p className="mt-2 text-sm">{graduationYear}</p>
+                    </div>
+                  )}
                 </div>
               </Reveal>
             </div>

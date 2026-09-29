@@ -1,13 +1,57 @@
 import Link from "next/link";
 import Reveal from "@/components/shared/Reveal";
+import { getProject } from "@/data/projects";
 
-const capabilityGroups = [
+/*
+ * `projects` lists the slugs of projects that use a skill. Only published
+ * projects are linked.
+ *
+ * TODO(marc): these skills have no project behind them yet. Decide whether
+ * to back each one with a project, move it to "Currently learning", or
+ * remove it: Next.js, React, TypeScript, Accessibility, Interaction Design,
+ * Frontend Performance, Authentication, Figma, Wireframing, Prototyping,
+ * Design Systems, Visual Hierarchy, Git, GitHub, VS Code, API Integration,
+ * Debugging, Deployment.
+ */
+type Skill = {
+  name: string;
+  projects?: string[];
+};
+
+const capabilityGroups: {
+  number: string;
+  title: string;
+  description: string;
+  items: Skill[];
+}[] = [
   {
     number: "01",
     title: "Engineering",
     description:
       "Building reliable application logic, reusable components and maintainable full-stack systems.",
-    items: ["Next.js", "React", "TypeScript", "JavaScript", "Laravel", "PHP"],
+    items: [
+      { name: "Next.js" },
+      { name: "React" },
+      { name: "TypeScript" },
+      {
+        name: "JavaScript",
+        projects: ["clpmis", "lease-for-me", "mentor-shift"],
+      },
+      {
+        name: "Laravel",
+        projects: [
+          "tupad-ppe-inventory",
+          "clpmis",
+          "lease-for-me",
+          "mentor-shift",
+        ],
+      },
+      {
+        name: "PHP",
+        projects: ["tupad-ppe-inventory", "clpmis", "mentor-shift"],
+      },
+      { name: "Alpine.js", projects: ["tupad-ppe-inventory"] },
+    ],
   },
   {
     number: "02",
@@ -15,12 +59,15 @@ const capabilityGroups = [
     description:
       "Creating responsive interfaces with strong hierarchy, interaction design and reusable visual systems.",
     items: [
-      "Tailwind CSS",
-      "Responsive Design",
-      "Component Architecture",
-      "Accessibility",
-      "Interaction Design",
-      "Frontend Performance",
+      {
+        name: "Tailwind CSS",
+        projects: ["tupad-ppe-inventory", "clpmis", "lease-for-me"],
+      },
+      { name: "Responsive Design", projects: ["clpmis", "lease-for-me"] },
+      { name: "Component Architecture", projects: ["lease-for-me"] },
+      { name: "Accessibility" },
+      { name: "Interaction Design" },
+      { name: "Frontend Performance" },
     ],
   },
   {
@@ -29,12 +76,26 @@ const capabilityGroups = [
     description:
       "Designing the structure behind applications, from data relationships to permissions and workflow logic.",
     items: [
-      "MySQL",
-      "Database Design",
-      "Authentication",
-      "Authorization",
-      "Role Management",
-      "Workflow Design",
+      {
+        name: "MySQL",
+        projects: [
+          "tupad-ppe-inventory",
+          "clpmis",
+          "lease-for-me",
+          "mentor-shift",
+        ],
+      },
+      {
+        name: "Database Design",
+        projects: ["tupad-ppe-inventory", "clpmis", "mentor-shift"],
+      },
+      { name: "Authentication" },
+      { name: "Authorization", projects: ["tupad-ppe-inventory", "clpmis"] },
+      { name: "Role Management", projects: ["tupad-ppe-inventory", "clpmis"] },
+      {
+        name: "Workflow Design",
+        projects: ["tupad-ppe-inventory", "clpmis", "mentor-shift"],
+      },
     ],
   },
   {
@@ -43,12 +104,20 @@ const capabilityGroups = [
     description:
       "Turning requirements into clear interface structures before they become production code.",
     items: [
-      "Figma",
-      "UI / UX Design",
-      "Wireframing",
-      "Prototyping",
-      "Design Systems",
-      "Visual Hierarchy",
+      { name: "Figma" },
+      {
+        name: "UI / UX Design",
+        projects: [
+          "tupad-ppe-inventory",
+          "clpmis",
+          "lease-for-me",
+          "mentor-shift",
+        ],
+      },
+      { name: "Wireframing" },
+      { name: "Prototyping" },
+      { name: "Design Systems" },
+      { name: "Visual Hierarchy" },
     ],
   },
   {
@@ -57,12 +126,12 @@ const capabilityGroups = [
     description:
       "Managing implementation, debugging and collaboration through a practical development workflow.",
     items: [
-      "Git",
-      "GitHub",
-      "VS Code",
-      "API Integration",
-      "Debugging",
-      "Deployment",
+      { name: "Git" },
+      { name: "GitHub" },
+      { name: "VS Code" },
+      { name: "API Integration" },
+      { name: "Debugging" },
+      { name: "Deployment" },
     ],
   },
 ];
@@ -172,22 +241,45 @@ export default function SkillsPage() {
 
                 <div className="lg:col-span-4">
                   <div className="border-t border-dev-border">
-                    {group.items.map((item, itemIndex) => (
-                      <div
-                        key={item}
-                        className="group flex items-center justify-between border-b border-dev-border py-4"
-                      >
-                        <div className="flex items-center gap-4">
-                          <span className="text-[8px] text-dev-subtle">
+                    {group.items.map((item, itemIndex) => {
+                      const usedIn = (item.projects ?? []).flatMap((slug) => {
+                        const project = getProject(slug);
+
+                        return project ? [project] : [];
+                      });
+
+                      return (
+                        <div
+                          key={item.name}
+                          className="flex items-start gap-4 border-b border-dev-border py-4"
+                        >
+                          <span className="pt-1 text-[8px] text-dev-subtle">
                             {String(itemIndex + 1).padStart(2, "0")}
                           </span>
 
-                          <span className="text-sm transition-transform duration-300 group-hover:translate-x-1">
-                            {item}
-                          </span>
+                          <div>
+                            <span className="text-sm">{item.name}</span>
+
+                            {usedIn.length > 0 && (
+                              <p className="mt-1 text-xs leading-6 text-dev-muted">
+                                <span className="sr-only">Used in: </span>
+                                {usedIn.map((project, projectIndex) => (
+                                  <span key={project.slug}>
+                                    {projectIndex > 0 && ", "}
+                                    <Link
+                                      href={`/developer/projects/${project.slug}`}
+                                      className="underline decoration-dev-border underline-offset-4 transition-colors hover:text-dev-foreground hover:decoration-dev-foreground"
+                                    >
+                                      {project.title}
+                                    </Link>
+                                  </span>
+                                ))}
+                              </p>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </article>
