@@ -81,7 +81,7 @@ export default function PhotographyHome() {
                 className="object-cover object-center transition-transform duration-1400 ease-out group-hover:scale-[1.02]"
               />
 
-              {/* Subtle dark cinematic treatment */}
+              {/* Subtle dark cinematic treatment */} 
 
               <div className="pointer-events-none absolute inset-0 bg-black/30" />
 
